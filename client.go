@@ -18,7 +18,34 @@ import (
 	"github.com/paloaltonetworks/sase-go/api"
 )
 
-// Client is the client.
+/*
+Client is the client connection to the SASE API.
+
+There are multiple ways to specify the client's parameters.  If overlapping
+values are configured for the client, then this is the resolution order:
+
+1. Non-empty values for the param (explicitly defined).
+2. Environment variables
+3. Taken from the JSON config file
+
+This resolution happens during `Setup()`.
+
+The following is supported:
+
+Param | Environment Variable | JSON Key | Default
+-------------------------------------------------
+Host | SASE_HOST | host | "api.sase.paloaltonetworks.com"
+Port | SASE_PORT | port | 0
+ClientId | SASE_CLIENT_ID | client-id | ""
+ClientSecret | SASE_CLIENT_SECRET | client-secret | ""
+Scope | SASE_SCOPE | scope | ""
+Protocol | SASE_PROTOCOL | protocol | "https"
+Timeout | SASE_TIMEOUT | timeout | 30
+Headers | SASE_HEADERS | headers | nil
+Agent | - | agent | ""
+SkipVerifyCertificate | SASE_SKIP_VERIFY_CERTIFICATE | skip-verify-certificate | false
+Logging | SASE_LOGGING | logging | LogPost & LogPut & LogDelete
+*/
 type Client struct {
 	Host         string            `json:"host"`
 	Port         int               `json:"port"`
@@ -30,7 +57,7 @@ type Client struct {
 	Headers      map[string]string `json:"headers"`
 	Agent        string            `json:"agent"`
 
-	AuthFile         string `json:"auth-file"`
+	AuthFile         string `json:"-"`
 	CheckEnvironment bool   `json:"-"`
 
 	SkipVerifyCertificate bool            `json:"skip-verify-certificate"`
