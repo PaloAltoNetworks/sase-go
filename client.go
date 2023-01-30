@@ -318,12 +318,10 @@ func (c *Client) RefreshJwt(ctx context.Context) error {
 		}
 
 		uv := url.Values{}
-		uv.Set("client_id", c.ClientId)
-		uv.Set("client_secret", c.ClientSecret)
 		uv.Set("scope", c.Scope)
 		uv.Set("grant_type", "client_credentials")
 
-		uri := "https://auth.apps.paloaltonetworks.com/am/oauth2/access_token"
+		uri := "https://auth.apps.paloaltonetworks.com/auth/v1/oauth2/access_token"
 
 		req, err := http.NewRequestWithContext(ctx, http.MethodPost, uri, strings.NewReader(uv.Encode()))
 
@@ -332,6 +330,7 @@ func (c *Client) RefreshJwt(ctx context.Context) error {
 		}
 
 		// Add in headers.
+		req.SetBasicAuth(c.ClientId, c.ClientSecret)
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		for k, v := range c.Headers {
 			req.Header.Set(k, v)
@@ -414,7 +413,7 @@ that may have been present.  If this function got all the way to invoking the
 API and getting a response, then the error passed back will be a `api.ErrorResponse`
 if an error was detected.
 */
-func (c *Client) Do(ctx context.Context, method string, path []string, queryParams url.Values, input, output interface{}, retry ...error) ([]byte, error) {
+func (c *Client) Do(ctx context.Context, method string, path string, queryParams url.Values, input, output interface{}, retry ...error) ([]byte, error) {
 	if c.apiPrefix == "" {
 		return nil, fmt.Errorf("Setup() has not been invoked yet")
 	} else if len(retry) > 5 {
@@ -437,7 +436,12 @@ func (c *Client) Do(ctx context.Context, method string, path []string, queryPara
 	if len(queryParams) > 0 {
 		qp = fmt.Sprintf("?%s", queryParams.Encode())
 	}
-	uri := fmt.Sprintf("%s/%s%s", c.apiPrefix, strings.Join(path, "/"), qp)
+
+	if !strings.HasPrefix(path, "/") {
+		path = "/" + path
+	}
+
+	uri := fmt.Sprintf("%s%s%s", c.apiPrefix, path, qp)
 
 	// Log path.
 	if c.Logging&LogPath == LogPath {
@@ -493,8 +497,27 @@ func (c *Client) Do(ctx context.Context, method string, path []string, queryPara
 	// Discover if an error occurred.
 	stat := api.NewResponse(resp.StatusCode, body)
 
+	/*
+	   2023/01/26 02:15:45 [HTTP 404] API_I00013 Your configuration is not valid. Please review the error message for more details. - map[errorType:Object Not Present message:Failed to find obj-uuid for command get]
+
+	   {
+	       "_errors":[
+	           {
+	               "code":"API_I00013",
+	               "message":"Your configuration is not valid. Please review the error message for more details.",
+	               "details":{
+	                   "errorType":"Object Not Present",
+	                   "message":"Failed to find obj-uuid for command get",
+	               },
+	           },
+	       ],
+	       "_request_id":"93cdac8f-5bfe-4438-8ae3-3744114223a7",
+	   }
+	*/
 	switch resp.StatusCode {
 	case http.StatusOK, http.StatusCreated, http.StatusAccepted:
+	case http.StatusNotFound:
+		return body, api.ObjectNotFoundError
 	case http.StatusUnauthorized:
 		if len(retry) > 0 {
 			lastErr, ok := retry[len(retry)-1].(api.Response)
