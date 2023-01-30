@@ -1,9 +1,13 @@
 package api
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
+
+var ObjectNotFoundError = errors.New("object not found")
+var TooManyRetriesError = errors.New("too many retries")
 
 type Error struct {
 	Code    string      `json:"code"`
