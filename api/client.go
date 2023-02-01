@@ -6,6 +6,7 @@ import (
 )
 
 type Client interface {
-	Log(string, string, ...interface{})
+	LoggingIsSetTo(string) bool
+	Log(context.Context, string, string)
 	Do(context.Context, string, string, url.Values, interface{}, interface{}, ...error) ([]byte, error)
 }
