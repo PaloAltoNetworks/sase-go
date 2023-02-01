@@ -36,21 +36,22 @@ Param | Environment Variable | JSON Key | Default
 -------------------------------------------------
 Host | SASE_HOST | host | "api.sase.paloaltonetworks.com"
 Port | SASE_PORT | port | 0
-ClientId | SASE_CLIENT_ID | client-id | ""
-ClientSecret | SASE_CLIENT_SECRET | client-secret | ""
+ClientId | SASE_CLIENT_ID | client_id | ""
+ClientSecret | SASE_CLIENT_SECRET | client_secret | ""
 Scope | SASE_SCOPE | scope | ""
 Protocol | SASE_PROTOCOL | protocol | "https"
 Timeout | SASE_TIMEOUT | timeout | 30
 Headers | SASE_HEADERS | headers | nil
 Agent | - | agent | ""
-SkipVerifyCertificate | SASE_SKIP_VERIFY_CERTIFICATE | skip-verify-certificate | false
-Logging | SASE_LOGGING | logging | LogPost & LogPut & LogDelete
+SkipVerifyCertificate | SASE_SKIP_VERIFY_CERTIFICATE | skip_verify_certificate | false
+Logging | SASE_LOGGING | logging | "quiet"
+SkipLoggingTransport | - | skip_logging_transport | false
 */
 type Client struct {
 	Host         string            `json:"host"`
 	Port         int               `json:"port"`
-	ClientId     string            `json:"client-id"`
-	ClientSecret string            `json:"client-secret"`
+	ClientId     string            `json:"client_id"`
+	ClientSecret string            `json:"client_secret"`
 	Scope        string            `json:"scope"`
 	Protocol     string            `json:"protocol"`
 	Timeout      int               `json:"timeout"`
@@ -60,11 +61,12 @@ type Client struct {
 	AuthFile         string `json:"-"`
 	CheckEnvironment bool   `json:"-"`
 
-	SkipVerifyCertificate bool            `json:"skip-verify-certificate"`
+	SkipVerifyCertificate bool            `json:"skip_verify_certificate"`
 	Transport             *http.Transport `json:"-"`
 
-	Logging               uint32   `json:"-"`
-	LoggingFromInitialize []string `json:"logging"`
+	SkipLoggingTransport bool       `json:"skip_logging_transport"`
+	Logging              string     `json:"logging"`
+	Logger               api.Logger `json:"-"`
 
 	Jwt       string `json:"-"`
 	jwtAtomic int32  `json:"-"`
@@ -224,40 +226,13 @@ func (c *Client) Setup() error {
 	}
 
 	// Logging.
-	if c.Logging == 0 {
-		var ll []string
+	if c.Logging == "" {
 		if val := os.Getenv("SASE_LOGGING"); c.CheckEnvironment && val != "" {
-			ll = strings.Split(val, ",")
+			c.Logging = val
+		} else if json_client.Logging != "" {
+			c.Logging = json_client.Logging
 		} else {
-			ll = json_client.LoggingFromInitialize
-		}
-		if len(ll) > 0 {
-			var lv uint32
-			for _, x := range ll {
-				switch x {
-				case "quiet":
-					lv |= LogQuiet
-				case "get":
-					lv |= LogGet
-				case "post":
-					lv |= LogPost
-				case "put":
-					lv |= LogPut
-				case "delete":
-					lv |= LogDelete
-				case "path":
-					lv |= LogPath
-				case "send":
-					lv |= LogSend
-				case "receive":
-					lv |= LogReceive
-				default:
-					return fmt.Errorf("Unknown logging requested: %s", x)
-				}
-			}
-			c.Logging = lv
-		} else {
-			c.Logging = LogPost | LogPut | LogDelete
+			c.Logging = api.LogQuiet
 		}
 	}
 
@@ -273,6 +248,11 @@ func (c *Client) Setup() error {
 	c.HttpClient = &http.Client{
 		Transport: c.Transport,
 		Timeout:   tout,
+	}
+
+	// Attach logging transport.
+	if !c.SkipLoggingTransport && !json_client.SkipLoggingTransport {
+		c.HttpClient.Transport = api.NewTransport(c.HttpClient.Transport, c)
 	}
 
 	// Configure the uri prefix.
@@ -305,7 +285,7 @@ func (c *Client) RefreshJwt(ctx context.Context) error {
 	var err error
 	var body []byte
 
-	c.Log(http.MethodPost, "refreshing jwt")
+	c.Log(ctx, "", "refreshing jwt")
 
 	if len(c.testData) != 0 {
 		// Testing.
@@ -351,10 +331,6 @@ func (c *Client) RefreshJwt(ctx context.Context) error {
 		return err
 	}
 
-	if c.Logging&LogReceive == LogReceive {
-		log.Printf("received (%d): %s", resp.StatusCode, body)
-	}
-
 	var aa authResponse
 	if err = json.Unmarshal(body, &aa); err != nil {
 		return err
@@ -367,30 +343,25 @@ func (c *Client) RefreshJwt(ctx context.Context) error {
 	return nil
 }
 
-// Log logs an API action.
-func (c *Client) Log(method, msg string, i ...interface{}) {
-	switch method {
-	case http.MethodGet:
-		if c.Logging&LogGet != LogGet {
-			return
-		}
-	case http.MethodPost:
-		if c.Logging&LogPost != LogPost {
-			return
-		}
-	case http.MethodPut:
-		if c.Logging&LogPut != LogPut {
-			return
-		}
-	case http.MethodDelete:
-		if c.Logging&LogDelete != LogDelete {
-			return
-		}
-	default:
+// LoggingIsSetTo checks if the logging is configured as the given string.
+func (c *Client) LoggingIsSetTo(v string) bool {
+	return c.Logging == v
+}
+
+// Log outputs API actions.
+func (c *Client) Log(ctx context.Context, level, msg string) {
+	if c.Logging == api.LogQuiet {
 		return
 	}
 
-	log.Printf("(%s) %s", strings.ToLower(method), fmt.Sprintf(msg, i...))
+	if level == "" || c.Logging == level {
+		if c.Logger == nil {
+			log.Printf(msg)
+		} else {
+			c.Logger(ctx, msg)
+		}
+	}
+	//log.Printf("(%s) %s", strings.ToLower(method), fmt.Sprintf(msg, i...))
 }
 
 /*
@@ -442,16 +413,7 @@ func (c *Client) Do(ctx context.Context, method string, path string, queryParams
 	}
 
 	uri := fmt.Sprintf("%s%s%s", c.apiPrefix, path, qp)
-
-	// Log path.
-	if c.Logging&LogPath == LogPath {
-		log.Printf("path: %s", uri)
-	}
-
-	// Log send.
-	if c.Logging&LogSend == LogSend {
-		log.Printf("sending: %s", data)
-	}
+	c.Log(ctx, api.LogBasic, fmt.Sprintf("%q %s", method, uri))
 
 	if len(c.testData) != 0 {
 		// Testing.
@@ -487,11 +449,6 @@ func (c *Client) Do(ctx context.Context, method string, path string, queryParams
 	body, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
-	}
-
-	// Log receive.
-	if c.Logging&LogReceive == LogReceive {
-		log.Printf("received (%d): %s", resp.StatusCode, body)
 	}
 
 	// Discover if an error occurred.
