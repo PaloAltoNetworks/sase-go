@@ -361,7 +361,6 @@ func (c *Client) Log(ctx context.Context, level, msg string) {
 			c.Logger(ctx, msg)
 		}
 	}
-	//log.Printf("(%s) %s", strings.ToLower(method), fmt.Sprintf(msg, i...))
 }
 
 /*
@@ -413,7 +412,7 @@ func (c *Client) Do(ctx context.Context, method string, path string, queryParams
 	}
 
 	uri := fmt.Sprintf("%s%s%s", c.apiPrefix, path, qp)
-	c.Log(ctx, api.LogBasic, fmt.Sprintf("%q %s", method, uri))
+	c.Log(ctx, api.LogBasic, fmt.Sprintf("[%s] %s", method, uri))
 
 	if len(c.testData) != 0 {
 		// Testing.
