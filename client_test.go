@@ -149,12 +149,12 @@ func TestSetupFromJsonConfigFile(t *testing.T) {
 	conf := []byte(`{
     "host": "test.host",
     "port": 12345,
-    "client-id": "test_client_id",
-    "client-secret": "secret_for_testing",
+    "client_id": "test_client_id",
+    "client_secret": "secret_for_testing",
     "scope": "test:scope",
     "protocol": "http",
     "timeout": 300,
-    "skip-verify-certificate": true
+    "skip_verify_certificate": true
 }`)
 
 	c := Client{
@@ -281,164 +281,50 @@ func TestLogQuiet(t *testing.T) {
 	var buf bytes.Buffer
 	log.SetOutput(&buf)
 	defer restoreLogging()
+	ctx := context.TODO()
 
-	c := Client{Logging: LogQuiet}
-	c.Log(http.MethodGet, "a")
-	c.Log(http.MethodPost, "b")
-	c.Log(http.MethodPut, "c")
-	c.Log(http.MethodDelete, "d")
+	c := Client{Logging: api.LogQuiet}
+	c.Log(ctx, "basic", "a")
+	c.Log(ctx, "basic", "b")
+	c.Log(ctx, "detailed", "c")
+	c.Log(ctx, "detailed", "d")
 
 	if buf.String() != "" {
 		t.Fail()
 	}
 }
 
-func TestLogGet(t *testing.T) {
+func TestLogBasic(t *testing.T) {
 	var buf bytes.Buffer
 	log.SetOutput(&buf)
 	defer restoreLogging()
-
-	c := Client{Logging: LogGet}
-	c.Log(http.MethodGet, "a")
-	c.Log(http.MethodPost, "b")
-	c.Log(http.MethodPut, "c")
-	c.Log(http.MethodDelete, "d")
-
-	if buf.String() != "(get) a\n" {
-		t.Fail()
-	}
-}
-
-func TestLogPost(t *testing.T) {
-	var buf bytes.Buffer
-	log.SetOutput(&buf)
-	defer restoreLogging()
-
-	c := Client{Logging: LogPost}
-	c.Log(http.MethodGet, "a")
-	c.Log(http.MethodPost, "b")
-	c.Log(http.MethodPut, "c")
-	c.Log(http.MethodDelete, "d")
-
-	if buf.String() != "(post) b\n" {
-		t.Fail()
-	}
-}
-
-func TestLogPut(t *testing.T) {
-	var buf bytes.Buffer
-	log.SetOutput(&buf)
-	defer restoreLogging()
-
-	c := Client{Logging: LogPut}
-	c.Log(http.MethodGet, "a")
-	c.Log(http.MethodPost, "b")
-	c.Log(http.MethodPut, "c")
-	c.Log(http.MethodDelete, "d")
-
-	if buf.String() != "(put) c\n" {
-		t.Fail()
-	}
-}
-
-func TestLogDelete(t *testing.T) {
-	var buf bytes.Buffer
-	log.SetOutput(&buf)
-	defer restoreLogging()
-
-	c := Client{Logging: LogDelete}
-	c.Log(http.MethodGet, "a")
-	c.Log(http.MethodPost, "b")
-	c.Log(http.MethodPut, "c")
-	c.Log(http.MethodDelete, "d")
-
-	if buf.String() != "(delete) d\n" {
-		t.Fail()
-	}
-}
-
-func TestDoWithPathLogging(t *testing.T) {
-	var buf bytes.Buffer
-	log.SetOutput(&buf)
-	defer restoreLogging()
-
 	ctx := context.TODO()
 
-	c := Client{
-		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogPath,
-		testData: []*http.Response{{
-			StatusCode: http.StatusOK,
-			Body:       io.NopCloser(strings.NewReader("")),
-		}},
-	}
+	c := Client{Logging: api.LogBasic}
+	c.Log(ctx, api.LogBasic, "a")
+	c.Log(ctx, api.LogDetailed, "b")
+	c.Log(ctx, api.LogBasic, "c")
+	c.Log(ctx, api.LogDetailed, "d")
 
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, nil)
-
-	if err != nil {
-		t.Fatalf("Do returned an error: %s", err)
-	}
-
-	expected := fmt.Sprintf("path: %s/one/two\n", c.apiPrefix)
-	if buf.String() != expected {
-		t.Fatalf("Expected %q, got %q", expected, buf.String())
+	if buf.String() != "a\nc\n" {
+		t.Fail()
 	}
 }
 
-func TestDoWithSendLogging(t *testing.T) {
+func TestLogDetailed(t *testing.T) {
 	var buf bytes.Buffer
 	log.SetOutput(&buf)
 	defer restoreLogging()
-
 	ctx := context.TODO()
 
-	c := Client{
-		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogSend,
-		testData: []*http.Response{{
-			StatusCode: http.StatusOK,
-			Body:       io.NopCloser(strings.NewReader("")),
-		}},
-	}
+	c := Client{Logging: api.LogDetailed}
+	c.Log(ctx, api.LogBasic, "a")
+	c.Log(ctx, api.LogDetailed, "b")
+	c.Log(ctx, api.LogBasic, "c")
+	c.Log(ctx, api.LogDetailed, "d")
 
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, nil)
-
-	if err != nil {
-		t.Fatalf("Do returned an error: %s", err)
-	}
-
-	if !strings.HasPrefix(buf.String(), "sending: ") {
-		t.Fatalf("Don't see the \"sending: \" prefix in logging")
-	}
-}
-
-func TestDoWithReceiveLogging(t *testing.T) {
-	var buf bytes.Buffer
-	log.SetOutput(&buf)
-	defer restoreLogging()
-
-	ctx := context.TODO()
-
-	c := Client{
-		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogReceive,
-		testData: []*http.Response{{
-			StatusCode: http.StatusOK,
-			Body:       io.NopCloser(strings.NewReader("foo bar baz")),
-		}},
-	}
-
-	b, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, nil)
-
-	if err != nil {
-		t.Fatalf("Do returned an error: %s", err)
-	}
-
-	if !strings.HasPrefix(buf.String(), "received (200): ") {
-		t.Errorf("Don't see the \"received (200): \" prefix in logging")
-	}
-	if string(b) != "foo bar baz" {
-		t.Errorf("Didn't get \"foo bar baz\" back in the return value")
+	if buf.String() != "b\nd\n" {
+		t.Fail()
 	}
 }
 
@@ -454,7 +340,7 @@ func TestDoUnmarshalsResponse(t *testing.T) {
 
 	c := Client{
 		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogReceive,
+		Logging:   api.LogDetailed,
 		testData: []*http.Response{{
 			StatusCode: http.StatusOK,
 			Body: io.NopCloser(strings.NewReader(fmt.Sprintf(`{
@@ -465,7 +351,7 @@ func TestDoUnmarshalsResponse(t *testing.T) {
 	}
 
 	var ans Person
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, &ans)
+	_, err := c.Do(ctx, http.MethodGet, "/one/two", nil, nil, &ans)
 
 	if err != nil {
 		t.Fatalf("Do returned an error: %s", err)
@@ -488,7 +374,7 @@ func TestDoNoUnmarshalOnErrorResponse(t *testing.T) {
 
 	c := Client{
 		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogReceive,
+		Logging:   api.LogDetailed,
 		testData: []*http.Response{{
 			StatusCode: http.StatusBadRequest,
 			Body:       io.NopCloser(strings.NewReader("")),
@@ -496,7 +382,7 @@ func TestDoNoUnmarshalOnErrorResponse(t *testing.T) {
 	}
 
 	var ans Person
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, &ans)
+	_, err := c.Do(ctx, http.MethodGet, "/one/two", nil, nil, &ans)
 
 	if err == nil {
 		t.Errorf("nil error was returned")
@@ -529,7 +415,7 @@ func TestDoCanRefreshTheJwt(t *testing.T) {
 
 	c := Client{
 		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogReceive,
+		Logging:   api.LogDetailed,
 		testData: []*http.Response{
 			{
 				StatusCode: http.StatusUnauthorized,
@@ -546,7 +432,7 @@ func TestDoCanRefreshTheJwt(t *testing.T) {
 		},
 	}
 
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, nil)
+	_, err := c.Do(ctx, http.MethodGet, "/one/two", nil, nil, nil)
 
 	if err != nil {
 		t.Errorf("error was returned")
@@ -568,7 +454,7 @@ func TestDoWithMultipleUnauthorizedFailures(t *testing.T) {
 
 	c := Client{
 		apiPrefix: "https://testing-api-prefix",
-		Logging:   LogReceive,
+		Logging:   api.LogDetailed,
 		testData: []*http.Response{
 			{
 				StatusCode: http.StatusUnauthorized,
@@ -597,7 +483,7 @@ func TestDoWithMultipleUnauthorizedFailures(t *testing.T) {
 		},
 	}
 
-	_, err := c.Do(ctx, http.MethodGet, []string{"one", "two"}, nil, nil, nil)
+	_, err := c.Do(ctx, http.MethodGet, "/one/two", nil, nil, nil)
 
 	if err == nil {
 		t.Fatalf("nil error was returned")
