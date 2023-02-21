@@ -5,35 +5,36 @@ package running
 // []string{"netsec", "service", "v1", "configversions", "running"}
 
 import (
-	"context"
+    "context"
 
-	"github.com/paloaltonetworks/sase-go/api"
-	kmTnbqb "github.com/paloaltonetworks/sase-go/netsec/schema/running/config/versions"
+    "github.com/paloaltonetworks/sase-go/api"
+    fLuUemT "github.com/paloaltonetworks/sase-go/netsec/schema/running/config/versions"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-	client api.Client
+    client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-	return &Client{client: client}
+    return &Client{client: client}
 }
 
 // RunningGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/config-versions/running
-func (c *Client) RunningGet(ctx context.Context) (kmTnbqb.Config, error) {
-	// Variables.
-	var err error
-	var ans kmTnbqb.Config
-	path := "/sse/config/v1/config-versions/running"
+func (c *Client) RunningGet(ctx context.Context)  (fLuUemT.Config, error) {
+    // Variables.
+    var err error
+    var ans fLuUemT.Config
+    path := "/sse/config/v1/config-versions/running"
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
 
-	// Done.
-	return ans, err
+    // Execute the command.
+    _, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
+
+    // Done.
+    return ans, err
 }

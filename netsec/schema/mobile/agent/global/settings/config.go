@@ -11,5 +11,5 @@ Args:
 Param AgentVersion (string): The AgentVersion param.
 */
 type Config struct {
-	AgentVersion string `json:"agent_version,omitempty"`
+    AgentVersion string `json:"agent_version,omitempty"`
 }

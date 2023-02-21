@@ -21,12 +21,12 @@ Param Static (list of strings): The Static param. One of these params should be 
 Param Tag (list of strings): The Tag param. Array should contain at most 64 items.
 */
 type Config struct {
-	Description  string         `json:"description,omitempty"`
-	DynamicValue *DynamicObject `json:"dynamic,omitempty"`
-	ObjectId     string         `json:"id,omitempty"`
-	Name         string         `json:"name"`
-	Static       []string       `json:"static,omitempty"`
-	Tag          []string       `json:"tag,omitempty"`
+    Description string `json:"description,omitempty"`
+    DynamicValue *DynamicObject `json:"dynamic,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    Static []string `json:"static,omitempty"`
+    Tag []string `json:"tag,omitempty"`
 }
 
 /*
@@ -40,5 +40,5 @@ Args:
 Param Filter (required, string): The Filter param. String length must not exceed 2047 characters.
 */
 type DynamicObject struct {
-	Filter string `json:"filter"`
+    Filter string `json:"filter"`
 }

@@ -25,12 +25,12 @@ Param Timer (int64): The Timer param. Value must be between 1 and 1440.
 Param TlsServiceProfile (string): The TlsServiceProfile param.
 */
 type Config struct {
-	AuthenticationProfile string `json:"authentication_profile,omitempty"`
-	CertificateProfile    string `json:"certificate_profile,omitempty"`
-	GpUdpPort             int64  `json:"gp_udp_port,omitempty"`
-	ObjectId              string `json:"id,omitempty"`
-	IdleTimer             int64  `json:"idle_timer,omitempty"`
-	RedirectHost          string `json:"redirect_host,omitempty"`
-	Timer                 int64  `json:"timer,omitempty"`
-	TlsServiceProfile     string `json:"tls_service_profile,omitempty"`
+    AuthenticationProfile string `json:"authentication_profile,omitempty"`
+    CertificateProfile string `json:"certificate_profile,omitempty"`
+    GpUdpPort int64 `json:"gp_udp_port,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    IdleTimer int64 `json:"idle_timer,omitempty"`
+    RedirectHost string `json:"redirect_host,omitempty"`
+    Timer int64 `json:"timer,omitempty"`
+    TlsServiceProfile string `json:"tls_service_profile,omitempty"`
 }

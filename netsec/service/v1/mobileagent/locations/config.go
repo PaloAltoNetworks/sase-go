@@ -5,22 +5,22 @@ package locations
 // []string{"netsec", "service", "v1", "mobileagent", "locations"}
 
 import (
-	"context"
-	"math"
-	"net/url"
+    "context"
+    "math"
+    "net/url"
 
-	"github.com/paloaltonetworks/sase-go/api"
-	kTRgTxf "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/locations"
+    "github.com/paloaltonetworks/sase-go/api"
+    uuDOzKc "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/locations"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-	client api.Client
+    client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-	return &Client{client: client}
+    return &Client{client: client}
 }
 
 // ListInput takes some input.
@@ -28,7 +28,7 @@ func NewClient(client api.Client) *Client {
 // path: []string{}
 // query: []string{"folder-mobile-users"}
 type ListInput struct {
-	Folder string
+    Folder string
 }
 
 /*
@@ -48,118 +48,118 @@ Param Offset (int64): The Offset param. Default: 0
 Param Total (int64): The Total param.
 */
 type ListOutput struct {
-	Data   []kTRgTxf.Config `json:"data,omitempty"`
-	Limit  int64            `json:"limit,omitempty"`
-	Offset int64            `json:"offset,omitempty"`
-	Total  int64            `json:"total,omitempty"`
+    Data []uuDOzKc.Config `json:"data,omitempty"`
+    Limit int64 `json:"limit,omitempty"`
+    Offset int64 `json:"offset,omitempty"`
+    Total int64 `json:"total,omitempty"`
 }
 
 // List gets a list of objects back.
 //
 // Method: get
 // URI: /sse/config/v1/mobile-agent/locations
-func (c *Client) List(ctx context.Context, input ListInput) (ListOutput, error) {
-	// Variables.
-	var err error
-	var ans ListOutput
-	path := "/sse/config/v1/mobile-agent/locations"
+func (c *Client) List(ctx context.Context, input ListInput)  (ListOutput, error) {
+    // Variables.
+    var err error
+    var ans ListOutput
+    path := "/sse/config/v1/mobile-agent/locations"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	uv.Set("folder", input.Folder)
+    // Query parameter handling.
+    uv := url.Values{}
+    uv.Set("folder", input.Folder)
 
-	// Optional: retrieve everything if limit is -1.
-	if input.Limit != nil && *input.Limit == -1 {
-		return c.listAll(ctx, input)
-	}
+    // Optional: retrieve everything if limit is -1.
+    if input.Limit != nil && *input.Limit == -1 {
+        return c.listAll(ctx, input)
+    }
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-	// Done.
-	return ans, err
+    // Done.
+    return ans, err
 }
 
 type listResponse struct {
-	Output ListOutput
-	Error  error
+    Output ListOutput
+    Error error
 }
 
 func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, error) {
-	var ans ListOutput
-	var err error
-	var items map[string]kTRgTxf.Config
-	everything := ListInput{
-		Limit:  api.Int(api.MaxLimit),
-		Folder: input.Folder,
-	}
+    var ans ListOutput
+    var err error
+    var items map[string] uuDOzKc.Config
+    everything := ListInput{
+        Limit: api.Int(api.MaxLimit),
+        Folder: input.Folder,
+    }
 
-	times := 0
-	for {
-		// Get the total number of things.
-		ans, err = c.List(ctx, everything)
-		if err != nil || len(ans.Data) == int(ans.Total) {
-			return ans, err
-		}
+    times := 0
+    for {
+        // Get the total number of things.
+        ans, err = c.List(ctx, everything)
+        if err != nil || len(ans.Data) == int(ans.Total) {
+            return ans, err
+        }
 
-		total := int(ans.Total)
-		items = make(map[string]kTRgTxf.Config)
-		numRetrievers := int(math.Ceil(float64(total) / float64(api.MaxLimit)))
-		responses := make(chan listResponse, numRetrievers)
+        total := int(ans.Total)
+        items = make(map[string] uuDOzKc.Config)
+        numRetrievers := int(math.Ceil(float64(total)/float64(api.MaxLimit)))
+        responses := make(chan listResponse, numRetrievers)
 
-		for i := 0; i < numRetrievers; i++ {
-			ri := ListInput{
-				Offset: api.Int(int64(i * api.MaxLimit)),
-				Limit:  api.Int(int64(api.MaxLimit)),
-				Folder: input.Folder,
-			}
-			go func() {
-				rout, rerr := c.List(ctx, ri)
-				responses <- listResponse{
-					Output: rout,
-					Error:  rerr,
-				}
-			}()
-		}
+        for i := 0; i < numRetrievers; i++ {
+            ri := ListInput{
+                Offset: api.Int(int64(i*api.MaxLimit)),
+                Limit: api.Int(int64(api.MaxLimit)),
+        Folder: input.Folder,
+            }
+            go func(){
+                rout, rerr := c.List(ctx, ri)
+                responses <- listResponse{
+                    Output: rout,
+                    Error: rerr,
+                }
+            }()
+        }
 
-		var totalChanged bool
-		for i := 0; i < numRetrievers; i++ {
-			resp := <-responses
-			if resp.Error != nil {
-				return resp.Output, resp.Error
-			}
-			if ans.Total != resp.Output.Total {
-				totalChanged = true
-				continue
-			}
-			for j := 0; j < len(resp.Output.Data); j++ {
-				if _, ok := items[resp.Output.Data[j].ObjectId]; !ok {
-					items[resp.Output.Data[j].ObjectId] = resp.Output.Data[j]
-				}
-			}
-		}
+        var totalChanged bool
+        for i := 0; i < numRetrievers; i++ {
+            resp := <-responses
+            if resp.Error != nil {
+                return resp.Output, resp.Error
+            }
+            if ans.Total != resp.Output.Total {
+                totalChanged = true
+                continue
+            }
+            for j := 0; j < len(resp.Output.Data); j++ {
+                if _, ok := items[resp.Output.Data[j].ObjectId]; !ok {
+                    items[resp.Output.Data[j].ObjectId] = resp.Output.Data[j]
+                }
+            }
+        }
 
-		if !totalChanged && len(items) == total {
-			break
-		}
+        if !totalChanged && len(items) == total {
+            break
+        }
 
-		times++
-		if times >= 5 {
-			return ListOutput{}, api.TooManyRetriesError
-		}
-	}
+        times++
+        if times >= 5 {
+            return ListOutput{}, api.TooManyRetriesError
+        }
+    }
 
-	listing := make([]kTRgTxf.Config, 0, len(items))
-	for key := range items {
-		listing = append(listing, items[key])
-	}
+    listing := make([]uuDOzKc.Config, 0, len(items))
+    for key := range items {
+        listing = append(listing, items[key])
+    }
 
-	ans = ListOutput{
-		Data:  listing,
-		Total: int64(len(listing)),
-	}
+    ans = ListOutput{
+        Data: listing,
+        Total: int64(len(listing)),
+    }
 
-	return ans, nil
+    return ans, nil
 }
 
 // LocationsPutInput takes some input.
@@ -167,26 +167,26 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 // path: []string{}
 // query: []string{"folder-mobile-users"}
 type LocationsPutInput struct {
-	Folder string
-	Config kTRgTxf.Config
+    Folder string
+    Config uuDOzKc.Config
 }
 
 // LocationsPut performs a the given operation.
 //
 // Method: put
 // URI: /sse/config/v1/mobile-agent/locations
-func (c *Client) LocationsPut(ctx context.Context, input LocationsPutInput) error {
-	// Variables.
-	var err error
-	path := "/sse/config/v1/mobile-agent/locations"
+func (c *Client) LocationsPut(ctx context.Context, input LocationsPutInput)  (error) {
+    // Variables.
+    var err error
+    path := "/sse/config/v1/mobile-agent/locations"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	uv.Set("folder", input.Folder)
+    // Query parameter handling.
+    uv := url.Values{}
+    uv.Set("folder", input.Folder)
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "PUT", path, uv, input.Config, nil)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "PUT", path, uv, input.Config, nil)
 
-	// Done.
-	return err
+    // Done.
+    return err
 }

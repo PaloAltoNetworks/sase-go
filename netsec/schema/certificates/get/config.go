@@ -37,18 +37,18 @@ Param SubjectHash (string): The SubjectHash param.
 Param SubjectInt (string): The SubjectInt param.
 */
 type Config struct {
-	Algorithm      string `json:"algorithm,omitempty"`
-	Ca             bool   `json:"ca,omitempty"`
-	CommonName     string `json:"common_name,omitempty"`
-	CommonNameInt  string `json:"common_name_int,omitempty"`
-	ExpiryEpoch    string `json:"expiry_epoch,omitempty"`
-	ObjectId       string `json:"id,omitempty"`
-	Issuer         string `json:"issuer,omitempty"`
-	IssuerHash     string `json:"issuer_hash,omitempty"`
-	NotValidAfter  string `json:"not_valid_after,omitempty"`
-	NotValidBefore string `json:"not_valid_before,omitempty"`
-	PublicKey      string `json:"public_key,omitempty"`
-	Subject        string `json:"subject,omitempty"`
-	SubjectHash    string `json:"subject_hash,omitempty"`
-	SubjectInt     string `json:"subject_int,omitempty"`
+    Algorithm string `json:"algorithm,omitempty"`
+    Ca bool `json:"ca,omitempty"`
+    CommonName string `json:"common_name,omitempty"`
+    CommonNameInt string `json:"common_name_int,omitempty"`
+    ExpiryEpoch string `json:"expiry_epoch,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Issuer string `json:"issuer,omitempty"`
+    IssuerHash string `json:"issuer_hash,omitempty"`
+    NotValidAfter string `json:"not_valid_after,omitempty"`
+    NotValidBefore string `json:"not_valid_before,omitempty"`
+    PublicKey string `json:"public_key,omitempty"`
+    Subject string `json:"subject,omitempty"`
+    SubjectHash string `json:"subject_hash,omitempty"`
+    SubjectInt string `json:"subject_int,omitempty"`
 }

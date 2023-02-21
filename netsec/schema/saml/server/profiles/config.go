@@ -27,13 +27,13 @@ Param ValidateIdpCertificate (bool): The ValidateIdpCertificate param.
 Param WantAuthRequestsSigned (bool): The WantAuthRequestsSigned param.
 */
 type Config struct {
-	Certificate            string `json:"certificate"`
-	EntityId               string `json:"entity_id,omitempty"`
-	ObjectId               string `json:"id,omitempty"`
-	MaxClockSkew           int64  `json:"max_clock_skew,omitempty"`
-	SloBindings            string `json:"slo_bindings,omitempty"`
-	SsoBindings            string `json:"sso_bindings,omitempty"`
-	SsoUrl                 string `json:"sso_url,omitempty"`
-	ValidateIdpCertificate bool   `json:"validate_idp_certificate,omitempty"`
-	WantAuthRequestsSigned bool   `json:"want_auth_requests_signed,omitempty"`
+    Certificate string `json:"certificate"`
+    EntityId string `json:"entity_id,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    MaxClockSkew int64 `json:"max_clock_skew,omitempty"`
+    SloBindings string `json:"slo_bindings,omitempty"`
+    SsoBindings string `json:"sso_bindings,omitempty"`
+    SsoUrl string `json:"sso_url,omitempty"`
+    ValidateIdpCertificate bool `json:"validate_idp_certificate,omitempty"`
+    WantAuthRequestsSigned bool `json:"want_auth_requests_signed,omitempty"`
 }

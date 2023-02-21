@@ -27,13 +27,13 @@ Param VirusAndWildfireAnalysis (list of strings): The VirusAndWildfireAnalysis p
 Param Vulnerability (list of strings): The Vulnerability param.
 */
 type Config struct {
-	DnsSecurity              []string `json:"dns_security,omitempty"`
-	FileBlocking             []string `json:"file_blocking,omitempty"`
-	ObjectId                 string   `json:"id,omitempty"`
-	Name                     string   `json:"name"`
-	SaasSecurity             []string `json:"saas_security,omitempty"`
-	Spyware                  []string `json:"spyware,omitempty"`
-	UrlFiltering             []string `json:"url_filtering,omitempty"`
-	VirusAndWildfireAnalysis []string `json:"virus_and_wildfire_analysis,omitempty"`
-	Vulnerability            []string `json:"vulnerability,omitempty"`
+    DnsSecurity []string `json:"dns_security,omitempty"`
+    FileBlocking []string `json:"file_blocking,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    SaasSecurity []string `json:"saas_security,omitempty"`
+    Spyware []string `json:"spyware,omitempty"`
+    UrlFiltering []string `json:"url_filtering,omitempty"`
+    VirusAndWildfireAnalysis []string `json:"virus_and_wildfire_analysis,omitempty"`
+    Vulnerability []string `json:"vulnerability,omitempty"`
 }

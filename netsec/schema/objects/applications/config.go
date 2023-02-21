@@ -67,35 +67,35 @@ Param UsedByMalware (bool): The UsedByMalware param.
 Param VirusIdent (bool): The VirusIdent param.
 */
 type Config struct {
-	AbleToTransferFile     bool              `json:"able_to_transfer_file,omitempty"`
-	AlgDisableCapability   string            `json:"alg_disable_capability,omitempty"`
-	Category               string            `json:"category"`
-	ConsumeBigBandwidth    bool              `json:"consume_big_bandwidth,omitempty"`
-	DataIdent              bool              `json:"data_ident,omitempty"`
-	Default                *DefaultObject    `json:"default,omitempty"`
-	Description            string            `json:"description,omitempty"`
-	EvasiveBehavior        bool              `json:"evasive_behavior,omitempty"`
-	FileTypeIdent          bool              `json:"file_type_ident,omitempty"`
-	HasKnownVulnerability  bool              `json:"has_known_vulnerability,omitempty"`
-	ObjectId               string            `json:"id,omitempty"`
-	Name                   string            `json:"name"`
-	NoAppidCaching         bool              `json:"no_appid_caching,omitempty"`
-	ParentApp              string            `json:"parent_app,omitempty"`
-	PervasiveUse           bool              `json:"pervasive_use,omitempty"`
-	ProneToMisuse          bool              `json:"prone_to_misuse,omitempty"`
-	Risk                   int64             `json:"risk"`
-	Signature              []SignatureObject `json:"signature,omitempty"`
-	Subcategory            string            `json:"subcategory"`
-	TcpHalfClosedTimeout   int64             `json:"tcp_half_closed_timeout,omitempty"`
-	TcpTimeWaitTimeout     int64             `json:"tcp_time_wait_timeout,omitempty"`
-	TcpTimeout             int64             `json:"tcp_timeout,omitempty"`
-	Technology             string            `json:"technology"`
-	Timeout                int64             `json:"timeout,omitempty"`
-	TunnelApplications     bool              `json:"tunnel_applications,omitempty"`
-	TunnelOtherApplication bool              `json:"tunnel_other_application,omitempty"`
-	UdpTimeout             int64             `json:"udp_timeout,omitempty"`
-	UsedByMalware          bool              `json:"used_by_malware,omitempty"`
-	VirusIdent             bool              `json:"virus_ident,omitempty"`
+    AbleToTransferFile bool `json:"able_to_transfer_file,omitempty"`
+    AlgDisableCapability string `json:"alg_disable_capability,omitempty"`
+    Category string `json:"category"`
+    ConsumeBigBandwidth bool `json:"consume_big_bandwidth,omitempty"`
+    DataIdent bool `json:"data_ident,omitempty"`
+    Default *DefaultObject `json:"default,omitempty"`
+    Description string `json:"description,omitempty"`
+    EvasiveBehavior bool `json:"evasive_behavior,omitempty"`
+    FileTypeIdent bool `json:"file_type_ident,omitempty"`
+    HasKnownVulnerability bool `json:"has_known_vulnerability,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    NoAppidCaching bool `json:"no_appid_caching,omitempty"`
+    ParentApp string `json:"parent_app,omitempty"`
+    PervasiveUse bool `json:"pervasive_use,omitempty"`
+    ProneToMisuse bool `json:"prone_to_misuse,omitempty"`
+    Risk int64 `json:"risk"`
+    Signature []SignatureObject `json:"signature,omitempty"`
+    Subcategory string `json:"subcategory"`
+    TcpHalfClosedTimeout int64 `json:"tcp_half_closed_timeout,omitempty"`
+    TcpTimeWaitTimeout int64 `json:"tcp_time_wait_timeout,omitempty"`
+    TcpTimeout int64 `json:"tcp_timeout,omitempty"`
+    Technology string `json:"technology"`
+    Timeout int64 `json:"timeout,omitempty"`
+    TunnelApplications bool `json:"tunnel_applications,omitempty"`
+    TunnelOtherApplication bool `json:"tunnel_other_application,omitempty"`
+    UdpTimeout int64 `json:"udp_timeout,omitempty"`
+    UsedByMalware bool `json:"used_by_malware,omitempty"`
+    VirusIdent bool `json:"virus_ident,omitempty"`
 }
 
 /*
@@ -115,10 +115,10 @@ Param IdentByIpProtocol (string): The IdentByIpProtocol param. Example: "0,1-255
 Param Port (list of strings): The Port param.
 */
 type DefaultObject struct {
-	IdentByIcmp6Type  *IdentByIcmp6TypeObject `json:"ident_by_icmp6_type,omitempty"`
-	IdentByIcmpType   *IdentByIcmpTypeObject  `json:"ident_by_icmp_type,omitempty"`
-	IdentByIpProtocol string                  `json:"ident_by_ip_protocol,omitempty"`
-	Port              []string                `json:"port,omitempty"`
+    IdentByIcmp6Type *IdentByIcmp6TypeObject `json:"ident_by_icmp6_type,omitempty"`
+    IdentByIcmpType *IdentByIcmpTypeObject `json:"ident_by_icmp_type,omitempty"`
+    IdentByIpProtocol string `json:"ident_by_ip_protocol,omitempty"`
+    Port []string `json:"port,omitempty"`
 }
 
 /*
@@ -134,8 +134,8 @@ Param Code (string): The Code param. Example: "0,1-255".
 Param Type (required, string): The Type param. Example: "0,1-255".
 */
 type IdentByIcmp6TypeObject struct {
-	Code string `json:"code,omitempty"`
-	Type string `json:"type"`
+    Code string `json:"code,omitempty"`
+    Type string `json:"type"`
 }
 
 /*
@@ -151,8 +151,8 @@ Param Code (string): The Code param. Example: "0,1-255".
 Param Type (required, string): The Type param. Example: "0,1-255".
 */
 type IdentByIcmpTypeObject struct {
-	Code string `json:"code,omitempty"`
-	Type string `json:"type"`
+    Code string `json:"code,omitempty"`
+    Type string `json:"type"`
 }
 
 /*
@@ -174,11 +174,11 @@ Param OrderFree (bool): The OrderFree param. Default: false
 Param Scope (string): The Scope param. String values: []string{"protocol-data-unit", "session"} Default: "protocol-data-unit".
 */
 type SignatureObject struct {
-	AndCondition []AndConditionObject `json:"and_condition,omitempty"`
-	Comment      string               `json:"comment,omitempty"`
-	Name         string               `json:"name"`
-	OrderFree    bool                 `json:"order_free,omitempty"`
-	Scope        string               `json:"scope,omitempty"`
+    AndCondition []AndConditionObject `json:"and_condition,omitempty"`
+    Comment string `json:"comment,omitempty"`
+    Name string `json:"name"`
+    OrderFree bool `json:"order_free,omitempty"`
+    Scope string `json:"scope,omitempty"`
 }
 
 /*
@@ -194,8 +194,8 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param OrCondition (list of OrConditionObject objects): The OrCondition param.
 */
 type AndConditionObject struct {
-	Name        string              `json:"name"`
-	OrCondition []OrConditionObject `json:"or_condition,omitempty"`
+    Name string `json:"name"`
+    OrCondition []OrConditionObject `json:"or_condition,omitempty"`
 }
 
 /*
@@ -211,8 +211,8 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param Operator (required, OperatorObject): The Operator param. OperatorObject instance.
 */
 type OrConditionObject struct {
-	Name     string         `json:"name"`
-	Operator OperatorObject `json:"operator"`
+    Name string `json:"name"`
+    Operator OperatorObject `json:"operator"`
 }
 
 /*
@@ -232,10 +232,10 @@ Param LessThan (LessThanObject): The LessThan param. LessThanObject instance.
 Param PatternMatch (PatternMatchObject): The PatternMatch param. PatternMatchObject instance.
 */
 type OperatorObject struct {
-	EqualTo      *EqualToObject      `json:"equal_to,omitempty"`
-	GreaterThan  *GreaterThanObject  `json:"greater_than,omitempty"`
-	LessThan     *LessThanObject     `json:"less_than,omitempty"`
-	PatternMatch *PatternMatchObject `json:"pattern_match,omitempty"`
+    EqualTo *EqualToObject `json:"equal_to,omitempty"`
+    GreaterThan *GreaterThanObject `json:"greater_than,omitempty"`
+    LessThan *LessThanObject `json:"less_than,omitempty"`
+    PatternMatch *PatternMatchObject `json:"pattern_match,omitempty"`
 }
 
 /*
@@ -255,10 +255,10 @@ Param Position (string): The Position param. String length must not exceed 127 c
 Param Value (required, string): The Value param. String length must not exceed 10 characters.
 */
 type EqualToObject struct {
-	Context  string `json:"context"`
-	Mask     string `json:"mask,omitempty"`
-	Position string `json:"position,omitempty"`
-	Value    string `json:"value"`
+    Context string `json:"context"`
+    Mask string `json:"mask,omitempty"`
+    Position string `json:"position,omitempty"`
+    Value string `json:"value"`
 }
 
 /*
@@ -276,9 +276,9 @@ Param Qualifier (list of QualifierObject objects): The Qualifier param.
 Param Value (required, int64): The Value param. Value must be between 0 and 4294967295.
 */
 type GreaterThanObject struct {
-	Context   string            `json:"context"`
-	Qualifier []QualifierObject `json:"qualifier,omitempty"`
-	Value     int64             `json:"value"`
+    Context string `json:"context"`
+    Qualifier []QualifierObject `json:"qualifier,omitempty"`
+    Value int64 `json:"value"`
 }
 
 /*
@@ -296,8 +296,8 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param Value (required, string): The Value param.
 */
 type QualifierObject struct {
-	Name  string `json:"name"`
-	Value string `json:"value"`
+    Name string `json:"name"`
+    Value string `json:"value"`
 }
 
 /*
@@ -315,9 +315,9 @@ Param Qualifier (list of QualifierObject objects): The Qualifier param.
 Param Value (required, int64): The Value param. Value must be between 0 and 4294967295.
 */
 type LessThanObject struct {
-	Context   string            `json:"context"`
-	Qualifier []QualifierObject `json:"qualifier,omitempty"`
-	Value     int64             `json:"value"`
+    Context string `json:"context"`
+    Qualifier []QualifierObject `json:"qualifier,omitempty"`
+    Value int64 `json:"value"`
 }
 
 /*
@@ -335,7 +335,7 @@ Param Pattern (required, string): The Pattern param. String length must not exce
 Param Qualifier (list of QualifierObject objects): The Qualifier param.
 */
 type PatternMatchObject struct {
-	Context   string            `json:"context"`
-	Pattern   string            `json:"pattern"`
-	Qualifier []QualifierObject `json:"qualifier,omitempty"`
+    Context string `json:"context"`
+    Pattern string `json:"pattern"`
+    Qualifier []QualifierObject `json:"qualifier,omitempty"`
 }

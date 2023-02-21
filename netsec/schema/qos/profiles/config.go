@@ -17,10 +17,10 @@ Param ObjectId (string, read-only): The ObjectId param. Example: "abcd-1234".
 Param Name (required, string): The Name param. String length must not exceed 31 characters.
 */
 type Config struct {
-	AggregateBandwidth *AggregateBandwidthObject `json:"aggregate_bandwidth,omitempty"`
-	ClassBandwidthType *ClassBandwidthTypeObject `json:"class_bandwidth_type,omitempty"`
-	ObjectId           string                    `json:"id,omitempty"`
-	Name               string                    `json:"name"`
+    AggregateBandwidth *AggregateBandwidthObject `json:"aggregate_bandwidth,omitempty"`
+    ClassBandwidthType *ClassBandwidthTypeObject `json:"class_bandwidth_type,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
 }
 
 /*
@@ -36,8 +36,8 @@ Param EgressGuaranteed (int64): The EgressGuaranteed param. Value must be betwee
 Param EgressMax (int64): The EgressMax param. Value must be between 0 and 60000.
 */
 type AggregateBandwidthObject struct {
-	EgressGuaranteed int64 `json:"egress_guaranteed,omitempty"`
-	EgressMax        int64 `json:"egress_max,omitempty"`
+    EgressGuaranteed int64 `json:"egress_guaranteed,omitempty"`
+    EgressMax int64 `json:"egress_max,omitempty"`
 }
 
 /*
@@ -53,8 +53,8 @@ Param Mbps (MbpsObject): The Mbps param. MbpsObject instance.
 Param Percentage (PercentageObject): The Percentage param. PercentageObject instance.
 */
 type ClassBandwidthTypeObject struct {
-	Mbps       *MbpsObject       `json:"mbps,omitempty"`
-	Percentage *PercentageObject `json:"percentage,omitempty"`
+    Mbps *MbpsObject `json:"mbps,omitempty"`
+    Percentage *PercentageObject `json:"percentage,omitempty"`
 }
 
 /*
@@ -68,7 +68,7 @@ Args:
 Param Class (list of ClassObject objects): The Class param.
 */
 type MbpsObject struct {
-	Class []ClassObject `json:"class,omitempty"`
+    Class []ClassObject `json:"class,omitempty"`
 }
 
 /*
@@ -87,9 +87,9 @@ Param Name (string): The Name param. String length must not exceed 31 characters
 Param Priority (string): The Priority param. String values: []string{"real-time", "high", "medium", "low"} Default: "medium".
 */
 type ClassObject struct {
-	ClassBandwidth *ClassBandwidthObject `json:"class_bandwidth,omitempty"`
-	Name           string                `json:"name,omitempty"`
-	Priority       string                `json:"priority,omitempty"`
+    ClassBandwidth *ClassBandwidthObject `json:"class_bandwidth,omitempty"`
+    Name string `json:"name,omitempty"`
+    Priority string `json:"priority,omitempty"`
 }
 
 /*
@@ -105,8 +105,8 @@ Param EgressGuaranteed (int64): The EgressGuaranteed param. Value must be betwee
 Param EgressMax (int64): The EgressMax param. Value must be between 0 and 60000.
 */
 type ClassBandwidthObject struct {
-	EgressGuaranteed int64 `json:"egress_guaranteed,omitempty"`
-	EgressMax        int64 `json:"egress_max,omitempty"`
+    EgressGuaranteed int64 `json:"egress_guaranteed,omitempty"`
+    EgressMax int64 `json:"egress_max,omitempty"`
 }
 
 /*
@@ -120,5 +120,5 @@ Args:
 Param Class (list of ClassObject objects): The Class param.
 */
 type PercentageObject struct {
-	Class []ClassObject `json:"class,omitempty"`
+    Class []ClassObject `json:"class,omitempty"`
 }

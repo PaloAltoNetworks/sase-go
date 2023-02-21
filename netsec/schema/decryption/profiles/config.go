@@ -21,12 +21,12 @@ Param SslNoProxy (SslNoProxyObject): The SslNoProxy param. SslNoProxyObject inst
 Param SslProtocolSettings (SslProtocolSettingsObject): The SslProtocolSettings param. SslProtocolSettingsObject instance.
 */
 type Config struct {
-	ObjectId            string                     `json:"id,omitempty"`
-	Name                string                     `json:"name"`
-	SslForwardProxy     *SslForwardProxyObject     `json:"ssl_forward_proxy,omitempty"`
-	SslInboundProxy     *SslInboundProxyObject     `json:"ssl_inbound_proxy,omitempty"`
-	SslNoProxy          *SslNoProxyObject          `json:"ssl_no_proxy,omitempty"`
-	SslProtocolSettings *SslProtocolSettingsObject `json:"ssl_protocol_settings,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    SslForwardProxy *SslForwardProxyObject `json:"ssl_forward_proxy,omitempty"`
+    SslInboundProxy *SslInboundProxyObject `json:"ssl_inbound_proxy,omitempty"`
+    SslNoProxy *SslNoProxyObject `json:"ssl_no_proxy,omitempty"`
+    SslProtocolSettings *SslProtocolSettingsObject `json:"ssl_protocol_settings,omitempty"`
 }
 
 /*
@@ -60,17 +60,17 @@ Param RestrictCertExts (bool): The RestrictCertExts param. Default: false
 Param StripAlpn (bool): The StripAlpn param. Default: false
 */
 type SslForwardProxyObject struct {
-	AutoIncludeAltname            bool `json:"auto_include_altname,omitempty"`
-	BlockClientCert               bool `json:"block_client_cert,omitempty"`
-	BlockExpiredCertificate       bool `json:"block_expired_certificate,omitempty"`
-	BlockTimeoutCert              bool `json:"block_timeout_cert,omitempty"`
-	BlockTls13DowngradeNoResource bool `json:"block_tls13_downgrade_no_resource,omitempty"`
-	BlockUnknownCert              bool `json:"block_unknown_cert,omitempty"`
-	BlockUnsupportedCipher        bool `json:"block_unsupported_cipher,omitempty"`
-	BlockUnsupportedVersion       bool `json:"block_unsupported_version,omitempty"`
-	BlockUntrustedIssuer          bool `json:"block_untrusted_issuer,omitempty"`
-	RestrictCertExts              bool `json:"restrict_cert_exts,omitempty"`
-	StripAlpn                     bool `json:"strip_alpn,omitempty"`
+    AutoIncludeAltname bool `json:"auto_include_altname,omitempty"`
+    BlockClientCert bool `json:"block_client_cert,omitempty"`
+    BlockExpiredCertificate bool `json:"block_expired_certificate,omitempty"`
+    BlockTimeoutCert bool `json:"block_timeout_cert,omitempty"`
+    BlockTls13DowngradeNoResource bool `json:"block_tls13_downgrade_no_resource,omitempty"`
+    BlockUnknownCert bool `json:"block_unknown_cert,omitempty"`
+    BlockUnsupportedCipher bool `json:"block_unsupported_cipher,omitempty"`
+    BlockUnsupportedVersion bool `json:"block_unsupported_version,omitempty"`
+    BlockUntrustedIssuer bool `json:"block_untrusted_issuer,omitempty"`
+    RestrictCertExts bool `json:"restrict_cert_exts,omitempty"`
+    StripAlpn bool `json:"strip_alpn,omitempty"`
 }
 
 /*
@@ -90,10 +90,10 @@ Param BlockUnsupportedCipher (bool): The BlockUnsupportedCipher param. Default: 
 Param BlockUnsupportedVersion (bool): The BlockUnsupportedVersion param. Default: false
 */
 type SslInboundProxyObject struct {
-	BlockIfHsmUnavailable   bool `json:"block_if_hsm_unavailable,omitempty"`
-	BlockIfNoResource       bool `json:"block_if_no_resource,omitempty"`
-	BlockUnsupportedCipher  bool `json:"block_unsupported_cipher,omitempty"`
-	BlockUnsupportedVersion bool `json:"block_unsupported_version,omitempty"`
+    BlockIfHsmUnavailable bool `json:"block_if_hsm_unavailable,omitempty"`
+    BlockIfNoResource bool `json:"block_if_no_resource,omitempty"`
+    BlockUnsupportedCipher bool `json:"block_unsupported_cipher,omitempty"`
+    BlockUnsupportedVersion bool `json:"block_unsupported_version,omitempty"`
 }
 
 /*
@@ -109,8 +109,8 @@ Param BlockExpiredCertificate (bool): The BlockExpiredCertificate param. Default
 Param BlockUntrustedIssuer (bool): The BlockUntrustedIssuer param. Default: false
 */
 type SslNoProxyObject struct {
-	BlockExpiredCertificate bool `json:"block_expired_certificate,omitempty"`
-	BlockUntrustedIssuer    bool `json:"block_untrusted_issuer,omitempty"`
+    BlockExpiredCertificate bool `json:"block_expired_certificate,omitempty"`
+    BlockUntrustedIssuer bool `json:"block_untrusted_issuer,omitempty"`
 }
 
 /*
@@ -154,20 +154,20 @@ Param MaxVersion (string): The MaxVersion param. String values: []string{"sslv3"
 Param MinVersion (string): The MinVersion param. String values: []string{"sslv3", "tls1-0", "tls1-1", "tls1-2", "tls1-3"} Default: "tls1-0".
 */
 type SslProtocolSettingsObject struct {
-	AuthAlgoMd5             bool   `json:"auth_algo_md5,omitempty"`
-	AuthAlgoSha1            bool   `json:"auth_algo_sha1,omitempty"`
-	AuthAlgoSha256          bool   `json:"auth_algo_sha256,omitempty"`
-	AuthAlgoSha384          bool   `json:"auth_algo_sha384,omitempty"`
-	EncAlgo3des             bool   `json:"enc_algo_3des,omitempty"`
-	EncAlgoAes128Cbc        bool   `json:"enc_algo_aes_128_cbc,omitempty"`
-	EncAlgoAes128Gcm        bool   `json:"enc_algo_aes_128_gcm,omitempty"`
-	EncAlgoAes256Cbc        bool   `json:"enc_algo_aes_256_cbc,omitempty"`
-	EncAlgoAes256Gcm        bool   `json:"enc_algo_aes_256_gcm,omitempty"`
-	EncAlgoChacha20Poly1305 bool   `json:"enc_algo_chacha20_poly1305,omitempty"`
-	EncAlgoRc4              bool   `json:"enc_algo_rc4,omitempty"`
-	KeyxchgAlgoDhe          bool   `json:"keyxchg_algo_dhe,omitempty"`
-	KeyxchgAlgoEcdhe        bool   `json:"keyxchg_algo_ecdhe,omitempty"`
-	KeyxchgAlgoRsa          bool   `json:"keyxchg_algo_rsa,omitempty"`
-	MaxVersion              string `json:"max_version,omitempty"`
-	MinVersion              string `json:"min_version,omitempty"`
+    AuthAlgoMd5 bool `json:"auth_algo_md5,omitempty"`
+    AuthAlgoSha1 bool `json:"auth_algo_sha1,omitempty"`
+    AuthAlgoSha256 bool `json:"auth_algo_sha256,omitempty"`
+    AuthAlgoSha384 bool `json:"auth_algo_sha384,omitempty"`
+    EncAlgo3des bool `json:"enc_algo_3des,omitempty"`
+    EncAlgoAes128Cbc bool `json:"enc_algo_aes_128_cbc,omitempty"`
+    EncAlgoAes128Gcm bool `json:"enc_algo_aes_128_gcm,omitempty"`
+    EncAlgoAes256Cbc bool `json:"enc_algo_aes_256_cbc,omitempty"`
+    EncAlgoAes256Gcm bool `json:"enc_algo_aes_256_gcm,omitempty"`
+    EncAlgoChacha20Poly1305 bool `json:"enc_algo_chacha20_poly1305,omitempty"`
+    EncAlgoRc4 bool `json:"enc_algo_rc4,omitempty"`
+    KeyxchgAlgoDhe bool `json:"keyxchg_algo_dhe,omitempty"`
+    KeyxchgAlgoEcdhe bool `json:"keyxchg_algo_ecdhe,omitempty"`
+    KeyxchgAlgoRsa bool `json:"keyxchg_algo_rsa,omitempty"`
+    MaxVersion string `json:"max_version,omitempty"`
+    MinVersion string `json:"min_version,omitempty"`
 }

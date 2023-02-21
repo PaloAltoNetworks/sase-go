@@ -19,11 +19,11 @@ Param Server (required, list of ServerObject objects): The Server param.
 Param Timeout (int64): The Timeout param. Value must be between 1 and 120.
 */
 type Config struct {
-	ObjectId string          `json:"id,omitempty"`
-	Protocol *ProtocolObject `json:"protocol,omitempty"`
-	Retries  int64           `json:"retries,omitempty"`
-	Server   []ServerObject  `json:"server"`
-	Timeout  int64           `json:"timeout,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Protocol *ProtocolObject `json:"protocol,omitempty"`
+    Retries int64 `json:"retries,omitempty"`
+    Server []ServerObject `json:"server"`
+    Timeout int64 `json:"timeout,omitempty"`
 }
 
 /*
@@ -45,11 +45,11 @@ Param PEAPMSCHAPv2 (PEAPMSCHAPv2Object): The PEAPMSCHAPv2 param. PEAPMSCHAPv2Obj
 Param PEAPWithGTC (PEAPWithGTCObject): The PEAPWithGTC param. PEAPWithGTCObject instance.
 */
 type ProtocolObject struct {
-	CHAP           interface{}           `json:"CHAP,omitempty"`
-	EAPTTLSWithPAP *EAPTTLSWithPAPObject `json:"EAP_TTLS_with_PAP,omitempty"`
-	PAP            interface{}           `json:"PAP,omitempty"`
-	PEAPMSCHAPv2   *PEAPMSCHAPv2Object   `json:"PEAP_MSCHAPv2,omitempty"`
-	PEAPWithGTC    *PEAPWithGTCObject    `json:"PEAP_with_GTC,omitempty"`
+    CHAP interface{} `json:"CHAP,omitempty"`
+    EAPTTLSWithPAP *EAPTTLSWithPAPObject `json:"EAP_TTLS_with_PAP,omitempty"`
+    PAP interface{} `json:"PAP,omitempty"`
+    PEAPMSCHAPv2 *PEAPMSCHAPv2Object `json:"PEAP_MSCHAPv2,omitempty"`
+    PEAPWithGTC *PEAPWithGTCObject `json:"PEAP_with_GTC,omitempty"`
 }
 
 /*
@@ -65,8 +65,8 @@ Param AnonOuterId (bool): The AnonOuterId param.
 Param RadiusCertProfile (string): The RadiusCertProfile param.
 */
 type EAPTTLSWithPAPObject struct {
-	AnonOuterId       bool   `json:"anon_outer_id,omitempty"`
-	RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
+    AnonOuterId bool `json:"anon_outer_id,omitempty"`
+    RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
 }
 
 /*
@@ -84,9 +84,9 @@ Param AnonOuterId (bool): The AnonOuterId param.
 Param RadiusCertProfile (string): The RadiusCertProfile param.
 */
 type PEAPMSCHAPv2Object struct {
-	AllowPwdChange    bool   `json:"allow_pwd_change,omitempty"`
-	AnonOuterId       bool   `json:"anon_outer_id,omitempty"`
-	RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
+    AllowPwdChange bool `json:"allow_pwd_change,omitempty"`
+    AnonOuterId bool `json:"anon_outer_id,omitempty"`
+    RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
 }
 
 /*
@@ -102,8 +102,8 @@ Param AnonOuterId (bool): The AnonOuterId param.
 Param RadiusCertProfile (string): The RadiusCertProfile param.
 */
 type PEAPWithGTCObject struct {
-	AnonOuterId       bool   `json:"anon_outer_id,omitempty"`
-	RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
+    AnonOuterId bool `json:"anon_outer_id,omitempty"`
+    RadiusCertProfile string `json:"radius_cert_profile,omitempty"`
 }
 
 /*
@@ -123,8 +123,8 @@ Param Port (int64): The Port param. Value must be between 1 and 65535.
 Param Secret (string): The Secret param. String length must not exceed 64 characters.
 */
 type ServerObject struct {
-	IpAddress string `json:"ip_address,omitempty"`
-	Name      string `json:"name,omitempty"`
-	Port      int64  `json:"port,omitempty"`
-	Secret    string `json:"secret,omitempty"`
+    IpAddress string `json:"ip_address,omitempty"`
+    Name string `json:"name,omitempty"`
+    Port int64 `json:"port,omitempty"`
+    Secret string `json:"secret,omitempty"`
 }

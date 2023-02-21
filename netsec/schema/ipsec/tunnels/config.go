@@ -23,13 +23,13 @@ Param Name (required, string): The Name param. String length must not exceed 63 
 Param TunnelMonitor (TunnelMonitorObject): The TunnelMonitor param. TunnelMonitorObject instance.
 */
 type Config struct {
-	AntiReplay             bool                 `json:"anti_replay,omitempty"`
-	AutoKey                AutoKeyObject        `json:"auto_key"`
-	CopyTos                bool                 `json:"copy_tos,omitempty"`
-	EnableGreEncapsulation bool                 `json:"enable_gre_encapsulation,omitempty"`
-	ObjectId               string               `json:"id,omitempty"`
-	Name                   string               `json:"name"`
-	TunnelMonitor          *TunnelMonitorObject `json:"tunnel_monitor,omitempty"`
+    AntiReplay bool `json:"anti_replay,omitempty"`
+    AutoKey AutoKeyObject `json:"auto_key"`
+    CopyTos bool `json:"copy_tos,omitempty"`
+    EnableGreEncapsulation bool `json:"enable_gre_encapsulation,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    TunnelMonitor *TunnelMonitorObject `json:"tunnel_monitor,omitempty"`
 }
 
 /*
@@ -47,9 +47,9 @@ Param IpsecCryptoProfile (required, string): The IpsecCryptoProfile param.
 Param ProxyId (list of ProxyIdObject objects): The ProxyId param.
 */
 type AutoKeyObject struct {
-	IkeGateway         []IkeGatewayObject `json:"ike_gateway"`
-	IpsecCryptoProfile string             `json:"ipsec_crypto_profile"`
-	ProxyId            []ProxyIdObject    `json:"proxy_id,omitempty"`
+    IkeGateway []IkeGatewayObject `json:"ike_gateway"`
+    IpsecCryptoProfile string `json:"ipsec_crypto_profile"`
+    ProxyId []ProxyIdObject `json:"proxy_id,omitempty"`
 }
 
 /*
@@ -63,7 +63,7 @@ Args:
 Param Name (string): The Name param.
 */
 type IkeGatewayObject struct {
-	Name string `json:"name,omitempty"`
+    Name string `json:"name,omitempty"`
 }
 
 /*
@@ -83,10 +83,10 @@ Param Protocol (ProtocolObject): The Protocol param. ProtocolObject instance.
 Param Remote (string): The Remote param.
 */
 type ProxyIdObject struct {
-	Local    string          `json:"local,omitempty"`
-	Name     string          `json:"name"`
-	Protocol *ProtocolObject `json:"protocol,omitempty"`
-	Remote   string          `json:"remote,omitempty"`
+    Local string `json:"local,omitempty"`
+    Name string `json:"name"`
+    Protocol *ProtocolObject `json:"protocol,omitempty"`
+    Remote string `json:"remote,omitempty"`
 }
 
 /*
@@ -104,9 +104,9 @@ Param Tcp (TcpObject): The Tcp param. TcpObject instance.
 Param Udp (UdpObject): The Udp param. UdpObject instance.
 */
 type ProtocolObject struct {
-	Number int64      `json:"number,omitempty"`
-	Tcp    *TcpObject `json:"tcp,omitempty"`
-	Udp    *UdpObject `json:"udp,omitempty"`
+    Number int64 `json:"number,omitempty"`
+    Tcp *TcpObject `json:"tcp,omitempty"`
+    Udp *UdpObject `json:"udp,omitempty"`
 }
 
 /*
@@ -122,8 +122,8 @@ Param LocalPort (int64): The LocalPort param. Value must be between 0 and 65535.
 Param RemotePort (int64): The RemotePort param. Value must be between 0 and 65535. Default: 0
 */
 type TcpObject struct {
-	LocalPort  int64 `json:"local_port,omitempty"`
-	RemotePort int64 `json:"remote_port,omitempty"`
+    LocalPort int64 `json:"local_port,omitempty"`
+    RemotePort int64 `json:"remote_port,omitempty"`
 }
 
 /*
@@ -139,8 +139,8 @@ Param LocalPort (int64): The LocalPort param. Value must be between 0 and 65535.
 Param RemotePort (int64): The RemotePort param. Value must be between 0 and 65535. Default: 0
 */
 type UdpObject struct {
-	LocalPort  int64 `json:"local_port,omitempty"`
-	RemotePort int64 `json:"remote_port,omitempty"`
+    LocalPort int64 `json:"local_port,omitempty"`
+    RemotePort int64 `json:"remote_port,omitempty"`
 }
 
 /*
@@ -158,7 +158,7 @@ Param Enable (bool): The Enable param. Default: true
 Param ProxyId (string): The ProxyId param.
 */
 type TunnelMonitorObject struct {
-	DestinationIp string `json:"destination_ip"`
-	Enable        bool   `json:"enable,omitempty"`
-	ProxyId       string `json:"proxy_id,omitempty"`
+    DestinationIp string `json:"destination_ip"`
+    Enable bool `json:"enable,omitempty"`
+    ProxyId string `json:"proxy_id,omitempty"`
 }

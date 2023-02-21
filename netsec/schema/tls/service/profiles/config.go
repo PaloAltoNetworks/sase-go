@@ -17,10 +17,10 @@ Param Name (required, string): The Name param. String length must not exceed 127
 Param ProtocolSettings (required, ProtocolSettingsObject): The ProtocolSettings param. ProtocolSettingsObject instance.
 */
 type Config struct {
-	Certificate      string                 `json:"certificate"`
-	ObjectId         string                 `json:"id,omitempty"`
-	Name             string                 `json:"name"`
-	ProtocolSettings ProtocolSettingsObject `json:"protocol_settings"`
+    Certificate string `json:"certificate"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
+    ProtocolSettings ProtocolSettingsObject `json:"protocol_settings"`
 }
 
 /*
@@ -60,18 +60,18 @@ Param MaxVersion (string): The MaxVersion param. String values: []string{"tls1-0
 Param MinVersion (string): The MinVersion param. String values: []string{"tls1-0", "tls1-1", "tls1-2"} Default: "tls1-0".
 */
 type ProtocolSettingsObject struct {
-	AuthAlgoSha1     bool   `json:"auth_algo_sha1,omitempty"`
-	AuthAlgoSha256   bool   `json:"auth_algo_sha256,omitempty"`
-	AuthAlgoSha384   bool   `json:"auth_algo_sha384,omitempty"`
-	EncAlgo3des      bool   `json:"enc_algo_3des,omitempty"`
-	EncAlgoAes128Cbc bool   `json:"enc_algo_aes_128_cbc,omitempty"`
-	EncAlgoAes128Gcm bool   `json:"enc_algo_aes_128_gcm,omitempty"`
-	EncAlgoAes256Cbc bool   `json:"enc_algo_aes_256_cbc,omitempty"`
-	EncAlgoAes256Gcm bool   `json:"enc_algo_aes_256_gcm,omitempty"`
-	EncAlgoRc4       bool   `json:"enc_algo_rc4,omitempty"`
-	KeyxchgAlgoDhe   bool   `json:"keyxchg_algo_dhe,omitempty"`
-	KeyxchgAlgoEcdhe bool   `json:"keyxchg_algo_ecdhe,omitempty"`
-	KeyxchgAlgoRsa   bool   `json:"keyxchg_algo_rsa,omitempty"`
-	MaxVersion       string `json:"max_version,omitempty"`
-	MinVersion       string `json:"min_version,omitempty"`
+    AuthAlgoSha1 bool `json:"auth_algo_sha1,omitempty"`
+    AuthAlgoSha256 bool `json:"auth_algo_sha256,omitempty"`
+    AuthAlgoSha384 bool `json:"auth_algo_sha384,omitempty"`
+    EncAlgo3des bool `json:"enc_algo_3des,omitempty"`
+    EncAlgoAes128Cbc bool `json:"enc_algo_aes_128_cbc,omitempty"`
+    EncAlgoAes128Gcm bool `json:"enc_algo_aes_128_gcm,omitempty"`
+    EncAlgoAes256Cbc bool `json:"enc_algo_aes_256_cbc,omitempty"`
+    EncAlgoAes256Gcm bool `json:"enc_algo_aes_256_gcm,omitempty"`
+    EncAlgoRc4 bool `json:"enc_algo_rc4,omitempty"`
+    KeyxchgAlgoDhe bool `json:"keyxchg_algo_dhe,omitempty"`
+    KeyxchgAlgoEcdhe bool `json:"keyxchg_algo_ecdhe,omitempty"`
+    KeyxchgAlgoRsa bool `json:"keyxchg_algo_rsa,omitempty"`
+    MaxVersion string `json:"max_version,omitempty"`
+    MinVersion string `json:"min_version,omitempty"`
 }

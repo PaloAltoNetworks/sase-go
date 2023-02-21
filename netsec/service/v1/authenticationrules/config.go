@@ -5,24 +5,24 @@ package authenticationrules
 // []string{"netsec", "service", "v1", "authenticationrules"}
 
 import (
-	"context"
-	"math"
-	"net/url"
-	"strconv"
-	"strings"
+    "context"
+    "math"
+    "net/url"
+    "strconv"
+    "strings"
 
-	"github.com/paloaltonetworks/sase-go/api"
-	foeAGNh "github.com/paloaltonetworks/sase-go/netsec/schema/authentication/rules"
+    "github.com/paloaltonetworks/sase-go/api"
+    pWOjlwe "github.com/paloaltonetworks/sase-go/netsec/schema/authentication/rules"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-	client api.Client
+    client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-	return &Client{client: client}
+    return &Client{client: client}
 }
 
 // CreateInput takes some input.
@@ -30,31 +30,31 @@ func NewClient(client api.Client) *Client {
 // path: []string{}
 // query: []string{"position", "folder"}
 type CreateInput struct {
-	Position string
-	Folder   string
-	Config   foeAGNh.Config
+    Position string
+    Folder string
+    Config pWOjlwe.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/authentication-rules
-func (c *Client) Create(ctx context.Context, input CreateInput) (foeAGNh.Config, error) {
-	// Variables.
-	var err error
-	var ans foeAGNh.Config
-	path := "/sse/config/v1/authentication-rules"
+func (c *Client) Create(ctx context.Context, input CreateInput)  (pWOjlwe.Config, error) {
+    // Variables.
+    var err error
+    var ans pWOjlwe.Config
+    path := "/sse/config/v1/authentication-rules"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	uv.Set("position", input.Position)
-	uv.Set("folder", input.Folder)
+    // Query parameter handling.
+    uv := url.Values{}
+    uv.Set("position", input.Position)
+    uv.Set("folder", input.Folder)
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
 
-	// Done.
-	return ans, err
+    // Done.
+    return ans, err
 }
 
 // DeleteInput takes some input.
@@ -62,27 +62,27 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (foeAGNh.Config,
 // path: []string{"uuid-required"}
 // query: []string{}
 type DeleteInput struct {
-	ObjectId string
+    ObjectId string
 }
 
 // Delete removes the specified configuration.
 //
 // Method: delete
 // URI: /sse/config/v1/authentication-rules/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput) (foeAGNh.Config, error) {
-	// Variables.
-	var err error
-	var ans foeAGNh.Config
-	path := "/sse/config/v1/authentication-rules/{id}"
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (pWOjlwe.Config, error) {
+    // Variables.
+    var err error
+    var ans pWOjlwe.Config
+    path := "/sse/config/v1/authentication-rules/{id}"
 
-	// Path param handling.
-	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+    // Path param handling.
+    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
 
-	// Done.
-	return ans, err
+    // Done.
+    return ans, err
 }
 
 // ListInput takes some input.
@@ -90,11 +90,11 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (foeAGNh.Config,
 // path: []string{}
 // query: []string{"limit-optional", "offset-optional", "position", "folder", "name-optional"}
 type ListInput struct {
-	Limit    *int64
-	Offset   *int64
-	Position string
-	Folder   string
-	Name     *string
+    Limit *int64
+    Offset *int64
+    Position string
+    Folder string
+    Name *string
 }
 
 /*
@@ -114,130 +114,130 @@ Param Offset (int64): The Offset param. Default: 0
 Param Total (int64): The Total param.
 */
 type ListOutput struct {
-	Data   []foeAGNh.Config `json:"data,omitempty"`
-	Limit  int64            `json:"limit,omitempty"`
-	Offset int64            `json:"offset,omitempty"`
-	Total  int64            `json:"total,omitempty"`
+    Data []pWOjlwe.Config `json:"data,omitempty"`
+    Limit int64 `json:"limit,omitempty"`
+    Offset int64 `json:"offset,omitempty"`
+    Total int64 `json:"total,omitempty"`
 }
 
 // List gets a list of objects back.
 //
 // Method: get
 // URI: /sse/config/v1/authentication-rules
-func (c *Client) List(ctx context.Context, input ListInput) (ListOutput, error) {
-	// Variables.
-	var err error
-	var ans ListOutput
-	path := "/sse/config/v1/authentication-rules"
+func (c *Client) List(ctx context.Context, input ListInput)  (ListOutput, error) {
+    // Variables.
+    var err error
+    var ans ListOutput
+    path := "/sse/config/v1/authentication-rules"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	if input.Limit != nil {
-		uv.Set("limit", strconv.Itoa(int(*input.Limit)))
-	}
-	if input.Offset != nil {
-		uv.Set("offset", strconv.Itoa(int(*input.Offset)))
-	}
-	uv.Set("position", input.Position)
-	uv.Set("folder", input.Folder)
-	if input.Name != nil {
-		uv.Set("name", *input.Name)
-	}
+    // Query parameter handling.
+    uv := url.Values{}
+    if input.Limit != nil {
+        uv.Set("limit", strconv.Itoa(int(*input.Limit)))
+    }
+    if input.Offset != nil {
+        uv.Set("offset", strconv.Itoa(int(*input.Offset)))
+    }
+    uv.Set("position", input.Position)
+    uv.Set("folder", input.Folder)
+    if input.Name != nil {
+        uv.Set("name", *input.Name)
+    }
 
-	// Optional: retrieve everything if limit is -1.
-	if input.Limit != nil && *input.Limit == -1 {
-		return c.listAll(ctx, input)
-	}
+    // Optional: retrieve everything if limit is -1.
+    if input.Limit != nil && *input.Limit == -1 {
+        return c.listAll(ctx, input)
+    }
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-	// Done.
-	return ans, err
+    // Done.
+    return ans, err
 }
 
 type listResponse struct {
-	Output ListOutput
-	Error  error
+    Output ListOutput
+    Error error
 }
 
 func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, error) {
-	var ans ListOutput
-	var err error
-	var items map[string]foeAGNh.Config
-	everything := ListInput{
-		Limit:    api.Int(api.MaxLimit),
-		Position: input.Position,
-		Folder:   input.Folder,
-	}
+    var ans ListOutput
+    var err error
+    var items map[string] pWOjlwe.Config
+    everything := ListInput{
+        Limit: api.Int(api.MaxLimit),
+        Position: input.Position,
+        Folder: input.Folder,
+    }
 
-	times := 0
-	for {
-		// Get the total number of things.
-		ans, err = c.List(ctx, everything)
-		if err != nil || len(ans.Data) == int(ans.Total) {
-			return ans, err
-		}
+    times := 0
+    for {
+        // Get the total number of things.
+        ans, err = c.List(ctx, everything)
+        if err != nil || len(ans.Data) == int(ans.Total) {
+            return ans, err
+        }
 
-		total := int(ans.Total)
-		items = make(map[string]foeAGNh.Config)
-		numRetrievers := int(math.Ceil(float64(total) / float64(api.MaxLimit)))
-		responses := make(chan listResponse, numRetrievers)
+        total := int(ans.Total)
+        items = make(map[string] pWOjlwe.Config)
+        numRetrievers := int(math.Ceil(float64(total)/float64(api.MaxLimit)))
+        responses := make(chan listResponse, numRetrievers)
 
-		for i := 0; i < numRetrievers; i++ {
-			ri := ListInput{
-				Offset:   api.Int(int64(i * api.MaxLimit)),
-				Limit:    api.Int(int64(api.MaxLimit)),
-				Position: input.Position,
-				Folder:   input.Folder,
-			}
-			go func() {
-				rout, rerr := c.List(ctx, ri)
-				responses <- listResponse{
-					Output: rout,
-					Error:  rerr,
-				}
-			}()
-		}
+        for i := 0; i < numRetrievers; i++ {
+            ri := ListInput{
+                Offset: api.Int(int64(i*api.MaxLimit)),
+                Limit: api.Int(int64(api.MaxLimit)),
+        Position: input.Position,
+        Folder: input.Folder,
+            }
+            go func(){
+                rout, rerr := c.List(ctx, ri)
+                responses <- listResponse{
+                    Output: rout,
+                    Error: rerr,
+                }
+            }()
+        }
 
-		var totalChanged bool
-		for i := 0; i < numRetrievers; i++ {
-			resp := <-responses
-			if resp.Error != nil {
-				return resp.Output, resp.Error
-			}
-			if ans.Total != resp.Output.Total {
-				totalChanged = true
-				continue
-			}
-			for j := 0; j < len(resp.Output.Data); j++ {
-				if _, ok := items[resp.Output.Data[j].ObjectId]; !ok {
-					items[resp.Output.Data[j].ObjectId] = resp.Output.Data[j]
-				}
-			}
-		}
+        var totalChanged bool
+        for i := 0; i < numRetrievers; i++ {
+            resp := <-responses
+            if resp.Error != nil {
+                return resp.Output, resp.Error
+            }
+            if ans.Total != resp.Output.Total {
+                totalChanged = true
+                continue
+            }
+            for j := 0; j < len(resp.Output.Data); j++ {
+                if _, ok := items[resp.Output.Data[j].ObjectId]; !ok {
+                    items[resp.Output.Data[j].ObjectId] = resp.Output.Data[j]
+                }
+            }
+        }
 
-		if !totalChanged && len(items) == total {
-			break
-		}
+        if !totalChanged && len(items) == total {
+            break
+        }
 
-		times++
-		if times >= 5 {
-			return ListOutput{}, api.TooManyRetriesError
-		}
-	}
+        times++
+        if times >= 5 {
+            return ListOutput{}, api.TooManyRetriesError
+        }
+    }
 
-	listing := make([]foeAGNh.Config, 0, len(items))
-	for key := range items {
-		listing = append(listing, items[key])
-	}
+    listing := make([]pWOjlwe.Config, 0, len(items))
+    for key := range items {
+        listing = append(listing, items[key])
+    }
 
-	ans = ListOutput{
-		Data:  listing,
-		Total: int64(len(listing)),
-	}
+    ans = ListOutput{
+        Data: listing,
+        Total: int64(len(listing)),
+    }
 
-	return ans, nil
+    return ans, nil
 }
 
 // UpdateInput takes some input.
@@ -245,26 +245,26 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 // path: []string{"uuid-required"}
 // query: []string{}
 type UpdateInput struct {
-	ObjectId string
-	Config   foeAGNh.Config
+    ObjectId string
+    Config pWOjlwe.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/authentication-rules/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput) (foeAGNh.Config, error) {
-	// Variables.
-	var err error
-	var ans foeAGNh.Config
-	path := "/sse/config/v1/authentication-rules/{id}"
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (pWOjlwe.Config, error) {
+    // Variables.
+    var err error
+    var ans pWOjlwe.Config
+    path := "/sse/config/v1/authentication-rules/{id}"
 
-	// Path param handling.
-	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+    // Path param handling.
+    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-	// Execute the command.
-	_, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
+    // Execute the command.
+    _, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
 
-	// Done.
-	return ans, err
+    // Done.
+    return ans, err
 }

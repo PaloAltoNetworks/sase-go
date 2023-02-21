@@ -15,7 +15,7 @@ Param ObjectId (string, read-only): The ObjectId param. Example: "abcd-1234".
 Param Name (required, string): The Name param. String length must not exceed 63 characters.
 */
 type Config struct {
-	HostName string `json:"host_name"`
-	ObjectId string `json:"id,omitempty"`
-	Name     string `json:"name"`
+    HostName string `json:"host_name"`
+    ObjectId string `json:"id,omitempty"`
+    Name string `json:"name"`
 }

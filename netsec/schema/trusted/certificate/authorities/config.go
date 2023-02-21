@@ -29,14 +29,14 @@ Param SerialNumber (string): The SerialNumber param.
 Param Subject (string): The Subject param.
 */
 type Config struct {
-	CommonName     string `json:"common_name,omitempty"`
-	ExpiryEpoch    string `json:"expiry_epoch,omitempty"`
-	Filename       string `json:"filename,omitempty"`
-	ObjectId       string `json:"id,omitempty"`
-	Issuer         string `json:"issuer,omitempty"`
-	Name           string `json:"name,omitempty"`
-	NotValidAfter  string `json:"not_valid_after,omitempty"`
-	NotValidBefore string `json:"not_valid_before,omitempty"`
-	SerialNumber   string `json:"serial_number,omitempty"`
-	Subject        string `json:"subject,omitempty"`
+    CommonName string `json:"common_name,omitempty"`
+    ExpiryEpoch string `json:"expiry_epoch,omitempty"`
+    Filename string `json:"filename,omitempty"`
+    ObjectId string `json:"id,omitempty"`
+    Issuer string `json:"issuer,omitempty"`
+    Name string `json:"name,omitempty"`
+    NotValidAfter string `json:"not_valid_after,omitempty"`
+    NotValidBefore string `json:"not_valid_before,omitempty"`
+    SerialNumber string `json:"serial_number,omitempty"`
+    Subject string `json:"subject,omitempty"`
 }

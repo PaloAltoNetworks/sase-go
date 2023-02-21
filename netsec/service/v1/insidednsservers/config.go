@@ -1,16 +1,17 @@
-package mfaservers
+package insidednsservers
 
 // This package is created automatically.
 // Any manual changes will be overwritten when this is generated.
-// []string{"netsec", "service", "v1", "mfaservers"}
+// []string{"netsec", "service", "v1", "insidednsservers"}
 
 import (
     "context"
     "net/url"
+    "strconv"
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    pLDImfK "github.com/paloaltonetworks/sase-go/netsec/schema/mfa/servers"
+    yYYdAbD "github.com/paloaltonetworks/sase-go/netsec/schema/inside/dns/servers"
 )
 
 // Client is the client for this namespace.
@@ -24,28 +25,26 @@ func NewClient(client api.Client) *Client {
 }
 
 // CreateInput takes some input.
-// name:"Create" nsfName:"Create" param:0 query:2
+// name:"Create" nsfName:"Create" param:0 query:1
 // path: []string{}
-// query: []string{"position", "folder"}
+// query: []string{"folder"}
 type CreateInput struct {
-    Position string
     Folder string
-    Config pLDImfK.Config
+    Config yYYdAbD.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
-// URI: /sse/config/v1/mfa-servers
-func (c *Client) Create(ctx context.Context, input CreateInput)  (pLDImfK.Config, error) {
+// URI: /sse/config/v1/internal-dns-servers
+func (c *Client) Create(ctx context.Context, input CreateInput)  (yYYdAbD.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
-    path := "/sse/config/v1/mfa-servers"
+    var ans yYYdAbD.Config
+    path := "/sse/config/v1/internal-dns-servers"
 
     // Query parameter handling.
     uv := url.Values{}
-    uv.Set("position", input.Position)
     uv.Set("folder", input.Folder)
 
     // Execute the command.
@@ -66,12 +65,12 @@ type DeleteInput struct {
 // Delete removes the specified configuration.
 //
 // Method: delete
-// URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (pLDImfK.Config, error) {
+// URI: /sse/config/v1/internal-dns-servers/{id}
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (yYYdAbD.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+    var ans yYYdAbD.Config
+    path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.
     path = strings.ReplaceAll(path, "{id}", input.ObjectId)
@@ -83,31 +82,39 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput)  (pLDImfK.Config
     return ans, err
 }
 
-// MfaServersGetInput takes some input.
-// name:"MfaServersGet" nsfName:"MfaServersGet" param:0 query:2
+// InternalDnsServersGetInput takes some input.
+// name:"InternalDnsServersGet" nsfName:"InternalDnsServersGet" param:0 query:4
 // path: []string{}
-// query: []string{"folder", "name-optional"}
-type MfaServersGetInput struct {
-    Folder string
+// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+type InternalDnsServersGetInput struct {
+    Limit *int64
+    Offset *int64
     Name *string
+    Folder string
 }
 
-// MfaServersGet performs a the given operation.
+// InternalDnsServersGet performs a the given operation.
 //
 // Method: get
-// URI: /sse/config/v1/mfa-servers
-func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput)  (pLDImfK.Config, error) {
+// URI: /sse/config/v1/internal-dns-servers
+func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsServersGetInput)  (yYYdAbD.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
-    path := "/sse/config/v1/mfa-servers"
+    var ans yYYdAbD.Config
+    path := "/sse/config/v1/internal-dns-servers"
 
     // Query parameter handling.
     uv := url.Values{}
-    uv.Set("folder", input.Folder)
+    if input.Limit != nil {
+        uv.Set("limit", strconv.Itoa(int(*input.Limit)))
+    }
+    if input.Offset != nil {
+        uv.Set("offset", strconv.Itoa(int(*input.Offset)))
+    }
     if input.Name != nil {
         uv.Set("name", *input.Name)
     }
+    uv.Set("folder", input.Folder)
 
     // Execute the command.
     _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
@@ -127,12 +134,12 @@ type ReadInput struct {
 // Read returns the configuration of the specified object.
 //
 // Method: get
-// URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (pLDImfK.Config, error) {
+// URI: /sse/config/v1/internal-dns-servers/{id}
+func (c *Client) Read(ctx context.Context, input ReadInput)  (yYYdAbD.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+    var ans yYYdAbD.Config
+    path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.
     path = strings.ReplaceAll(path, "{id}", input.ObjectId)
@@ -150,18 +157,18 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (pLDImfK.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config pLDImfK.Config
+    Config yYYdAbD.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
-// URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (pLDImfK.Config, error) {
+// URI: /sse/config/v1/internal-dns-servers/{id}
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (yYYdAbD.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+    var ans yYYdAbD.Config
+    path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.
     path = strings.ReplaceAll(path, "{id}", input.ObjectId)
