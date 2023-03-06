@@ -31,17 +31,17 @@ Param Timelimit (int64): The Timelimit param.
 Param VerifyServerCertificate (bool): The VerifyServerCertificate param.
 */
 type Config struct {
-    Base string `json:"base,omitempty"`
-    BindDn string `json:"bind_dn,omitempty"`
-    BindPassword string `json:"bind_password,omitempty"`
-    BindTimelimit string `json:"bind_timelimit,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    LdapType string `json:"ldap_type,omitempty"`
-    RetryInterval int64 `json:"retry_interval,omitempty"`
-    Server []ServerObject `json:"server"`
-    Ssl bool `json:"ssl,omitempty"`
-    Timelimit int64 `json:"timelimit,omitempty"`
-    VerifyServerCertificate bool `json:"verify_server_certificate,omitempty"`
+	Base                    string         `json:"base,omitempty"`
+	BindDn                  string         `json:"bind_dn,omitempty"`
+	BindPassword            string         `json:"bind_password,omitempty"`
+	BindTimelimit           string         `json:"bind_timelimit,omitempty"`
+	ObjectId                string         `json:"id,omitempty"`
+	LdapType                string         `json:"ldap_type,omitempty"`
+	RetryInterval           int64          `json:"retry_interval,omitempty"`
+	Server                  []ServerObject `json:"server"`
+	Ssl                     bool           `json:"ssl,omitempty"`
+	Timelimit               int64          `json:"timelimit,omitempty"`
+	VerifyServerCertificate bool           `json:"verify_server_certificate,omitempty"`
 }
 
 /*
@@ -59,7 +59,7 @@ Param Name (string): The Name param.
 Param Port (int64): The Port param. Value must be between 1 and 65535.
 */
 type ServerObject struct {
-    Address string `json:"address,omitempty"`
-    Name string `json:"name,omitempty"`
-    Port int64 `json:"port,omitempty"`
+	Address string `json:"address,omitempty"`
+	Name    string `json:"name,omitempty"`
+	Port    int64  `json:"port,omitempty"`
 }

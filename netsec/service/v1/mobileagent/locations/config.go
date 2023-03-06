@@ -5,21 +5,21 @@ package locations
 // []string{"netsec", "service", "v1", "mobileagent", "locations"}
 
 import (
-    "context"
-    "net/url"
+	"context"
+	"net/url"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    xJJfmrr "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/locations"
+	"github.com/paloaltonetworks/sase-go/api"
+	xJJfmrr "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/locations"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // ListInput takes some input.
@@ -27,7 +27,7 @@ func NewClient(client api.Client) *Client {
 // path: []string{}
 // query: []string{"folder-mobile-users"}
 type ListInput struct {
-    Folder string
+	Folder string
 }
 
 /*
@@ -47,31 +47,31 @@ Param Offset (int64): The Offset param. Default: 0
 Param Total (int64): The Total param.
 */
 type ListOutput struct {
-    Data []xJJfmrr.Config `json:"data,omitempty"`
-    Limit int64 `json:"limit,omitempty"`
-    Offset int64 `json:"offset,omitempty"`
-    Total int64 `json:"total,omitempty"`
+	Data   []xJJfmrr.Config `json:"data,omitempty"`
+	Limit  int64            `json:"limit,omitempty"`
+	Offset int64            `json:"offset,omitempty"`
+	Total  int64            `json:"total,omitempty"`
 }
 
 // List gets a list of objects back.
 //
 // Method: get
 // URI: /sse/config/v1/mobile-agent/locations
-func (c *Client) List(ctx context.Context, input ListInput)  (ListOutput, error) {
-    // Variables.
-    var err error
-    var ans ListOutput
-    path := "/sse/config/v1/mobile-agent/locations"
+func (c *Client) List(ctx context.Context, input ListInput) (ListOutput, error) {
+	// Variables.
+	var err error
+	var ans ListOutput
+	path := "/sse/config/v1/mobile-agent/locations"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("folder", input.Folder)
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // LocationsPutInput takes some input.
@@ -79,26 +79,26 @@ func (c *Client) List(ctx context.Context, input ListInput)  (ListOutput, error)
 // path: []string{}
 // query: []string{"folder-mobile-users"}
 type LocationsPutInput struct {
-    Folder string
-    Config xJJfmrr.Config
+	Folder string
+	Config xJJfmrr.Config
 }
 
 // LocationsPut performs a the given operation.
 //
 // Method: put
 // URI: /sse/config/v1/mobile-agent/locations
-func (c *Client) LocationsPut(ctx context.Context, input LocationsPutInput)  (error) {
-    // Variables.
-    var err error
-    path := "/sse/config/v1/mobile-agent/locations"
+func (c *Client) LocationsPut(ctx context.Context, input LocationsPutInput) error {
+	// Variables.
+	var err error
+	path := "/sse/config/v1/mobile-agent/locations"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("folder", input.Folder)
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "PUT", path, uv, input.Config, nil)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "PUT", path, uv, input.Config, nil)
 
-    // Done.
-    return err
+	// Done.
+	return err
 }

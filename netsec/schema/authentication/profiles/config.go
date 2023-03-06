@@ -27,15 +27,15 @@ Param UserDomain (string): The UserDomain param. String length must not exceed 6
 Param UsernameModifier (string): The UsernameModifier param. String values: []string{"%USERINPUT%", "%USERINPUT%@%USERDOMAIN%", "%USERDOMAIN%\\\\%USERINPUT%"}
 */
 type Config struct {
-    AllowList []string `json:"allow_list,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Lockout *LockoutObject `json:"lockout,omitempty"`
-    Method *MethodObject `json:"method,omitempty"`
-    MultiFactorAuth *MultiFactorAuthObject `json:"multi_factor_auth,omitempty"`
-    Name string `json:"name"`
-    SingleSignOn *SingleSignOnObject `json:"single_sign_on,omitempty"`
-    UserDomain string `json:"user_domain,omitempty"`
-    UsernameModifier string `json:"username_modifier,omitempty"`
+	AllowList        []string               `json:"allow_list,omitempty"`
+	ObjectId         string                 `json:"id,omitempty"`
+	Lockout          *LockoutObject         `json:"lockout,omitempty"`
+	Method           *MethodObject          `json:"method,omitempty"`
+	MultiFactorAuth  *MultiFactorAuthObject `json:"multi_factor_auth,omitempty"`
+	Name             string                 `json:"name"`
+	SingleSignOn     *SingleSignOnObject    `json:"single_sign_on,omitempty"`
+	UserDomain       string                 `json:"user_domain,omitempty"`
+	UsernameModifier string                 `json:"username_modifier,omitempty"`
 }
 
 /*
@@ -51,8 +51,8 @@ Param FailedAttempts (int64): The FailedAttempts param. Value must be between 0 
 Param LockoutTime (int64): The LockoutTime param. Value must be between 0 and 60.
 */
 type LockoutObject struct {
-    FailedAttempts int64 `json:"failed_attempts,omitempty"`
-    LockoutTime int64 `json:"lockout_time,omitempty"`
+	FailedAttempts int64 `json:"failed_attempts,omitempty"`
+	LockoutTime    int64 `json:"lockout_time,omitempty"`
 }
 
 /*
@@ -76,12 +76,12 @@ Param SamlIdp (SamlIdpObject): The SamlIdp param. SamlIdpObject instance.
 Param Tacplus (TacplusObject): The Tacplus param. TacplusObject instance.
 */
 type MethodObject struct {
-    Kerberos *KerberosObject `json:"kerberos,omitempty"`
-    Ldap *LdapObject `json:"ldap,omitempty"`
-    LocalDatabase interface{} `json:"local_database,omitempty"`
-    Radius *RadiusObject `json:"radius,omitempty"`
-    SamlIdp *SamlIdpObject `json:"saml_idp,omitempty"`
-    Tacplus *TacplusObject `json:"tacplus,omitempty"`
+	Kerberos      *KerberosObject `json:"kerberos,omitempty"`
+	Ldap          *LdapObject     `json:"ldap,omitempty"`
+	LocalDatabase interface{}     `json:"local_database,omitempty"`
+	Radius        *RadiusObject   `json:"radius,omitempty"`
+	SamlIdp       *SamlIdpObject  `json:"saml_idp,omitempty"`
+	Tacplus       *TacplusObject  `json:"tacplus,omitempty"`
 }
 
 /*
@@ -97,8 +97,8 @@ Param Realm (string): The Realm param.
 Param ServerProfile (string): The ServerProfile param.
 */
 type KerberosObject struct {
-    Realm string `json:"realm,omitempty"`
-    ServerProfile string `json:"server_profile,omitempty"`
+	Realm         string `json:"realm,omitempty"`
+	ServerProfile string `json:"server_profile,omitempty"`
 }
 
 /*
@@ -116,9 +116,9 @@ Param PasswdExpDays (int64): The PasswdExpDays param.
 Param ServerProfile (string): The ServerProfile param.
 */
 type LdapObject struct {
-    LoginAttribute string `json:"login_attribute,omitempty"`
-    PasswdExpDays int64 `json:"passwd_exp_days,omitempty"`
-    ServerProfile string `json:"server_profile,omitempty"`
+	LoginAttribute string `json:"login_attribute,omitempty"`
+	PasswdExpDays  int64  `json:"passwd_exp_days,omitempty"`
+	ServerProfile  string `json:"server_profile,omitempty"`
 }
 
 /*
@@ -134,8 +134,8 @@ Param Checkgroup (bool): The Checkgroup param.
 Param ServerProfile (string): The ServerProfile param.
 */
 type RadiusObject struct {
-    Checkgroup bool `json:"checkgroup,omitempty"`
-    ServerProfile string `json:"server_profile,omitempty"`
+	Checkgroup    bool   `json:"checkgroup,omitempty"`
+	ServerProfile string `json:"server_profile,omitempty"`
 }
 
 /*
@@ -159,12 +159,12 @@ Param RequestSigningCertificate (string): The RequestSigningCertificate param. S
 Param ServerProfile (string): The ServerProfile param. String length must not exceed 63 characters.
 */
 type SamlIdpObject struct {
-    AttributeNameUsergroup string `json:"attribute_name_usergroup,omitempty"`
-    AttributeNameUsername string `json:"attribute_name_username,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    EnableSingleLogout bool `json:"enable_single_logout,omitempty"`
-    RequestSigningCertificate string `json:"request_signing_certificate,omitempty"`
-    ServerProfile string `json:"server_profile,omitempty"`
+	AttributeNameUsergroup    string `json:"attribute_name_usergroup,omitempty"`
+	AttributeNameUsername     string `json:"attribute_name_username,omitempty"`
+	CertificateProfile        string `json:"certificate_profile,omitempty"`
+	EnableSingleLogout        bool   `json:"enable_single_logout,omitempty"`
+	RequestSigningCertificate string `json:"request_signing_certificate,omitempty"`
+	ServerProfile             string `json:"server_profile,omitempty"`
 }
 
 /*
@@ -180,8 +180,8 @@ Param Checkgroup (bool): The Checkgroup param.
 Param ServerProfile (string): The ServerProfile param.
 */
 type TacplusObject struct {
-    Checkgroup bool `json:"checkgroup,omitempty"`
-    ServerProfile string `json:"server_profile,omitempty"`
+	Checkgroup    bool   `json:"checkgroup,omitempty"`
+	ServerProfile string `json:"server_profile,omitempty"`
 }
 
 /*
@@ -197,8 +197,8 @@ Param Factors (list of strings): The Factors param.
 Param MfaEnable (bool): The MfaEnable param.
 */
 type MultiFactorAuthObject struct {
-    Factors []string `json:"factors,omitempty"`
-    MfaEnable bool `json:"mfa_enable,omitempty"`
+	Factors   []string `json:"factors,omitempty"`
+	MfaEnable bool     `json:"mfa_enable,omitempty"`
 }
 
 /*
@@ -214,6 +214,6 @@ Param KerberosKeytab (string): The KerberosKeytab param. String length must not 
 Param Realm (string): The Realm param. String length must not exceed 127 characters.
 */
 type SingleSignOnObject struct {
-    KerberosKeytab string `json:"kerberos_keytab,omitempty"`
-    Realm string `json:"realm,omitempty"`
+	KerberosKeytab string `json:"kerberos_keytab,omitempty"`
+	Realm          string `json:"realm,omitempty"`
 }

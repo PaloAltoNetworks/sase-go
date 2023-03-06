@@ -19,11 +19,11 @@ Param Protocol (required, ProtocolObject): The Protocol param. ProtocolObject in
 Param Tag (list of strings): The Tag param. Array should contain at most 64 items.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Protocol ProtocolObject `json:"protocol"`
-    Tag []string `json:"tag,omitempty"`
+	Description string         `json:"description,omitempty"`
+	ObjectId    string         `json:"id,omitempty"`
+	Name        string         `json:"name"`
+	Protocol    ProtocolObject `json:"protocol"`
+	Tag         []string       `json:"tag,omitempty"`
 }
 
 /*
@@ -39,8 +39,8 @@ Param Tcp (TcpObject): The Tcp param. TcpObject instance.
 Param Udp (UdpObject): The Udp param. UdpObject instance.
 */
 type ProtocolObject struct {
-    Tcp *TcpObject `json:"tcp,omitempty"`
-    Udp *UdpObject `json:"udp,omitempty"`
+	Tcp *TcpObject `json:"tcp,omitempty"`
+	Udp *UdpObject `json:"udp,omitempty"`
 }
 
 /*
@@ -58,9 +58,9 @@ Param Port (required, string): The Port param. String lengh must be between 1 an
 Param SourcePort (string): The SourcePort param. String lengh must be between 1 and 1023 characters.
 */
 type TcpObject struct {
-    Override *OverrideObject `json:"override,omitempty"`
-    Port string `json:"port"`
-    SourcePort string `json:"source_port,omitempty"`
+	Override   *OverrideObject `json:"override,omitempty"`
+	Port       string          `json:"port"`
+	SourcePort string          `json:"source_port,omitempty"`
 }
 
 /*
@@ -78,9 +78,9 @@ Param Timeout (int64): The Timeout param. Value must be between 1 and 604800. De
 Param TimewaitTimeout (int64): The TimewaitTimeout param. Value must be between 1 and 600. Default: 15
 */
 type OverrideObject struct {
-    HalfcloseTimeout int64 `json:"halfclose_timeout,omitempty"`
-    Timeout int64 `json:"timeout,omitempty"`
-    TimewaitTimeout int64 `json:"timewait_timeout,omitempty"`
+	HalfcloseTimeout int64 `json:"halfclose_timeout,omitempty"`
+	Timeout          int64 `json:"timeout,omitempty"`
+	TimewaitTimeout  int64 `json:"timewait_timeout,omitempty"`
 }
 
 /*
@@ -98,9 +98,9 @@ Param Port (required, string): The Port param. String lengh must be between 1 an
 Param SourcePort (string): The SourcePort param. String lengh must be between 1 and 1023 characters.
 */
 type UdpObject struct {
-    Override *OverrideObject1 `json:"override,omitempty"`
-    Port string `json:"port"`
-    SourcePort string `json:"source_port,omitempty"`
+	Override   *OverrideObject1 `json:"override,omitempty"`
+	Port       string           `json:"port"`
+	SourcePort string           `json:"source_port,omitempty"`
 }
 
 /*
@@ -114,5 +114,5 @@ Args:
 Param Timeout (int64): The Timeout param. Value must be between 1 and 604800. Default: 30
 */
 type OverrideObject1 struct {
-    Timeout int64 `json:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty"`
 }

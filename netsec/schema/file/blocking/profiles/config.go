@@ -17,10 +17,10 @@ Param Name (required, string): The Name param.
 Param Rules (list of RulesObject objects): The Rules param.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Rules []RulesObject `json:"rules,omitempty"`
+	Description string        `json:"description,omitempty"`
+	ObjectId    string        `json:"id,omitempty"`
+	Name        string        `json:"name"`
+	Rules       []RulesObject `json:"rules,omitempty"`
 }
 
 /*
@@ -42,9 +42,9 @@ Param FileType (required, list of strings): The FileType param. Array should con
 Param Name (required, string): The Name param.
 */
 type RulesObject struct {
-    Action string `json:"action"`
-    Application []string `json:"application"`
-    Direction string `json:"direction"`
-    FileType []string `json:"file_type"`
-    Name string `json:"name"`
+	Action      string   `json:"action"`
+	Application []string `json:"application"`
+	Direction   string   `json:"direction"`
+	FileType    []string `json:"file_type"`
+	Name        string   `json:"name"`
 }

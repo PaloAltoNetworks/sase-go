@@ -27,13 +27,13 @@ Param Tag (list of strings): The Tag param. Array should contain at most 64 item
 Param Type (string, read-only): The Type param. Example: "container".
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    Fqdn string `json:"fqdn,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    IpNetmask string `json:"ip_netmask,omitempty"`
-    IpRange string `json:"ip_range,omitempty"`
-    IpWildcard string `json:"ip_wildcard,omitempty"`
-    Name string `json:"name"`
-    Tag []string `json:"tag,omitempty"`
-    Type string `json:"type,omitempty"`
+	Description string   `json:"description,omitempty"`
+	Fqdn        string   `json:"fqdn,omitempty"`
+	ObjectId    string   `json:"id,omitempty"`
+	IpNetmask   string   `json:"ip_netmask,omitempty"`
+	IpRange     string   `json:"ip_range,omitempty"`
+	IpWildcard  string   `json:"ip_wildcard,omitempty"`
+	Name        string   `json:"name"`
+	Tag         []string `json:"tag,omitempty"`
+	Type        string   `json:"type,omitempty"`
 }

@@ -5,23 +5,23 @@ package insidednsservers
 // []string{"netsec", "service", "v1", "insidednsservers"}
 
 import (
-    "context"
-    "net/url"
-    "strconv"
-    "strings"
+	"context"
+	"net/url"
+	"strconv"
+	"strings"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    hxkxRrV "github.com/paloaltonetworks/sase-go/netsec/schema/inside/dns/servers"
+	"github.com/paloaltonetworks/sase-go/api"
+	hxkxRrV "github.com/paloaltonetworks/sase-go/netsec/schema/inside/dns/servers"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // CreateInput takes some input.
@@ -29,29 +29,29 @@ func NewClient(client api.Client) *Client {
 // path: []string{}
 // query: []string{"folder"}
 type CreateInput struct {
-    Folder string
-    Config hxkxRrV.Config
+	Folder string
+	Config hxkxRrV.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/internal-dns-servers
-func (c *Client) Create(ctx context.Context, input CreateInput)  (hxkxRrV.Config, error) {
-    // Variables.
-    var err error
-    var ans hxkxRrV.Config
-    path := "/sse/config/v1/internal-dns-servers"
+func (c *Client) Create(ctx context.Context, input CreateInput) (hxkxRrV.Config, error) {
+	// Variables.
+	var err error
+	var ans hxkxRrV.Config
+	path := "/sse/config/v1/internal-dns-servers"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("folder", input.Folder)
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // DeleteInput takes some input.
@@ -59,27 +59,27 @@ func (c *Client) Create(ctx context.Context, input CreateInput)  (hxkxRrV.Config
 // path: []string{"uuid-required"}
 // query: []string{}
 type DeleteInput struct {
-    ObjectId string
+	ObjectId string
 }
 
 // Delete removes the specified configuration.
 //
 // Method: delete
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (hxkxRrV.Config, error) {
-    // Variables.
-    var err error
-    var ans hxkxRrV.Config
-    path := "/sse/config/v1/internal-dns-servers/{id}"
+func (c *Client) Delete(ctx context.Context, input DeleteInput) (hxkxRrV.Config, error) {
+	// Variables.
+	var err error
+	var ans hxkxRrV.Config
+	path := "/sse/config/v1/internal-dns-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // InternalDnsServersGetInput takes some input.
@@ -87,40 +87,40 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput)  (hxkxRrV.Config
 // path: []string{}
 // query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
 type InternalDnsServersGetInput struct {
-    Limit *int64
-    Offset *int64
-    Name *string
-    Folder string
+	Limit  *int64
+	Offset *int64
+	Name   *string
+	Folder string
 }
 
 // InternalDnsServersGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/internal-dns-servers
-func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsServersGetInput)  (hxkxRrV.Config, error) {
-    // Variables.
-    var err error
-    var ans hxkxRrV.Config
-    path := "/sse/config/v1/internal-dns-servers"
+func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsServersGetInput) (hxkxRrV.Config, error) {
+	// Variables.
+	var err error
+	var ans hxkxRrV.Config
+	path := "/sse/config/v1/internal-dns-servers"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    if input.Limit != nil {
-        uv.Set("limit", strconv.Itoa(int(*input.Limit)))
-    }
-    if input.Offset != nil {
-        uv.Set("offset", strconv.Itoa(int(*input.Offset)))
-    }
-    if input.Name != nil {
-        uv.Set("name", *input.Name)
-    }
-    uv.Set("folder", input.Folder)
+	// Query parameter handling.
+	uv := url.Values{}
+	if input.Limit != nil {
+		uv.Set("limit", strconv.Itoa(int(*input.Limit)))
+	}
+	if input.Offset != nil {
+		uv.Set("offset", strconv.Itoa(int(*input.Offset)))
+	}
+	if input.Name != nil {
+		uv.Set("name", *input.Name)
+	}
+	uv.Set("folder", input.Folder)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // ReadInput takes some input.
@@ -128,27 +128,27 @@ func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsSer
 // path: []string{"uuid-required"}
 // query: []string{}
 type ReadInput struct {
-    ObjectId string
+	ObjectId string
 }
 
 // Read returns the configuration of the specified object.
 //
 // Method: get
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (hxkxRrV.Config, error) {
-    // Variables.
-    var err error
-    var ans hxkxRrV.Config
-    path := "/sse/config/v1/internal-dns-servers/{id}"
+func (c *Client) Read(ctx context.Context, input ReadInput) (hxkxRrV.Config, error) {
+	// Variables.
+	var err error
+	var ans hxkxRrV.Config
+	path := "/sse/config/v1/internal-dns-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // UpdateInput takes some input.
@@ -156,26 +156,26 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (hxkxRrV.Config, er
 // path: []string{"uuid-required"}
 // query: []string{}
 type UpdateInput struct {
-    ObjectId string
-    Config hxkxRrV.Config
+	ObjectId string
+	Config   hxkxRrV.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (hxkxRrV.Config, error) {
-    // Variables.
-    var err error
-    var ans hxkxRrV.Config
-    path := "/sse/config/v1/internal-dns-servers/{id}"
+func (c *Client) Update(ctx context.Context, input UpdateInput) (hxkxRrV.Config, error) {
+	// Variables.
+	var err error
+	var ans hxkxRrV.Config
+	path := "/sse/config/v1/internal-dns-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }

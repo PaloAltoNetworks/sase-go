@@ -27,13 +27,13 @@ Param LoopbackIps (list of strings): The LoopbackIps param.
 Param TunnelMonitorIpAddress (string): The TunnelMonitorIpAddress param.
 */
 type Config struct {
-    ApiKey string `json:"api_key,omitempty"`
-    CaptivePortalRedirectIpAddress string `json:"captive_portal_redirect_ip_address,omitempty"`
-    EgressIpNotificationUrl string `json:"egress_ip_notification_url,omitempty"`
-    InfraBgpAs string `json:"infra_bgp_as,omitempty"`
-    InfrastructureSubnet string `json:"infrastructure_subnet,omitempty"`
-    InfrastructureSubnetIpv6 string `json:"infrastructure_subnet_ipv6,omitempty"`
-    Ipv6 bool `json:"ipv6,omitempty"`
-    LoopbackIps []string `json:"loopback_ips,omitempty"`
-    TunnelMonitorIpAddress string `json:"tunnel_monitor_ip_address,omitempty"`
+	ApiKey                         string   `json:"api_key,omitempty"`
+	CaptivePortalRedirectIpAddress string   `json:"captive_portal_redirect_ip_address,omitempty"`
+	EgressIpNotificationUrl        string   `json:"egress_ip_notification_url,omitempty"`
+	InfraBgpAs                     string   `json:"infra_bgp_as,omitempty"`
+	InfrastructureSubnet           string   `json:"infrastructure_subnet,omitempty"`
+	InfrastructureSubnetIpv6       string   `json:"infrastructure_subnet_ipv6,omitempty"`
+	Ipv6                           bool     `json:"ipv6,omitempty"`
+	LoopbackIps                    []string `json:"loopback_ips,omitempty"`
+	TunnelMonitorIpAddress         string   `json:"tunnel_monitor_ip_address,omitempty"`
 }

@@ -19,9 +19,9 @@ Param Name (required, string): The Name param. String length must exceed 1 chara
 Param Passphrase (string): The Passphrase param.
 */
 type Config struct {
-    CertificateFile string `json:"certificate_file"`
-    Format string `json:"format"`
-    KeyFile string `json:"key_file,omitempty"`
-    Name string `json:"name"`
-    Passphrase string `json:"passphrase,omitempty"`
+	CertificateFile string `json:"certificate_file"`
+	Format          string `json:"format"`
+	KeyFile         string `json:"key_file,omitempty"`
+	Name            string `json:"name"`
+	Passphrase      string `json:"passphrase,omitempty"`
 }

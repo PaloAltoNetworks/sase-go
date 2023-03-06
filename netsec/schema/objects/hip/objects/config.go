@@ -37,20 +37,20 @@ Param NetworkInfo (NetworkInfoObject): The NetworkInfo param. NetworkInfoObject 
 Param PatchManagement (PatchManagementObject): The PatchManagement param. PatchManagementObject instance.
 */
 type Config struct {
-    AntiMalware *AntiMalwareObject `json:"anti_malware,omitempty"`
-    Certificate *CertificateObject `json:"certificate,omitempty"`
-    CustomChecks *CustomChecksObject `json:"custom_checks,omitempty"`
-    DataLossPrevention *DataLossPreventionObject `json:"data_loss_prevention,omitempty"`
-    Description string `json:"description,omitempty"`
-    DiskBackup *DiskBackupObject `json:"disk_backup,omitempty"`
-    DiskEncryption *DiskEncryptionObject `json:"disk_encryption,omitempty"`
-    Firewall *FirewallObject `json:"firewall,omitempty"`
-    HostInfo *HostInfoObject `json:"host_info,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    MobileDevice *MobileDeviceObject `json:"mobile_device,omitempty"`
-    Name string `json:"name"`
-    NetworkInfo *NetworkInfoObject `json:"network_info,omitempty"`
-    PatchManagement *PatchManagementObject `json:"patch_management,omitempty"`
+	AntiMalware        *AntiMalwareObject        `json:"anti_malware,omitempty"`
+	Certificate        *CertificateObject        `json:"certificate,omitempty"`
+	CustomChecks       *CustomChecksObject       `json:"custom_checks,omitempty"`
+	DataLossPrevention *DataLossPreventionObject `json:"data_loss_prevention,omitempty"`
+	Description        string                    `json:"description,omitempty"`
+	DiskBackup         *DiskBackupObject         `json:"disk_backup,omitempty"`
+	DiskEncryption     *DiskEncryptionObject     `json:"disk_encryption,omitempty"`
+	Firewall           *FirewallObject           `json:"firewall,omitempty"`
+	HostInfo           *HostInfoObject           `json:"host_info,omitempty"`
+	ObjectId           string                    `json:"id,omitempty"`
+	MobileDevice       *MobileDeviceObject       `json:"mobile_device,omitempty"`
+	Name               string                    `json:"name"`
+	NetworkInfo        *NetworkInfoObject        `json:"network_info,omitempty"`
+	PatchManagement    *PatchManagementObject    `json:"patch_management,omitempty"`
 }
 
 /*
@@ -68,9 +68,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject objects): The Vendor param.
 */
 type AntiMalwareObject struct {
-    Criteria *CriteriaObject `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject `json:"criteria,omitempty"`
+	ExcludeVendor bool            `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject  `json:"vendor,omitempty"`
 }
 
 /*
@@ -92,11 +92,11 @@ Param RealTimeProtection (string): The RealTimeProtection param. String values: 
 Param VirdefVersion (VirdefVersionObject): The VirdefVersion param. VirdefVersionObject instance.
 */
 type CriteriaObject struct {
-    IsInstalled bool `json:"is_installed,omitempty"`
-    LastScanTime *LastScanTimeObject `json:"last_scan_time,omitempty"`
-    ProductVersion *ProductVersionObject `json:"product_version,omitempty"`
-    RealTimeProtection string `json:"real_time_protection,omitempty"`
-    VirdefVersion *VirdefVersionObject `json:"virdef_version,omitempty"`
+	IsInstalled        bool                  `json:"is_installed,omitempty"`
+	LastScanTime       *LastScanTimeObject   `json:"last_scan_time,omitempty"`
+	ProductVersion     *ProductVersionObject `json:"product_version,omitempty"`
+	RealTimeProtection string                `json:"real_time_protection,omitempty"`
+	VirdefVersion      *VirdefVersionObject  `json:"virdef_version,omitempty"`
 }
 
 /*
@@ -114,9 +114,9 @@ Param NotWithin (NotWithinObject): The NotWithin param. NotWithinObject instance
 Param Within (WithinObject): The Within param. WithinObject instance. One of these params should be specified:  not_available, not_within, or within.
 */
 type LastScanTimeObject struct {
-    NotAvailable interface{} `json:"not_available,omitempty"`
-    NotWithin *NotWithinObject `json:"not_within,omitempty"`
-    Within *WithinObject `json:"within,omitempty"`
+	NotAvailable interface{}      `json:"not_available,omitempty"`
+	NotWithin    *NotWithinObject `json:"not_within,omitempty"`
+	Within       *WithinObject    `json:"within,omitempty"`
 }
 
 /*
@@ -133,8 +133,8 @@ Param Days (int64): The Days param. Value must be between 1 and 65535. Default: 
 Param Hours (int64): The Hours param. Value must be between 1 and 65535. Default: 24
 */
 type NotWithinObject struct {
-    Days int64 `json:"days,omitempty"`
-    Hours int64 `json:"hours,omitempty"`
+	Days  int64 `json:"days,omitempty"`
+	Hours int64 `json:"hours,omitempty"`
 }
 
 /*
@@ -151,8 +151,8 @@ Param Days (int64): The Days param. Value must be between 1 and 65535. Default: 
 Param Hours (int64): The Hours param. Value must be between 1 and 65535. Default: 24
 */
 type WithinObject struct {
-    Days int64 `json:"days,omitempty"`
-    Hours int64 `json:"hours,omitempty"`
+	Days  int64 `json:"days,omitempty"`
+	Hours int64 `json:"hours,omitempty"`
 }
 
 /*
@@ -182,15 +182,15 @@ Param NotWithin (NotWithinObject1): The NotWithin param. NotWithinObject1 instan
 Param Within (WithinObject1): The Within param. WithinObject1 instance. One of these params should be specified:  contains, greater_equal, greater_than, is, is_not, less_equal, less_than, not_within, or within.
 */
 type ProductVersionObject struct {
-    Contains string `json:"contains,omitempty"`
-    GreaterEqual string `json:"greater_equal,omitempty"`
-    GreaterThan string `json:"greater_than,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
-    LessEqual string `json:"less_equal,omitempty"`
-    LessThan string `json:"less_than,omitempty"`
-    NotWithin *NotWithinObject1 `json:"not_within,omitempty"`
-    Within *WithinObject1 `json:"within,omitempty"`
+	Contains     string            `json:"contains,omitempty"`
+	GreaterEqual string            `json:"greater_equal,omitempty"`
+	GreaterThan  string            `json:"greater_than,omitempty"`
+	Is           string            `json:"is,omitempty"`
+	IsNot        string            `json:"is_not,omitempty"`
+	LessEqual    string            `json:"less_equal,omitempty"`
+	LessThan     string            `json:"less_than,omitempty"`
+	NotWithin    *NotWithinObject1 `json:"not_within,omitempty"`
+	Within       *WithinObject1    `json:"within,omitempty"`
 }
 
 /*
@@ -204,7 +204,7 @@ Args:
 Param Versions (required, int64): The Versions param. Value must be between 1 and 65535. Default: 1
 */
 type NotWithinObject1 struct {
-    Versions int64 `json:"versions"`
+	Versions int64 `json:"versions"`
 }
 
 /*
@@ -218,7 +218,7 @@ Args:
 Param Versions (required, int64): The Versions param. Value must be between 1 and 65535. Default: 1
 */
 type WithinObject1 struct {
-    Versions int64 `json:"versions"`
+	Versions int64 `json:"versions"`
 }
 
 /*
@@ -234,8 +234,8 @@ Param NotWithin (NotWithinObject2): The NotWithin param. NotWithinObject2 instan
 Param Within (WithinObject2): The Within param. WithinObject2 instance. One of these params should be specified:  not_within or within.
 */
 type VirdefVersionObject struct {
-    NotWithin *NotWithinObject2 `json:"not_within,omitempty"`
-    Within *WithinObject2 `json:"within,omitempty"`
+	NotWithin *NotWithinObject2 `json:"not_within,omitempty"`
+	Within    *WithinObject2    `json:"within,omitempty"`
 }
 
 /*
@@ -251,8 +251,8 @@ Param Days (int64): The Days param. Value must be between 1 and 65535. Default: 
 Param Versions (int64): The Versions param. Value must be between 1 and 65535. Default: 1
 */
 type NotWithinObject2 struct {
-    Days int64 `json:"days,omitempty"`
-    Versions int64 `json:"versions,omitempty"`
+	Days     int64 `json:"days,omitempty"`
+	Versions int64 `json:"versions,omitempty"`
 }
 
 /*
@@ -268,8 +268,8 @@ Param Days (int64): The Days param. Value must be between 1 and 65535. Default: 
 Param Versions (int64): The Versions param. Value must be between 1 and 65535. Default: 1
 */
 type WithinObject2 struct {
-    Days int64 `json:"days,omitempty"`
-    Versions int64 `json:"versions,omitempty"`
+	Days     int64 `json:"days,omitempty"`
+	Versions int64 `json:"versions,omitempty"`
 }
 
 /*
@@ -288,8 +288,8 @@ Param Name (required, string): The Name param. String length must not exceed 103
 Param Product (list of strings): The Product param.
 */
 type VendorObject struct {
-    Name string `json:"name"`
-    Product []string `json:"product,omitempty"`
+	Name    string   `json:"name"`
+	Product []string `json:"product,omitempty"`
 }
 
 /*
@@ -303,7 +303,7 @@ Args:
 Param Criteria (CriteriaObject1): The Criteria param. CriteriaObject1 instance.
 */
 type CertificateObject struct {
-    Criteria *CriteriaObject1 `json:"criteria,omitempty"`
+	Criteria *CriteriaObject1 `json:"criteria,omitempty"`
 }
 
 /*
@@ -319,8 +319,8 @@ Param CertificateAttributes (list of CertificateAttributesObject objects): The C
 Param CertificateProfile (string): The CertificateProfile param.
 */
 type CriteriaObject1 struct {
-    CertificateAttributes []CertificateAttributesObject `json:"certificate_attributes,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
+	CertificateAttributes []CertificateAttributesObject `json:"certificate_attributes,omitempty"`
+	CertificateProfile    string                        `json:"certificate_profile,omitempty"`
 }
 
 /*
@@ -336,8 +336,8 @@ Param Name (required, string): The Name param.
 Param Value (string): The Value param. String length must not exceed 1024 characters.
 */
 type CertificateAttributesObject struct {
-    Name string `json:"name"`
-    Value string `json:"value,omitempty"`
+	Name  string `json:"name"`
+	Value string `json:"value,omitempty"`
 }
 
 /*
@@ -351,7 +351,7 @@ Args:
 Param Criteria (required, CriteriaObject2): The Criteria param. CriteriaObject2 instance.
 */
 type CustomChecksObject struct {
-    Criteria CriteriaObject2 `json:"criteria"`
+	Criteria CriteriaObject2 `json:"criteria"`
 }
 
 /*
@@ -369,9 +369,9 @@ Param ProcessList (list of ProcessListObject objects): The ProcessList param.
 Param RegistryKey (list of RegistryKeyObject objects): The RegistryKey param.
 */
 type CriteriaObject2 struct {
-    Plist []PlistObject `json:"plist,omitempty"`
-    ProcessList []ProcessListObject `json:"process_list,omitempty"`
-    RegistryKey []RegistryKeyObject `json:"registry_key,omitempty"`
+	Plist       []PlistObject       `json:"plist,omitempty"`
+	ProcessList []ProcessListObject `json:"process_list,omitempty"`
+	RegistryKey []RegistryKeyObject `json:"registry_key,omitempty"`
 }
 
 /*
@@ -389,9 +389,9 @@ Param Name (required, string): The Name param. String length must not exceed 102
 Param Negate (bool): The Negate param. Default: false
 */
 type PlistObject struct {
-    Key []KeyObject `json:"key,omitempty"`
-    Name string `json:"name"`
-    Negate bool `json:"negate,omitempty"`
+	Key    []KeyObject `json:"key,omitempty"`
+	Name   string      `json:"name"`
+	Negate bool        `json:"negate,omitempty"`
 }
 
 /*
@@ -409,9 +409,9 @@ Param Negate (bool): The Negate param. Default: false
 Param Value (string): The Value param. String length must not exceed 1024 characters.
 */
 type KeyObject struct {
-    Name string `json:"name"`
-    Negate bool `json:"negate,omitempty"`
-    Value string `json:"value,omitempty"`
+	Name   string `json:"name"`
+	Negate bool   `json:"negate,omitempty"`
+	Value  string `json:"value,omitempty"`
 }
 
 /*
@@ -427,8 +427,8 @@ Param Name (required, string): The Name param. String length must not exceed 102
 Param Running (bool): The Running param. Default: true
 */
 type ProcessListObject struct {
-    Name string `json:"name"`
-    Running bool `json:"running,omitempty"`
+	Name    string `json:"name"`
+	Running bool   `json:"running,omitempty"`
 }
 
 /*
@@ -448,10 +448,10 @@ Param Negate (bool): The Negate param. Default: false
 Param RegistryValue (list of RegistryValueObject objects): The RegistryValue param.
 */
 type RegistryKeyObject struct {
-    DefaultValueData string `json:"default_value_data,omitempty"`
-    Name string `json:"name"`
-    Negate bool `json:"negate,omitempty"`
-    RegistryValue []RegistryValueObject `json:"registry_value,omitempty"`
+	DefaultValueData string                `json:"default_value_data,omitempty"`
+	Name             string                `json:"name"`
+	Negate           bool                  `json:"negate,omitempty"`
+	RegistryValue    []RegistryValueObject `json:"registry_value,omitempty"`
 }
 
 /*
@@ -469,9 +469,9 @@ Param Negate (bool): The Negate param. Default: false
 Param ValueData (string): The ValueData param. String length must not exceed 1024 characters.
 */
 type RegistryValueObject struct {
-    Name string `json:"name"`
-    Negate bool `json:"negate,omitempty"`
-    ValueData string `json:"value_data,omitempty"`
+	Name      string `json:"name"`
+	Negate    bool   `json:"negate,omitempty"`
+	ValueData string `json:"value_data,omitempty"`
 }
 
 /*
@@ -489,9 +489,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject1 objects): The Vendor param.
 */
 type DataLossPreventionObject struct {
-    Criteria *CriteriaObject3 `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject1 `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject3 `json:"criteria,omitempty"`
+	ExcludeVendor bool             `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject1  `json:"vendor,omitempty"`
 }
 
 /*
@@ -508,8 +508,8 @@ Param IsEnabled (string): The IsEnabled param. String values: []string{"no", "ye
 Param IsInstalled (bool): The IsInstalled param. Default: true
 */
 type CriteriaObject3 struct {
-    IsEnabled string `json:"is_enabled,omitempty"`
-    IsInstalled bool `json:"is_installed,omitempty"`
+	IsEnabled   string `json:"is_enabled,omitempty"`
+	IsInstalled bool   `json:"is_installed,omitempty"`
 }
 
 /*
@@ -526,8 +526,8 @@ Param Name (required, string): The Name param. String length must not exceed 103
 Param Product (list of strings): The Product param.
 */
 type VendorObject1 struct {
-    Name string `json:"name"`
-    Product []string `json:"product,omitempty"`
+	Name    string   `json:"name"`
+	Product []string `json:"product,omitempty"`
 }
 
 /*
@@ -545,9 +545,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject objects): The Vendor param.
 */
 type DiskBackupObject struct {
-    Criteria *CriteriaObject4 `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject4 `json:"criteria,omitempty"`
+	ExcludeVendor bool             `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject   `json:"vendor,omitempty"`
 }
 
 /*
@@ -563,8 +563,8 @@ Param IsInstalled (bool): The IsInstalled param. Default: true
 Param LastBackupTime (LastBackupTimeObject): The LastBackupTime param. LastBackupTimeObject instance.
 */
 type CriteriaObject4 struct {
-    IsInstalled bool `json:"is_installed,omitempty"`
-    LastBackupTime *LastBackupTimeObject `json:"last_backup_time,omitempty"`
+	IsInstalled    bool                  `json:"is_installed,omitempty"`
+	LastBackupTime *LastBackupTimeObject `json:"last_backup_time,omitempty"`
 }
 
 /*
@@ -582,9 +582,9 @@ Param NotWithin (NotWithinObject): The NotWithin param. NotWithinObject instance
 Param Within (WithinObject): The Within param. WithinObject instance. One of these params should be specified:  not_available, not_within, or within.
 */
 type LastBackupTimeObject struct {
-    NotAvailable interface{} `json:"not_available,omitempty"`
-    NotWithin *NotWithinObject `json:"not_within,omitempty"`
-    Within *WithinObject `json:"within,omitempty"`
+	NotAvailable interface{}      `json:"not_available,omitempty"`
+	NotWithin    *NotWithinObject `json:"not_within,omitempty"`
+	Within       *WithinObject    `json:"within,omitempty"`
 }
 
 /*
@@ -602,9 +602,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject objects): The Vendor param.
 */
 type DiskEncryptionObject struct {
-    Criteria *CriteriaObject5 `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject5 `json:"criteria,omitempty"`
+	ExcludeVendor bool             `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject   `json:"vendor,omitempty"`
 }
 
 /*
@@ -620,8 +620,8 @@ Param EncryptedLocations (list of EncryptedLocationsObject objects): The Encrypt
 Param IsInstalled (bool): The IsInstalled param. Default: true
 */
 type CriteriaObject5 struct {
-    EncryptedLocations []EncryptedLocationsObject `json:"encrypted_locations,omitempty"`
-    IsInstalled bool `json:"is_installed,omitempty"`
+	EncryptedLocations []EncryptedLocationsObject `json:"encrypted_locations,omitempty"`
+	IsInstalled        bool                       `json:"is_installed,omitempty"`
 }
 
 /*
@@ -637,8 +637,8 @@ Param EncryptionState (EncryptionStateObject): The EncryptionState param. Encryp
 Param Name (required, string): The Name param. String length must not exceed 1023 characters.
 */
 type EncryptedLocationsObject struct {
-    EncryptionState *EncryptionStateObject `json:"encryption_state,omitempty"`
-    Name string `json:"name"`
+	EncryptionState *EncryptionStateObject `json:"encryption_state,omitempty"`
+	Name            string                 `json:"name"`
 }
 
 /*
@@ -654,8 +654,8 @@ Param Is (string): The Is param. String values: []string{"encrypted", "unencrypt
 Param IsNot (string): The IsNot param. String values: []string{"encrypted", "unencrypted", "partial", "unknown"} Default: "encrypted".
 */
 type EncryptionStateObject struct {
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Is    string `json:"is,omitempty"`
+	IsNot string `json:"is_not,omitempty"`
 }
 
 /*
@@ -673,9 +673,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject objects): The Vendor param.
 */
 type FirewallObject struct {
-    Criteria *CriteriaObject3 `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject3 `json:"criteria,omitempty"`
+	ExcludeVendor bool             `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject   `json:"vendor,omitempty"`
 }
 
 /*
@@ -689,7 +689,7 @@ Args:
 Param Criteria (required, CriteriaObject6): The Criteria param. CriteriaObject6 instance.
 */
 type HostInfoObject struct {
-    Criteria CriteriaObject6 `json:"criteria"`
+	Criteria CriteriaObject6 `json:"criteria"`
 }
 
 /*
@@ -715,13 +715,13 @@ Param Os (OsObject): The Os param. OsObject instance.
 Param SerialNumber (SerialNumberObject): The SerialNumber param. SerialNumberObject instance.
 */
 type CriteriaObject6 struct {
-    ClientVersion *ClientVersionObject `json:"client_version,omitempty"`
-    Domain *DomainObject `json:"domain,omitempty"`
-    HostId *HostIdObject `json:"host_id,omitempty"`
-    HostName *HostNameObject `json:"host_name,omitempty"`
-    Managed bool `json:"managed,omitempty"`
-    Os *OsObject `json:"os,omitempty"`
-    SerialNumber *SerialNumberObject `json:"serial_number,omitempty"`
+	ClientVersion *ClientVersionObject `json:"client_version,omitempty"`
+	Domain        *DomainObject        `json:"domain,omitempty"`
+	HostId        *HostIdObject        `json:"host_id,omitempty"`
+	HostName      *HostNameObject      `json:"host_name,omitempty"`
+	Managed       bool                 `json:"managed,omitempty"`
+	Os            *OsObject            `json:"os,omitempty"`
+	SerialNumber  *SerialNumberObject  `json:"serial_number,omitempty"`
 }
 
 /*
@@ -739,9 +739,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type ClientVersionObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -759,9 +759,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type DomainObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -779,9 +779,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type HostIdObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -799,9 +799,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type HostNameObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -815,7 +815,7 @@ Args:
 Param Contains (ContainsObject): The Contains param. ContainsObject instance. One of these params should be specified:  contains.
 */
 type OsObject struct {
-    Contains *ContainsObject `json:"contains,omitempty"`
+	Contains *ContainsObject `json:"contains,omitempty"`
 }
 
 /*
@@ -837,11 +837,11 @@ Param Microsoft (string): The Microsoft param. String lengh must be between 0 an
 Param Other (string): The Other param. String lengh must be between 0 and 255 characters. One of these params should be specified:  Apple, Google, Linux, Microsoft, or Other.
 */
 type ContainsObject struct {
-    Apple string `json:"Apple,omitempty"`
-    Google string `json:"Google,omitempty"`
-    Linux string `json:"Linux,omitempty"`
-    Microsoft string `json:"Microsoft,omitempty"`
-    Other string `json:"Other,omitempty"`
+	Apple     string `json:"Apple,omitempty"`
+	Google    string `json:"Google,omitempty"`
+	Linux     string `json:"Linux,omitempty"`
+	Microsoft string `json:"Microsoft,omitempty"`
+	Other     string `json:"Other,omitempty"`
 }
 
 /*
@@ -859,9 +859,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type SerialNumberObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -875,7 +875,7 @@ Args:
 Param Criteria (CriteriaObject7): The Criteria param. CriteriaObject7 instance.
 */
 type MobileDeviceObject struct {
-    Criteria *CriteriaObject7 `json:"criteria,omitempty"`
+	Criteria *CriteriaObject7 `json:"criteria,omitempty"`
 }
 
 /*
@@ -905,15 +905,15 @@ Param PhoneNumber (PhoneNumberObject): The PhoneNumber param. PhoneNumberObject 
 Param Tag (TagObject): The Tag param. TagObject instance.
 */
 type CriteriaObject7 struct {
-    Applications *ApplicationsObject `json:"applications,omitempty"`
-    DiskEncrypted bool `json:"disk_encrypted,omitempty"`
-    Imei *ImeiObject `json:"imei,omitempty"`
-    Jailbroken bool `json:"jailbroken,omitempty"`
-    LastCheckinTime *LastCheckinTimeObject `json:"last_checkin_time,omitempty"`
-    Model *ModelObject `json:"model,omitempty"`
-    PasscodeSet bool `json:"passcode_set,omitempty"`
-    PhoneNumber *PhoneNumberObject `json:"phone_number,omitempty"`
-    Tag *TagObject `json:"tag,omitempty"`
+	Applications    *ApplicationsObject    `json:"applications,omitempty"`
+	DiskEncrypted   bool                   `json:"disk_encrypted,omitempty"`
+	Imei            *ImeiObject            `json:"imei,omitempty"`
+	Jailbroken      bool                   `json:"jailbroken,omitempty"`
+	LastCheckinTime *LastCheckinTimeObject `json:"last_checkin_time,omitempty"`
+	Model           *ModelObject           `json:"model,omitempty"`
+	PasscodeSet     bool                   `json:"passcode_set,omitempty"`
+	PhoneNumber     *PhoneNumberObject     `json:"phone_number,omitempty"`
+	Tag             *TagObject             `json:"tag,omitempty"`
 }
 
 /*
@@ -931,9 +931,9 @@ Param HasUnmanagedApp (bool): The HasUnmanagedApp param.
 Param Includes (list of IncludesObject objects): The Includes param.
 */
 type ApplicationsObject struct {
-    HasMalware *HasMalwareObject `json:"has_malware,omitempty"`
-    HasUnmanagedApp bool `json:"has_unmanaged_app,omitempty"`
-    Includes []IncludesObject `json:"includes,omitempty"`
+	HasMalware      *HasMalwareObject `json:"has_malware,omitempty"`
+	HasUnmanagedApp bool              `json:"has_unmanaged_app,omitempty"`
+	Includes        []IncludesObject  `json:"includes,omitempty"`
 }
 
 /*
@@ -949,8 +949,8 @@ Param No (interface{}): The No param. interface{} instance.
 Param Yes (YesObject): The Yes param. YesObject instance.
 */
 type HasMalwareObject struct {
-    No interface{} `json:"no,omitempty"`
-    Yes *YesObject `json:"yes,omitempty"`
+	No  interface{} `json:"no,omitempty"`
+	Yes *YesObject  `json:"yes,omitempty"`
 }
 
 /*
@@ -964,7 +964,7 @@ Args:
 Param Excludes (list of ExcludesObject objects): The Excludes param.
 */
 type YesObject struct {
-    Excludes []ExcludesObject `json:"excludes,omitempty"`
+	Excludes []ExcludesObject `json:"excludes,omitempty"`
 }
 
 /*
@@ -982,9 +982,9 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param Package (string): The Package param. String length must not exceed 1024 characters.
 */
 type ExcludesObject struct {
-    Hash string `json:"hash,omitempty"`
-    Name string `json:"name"`
-    Package string `json:"package,omitempty"`
+	Hash    string `json:"hash,omitempty"`
+	Name    string `json:"name"`
+	Package string `json:"package,omitempty"`
 }
 
 /*
@@ -1002,9 +1002,9 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param Package (string): The Package param. String length must not exceed 1024 characters.
 */
 type IncludesObject struct {
-    Hash string `json:"hash,omitempty"`
-    Name string `json:"name"`
-    Package string `json:"package,omitempty"`
+	Hash    string `json:"hash,omitempty"`
+	Name    string `json:"name"`
+	Package string `json:"package,omitempty"`
 }
 
 /*
@@ -1022,9 +1022,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type ImeiObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -1040,8 +1040,8 @@ Param NotWithin (NotWithinObject3): The NotWithin param. NotWithinObject3 instan
 Param Within (WithinObject3): The Within param. WithinObject3 instance. One of these params should be specified:  not_within or within.
 */
 type LastCheckinTimeObject struct {
-    NotWithin *NotWithinObject3 `json:"not_within,omitempty"`
-    Within *WithinObject3 `json:"within,omitempty"`
+	NotWithin *NotWithinObject3 `json:"not_within,omitempty"`
+	Within    *WithinObject3    `json:"within,omitempty"`
 }
 
 /*
@@ -1055,7 +1055,7 @@ Args:
 Param Days (required, int64): The Days param. Value must be between 1 and 365. Default: 30
 */
 type NotWithinObject3 struct {
-    Days int64 `json:"days"`
+	Days int64 `json:"days"`
 }
 
 /*
@@ -1069,7 +1069,7 @@ Args:
 Param Days (required, int64): The Days param. Value must be between 1 and 365. Default: 30
 */
 type WithinObject3 struct {
-    Days int64 `json:"days"`
+	Days int64 `json:"days"`
 }
 
 /*
@@ -1087,9 +1087,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type ModelObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -1107,9 +1107,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type PhoneNumberObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -1127,9 +1127,9 @@ Param Is (string): The Is param. String lengh must be between 0 and 255 characte
 Param IsNot (string): The IsNot param. String lengh must be between 0 and 255 characters. One of these params should be specified:  contains, is, or is_not.
 */
 type TagObject struct {
-    Contains string `json:"contains,omitempty"`
-    Is string `json:"is,omitempty"`
-    IsNot string `json:"is_not,omitempty"`
+	Contains string `json:"contains,omitempty"`
+	Is       string `json:"is,omitempty"`
+	IsNot    string `json:"is_not,omitempty"`
 }
 
 /*
@@ -1143,7 +1143,7 @@ Args:
 Param Criteria (CriteriaObject8): The Criteria param. CriteriaObject8 instance.
 */
 type NetworkInfoObject struct {
-    Criteria *CriteriaObject8 `json:"criteria,omitempty"`
+	Criteria *CriteriaObject8 `json:"criteria,omitempty"`
 }
 
 /*
@@ -1157,7 +1157,7 @@ Args:
 Param Network (NetworkObject): The Network param. NetworkObject instance.
 */
 type CriteriaObject8 struct {
-    Network *NetworkObject `json:"network,omitempty"`
+	Network *NetworkObject `json:"network,omitempty"`
 }
 
 /*
@@ -1173,8 +1173,8 @@ Param Is (IsObject): The Is param. IsObject instance.
 Param IsNot (IsNotObject): The IsNot param. IsNotObject instance.
 */
 type NetworkObject struct {
-    Is *IsObject `json:"is,omitempty"`
-    IsNot *IsNotObject `json:"is_not,omitempty"`
+	Is    *IsObject    `json:"is,omitempty"`
+	IsNot *IsNotObject `json:"is_not,omitempty"`
 }
 
 /*
@@ -1192,9 +1192,9 @@ Param Unknown (interface{}): The Unknown param. interface{} instance.
 Param Wifi (WifiObject): The Wifi param. WifiObject instance.
 */
 type IsObject struct {
-    Mobile *MobileObject `json:"mobile,omitempty"`
-    Unknown interface{} `json:"unknown,omitempty"`
-    Wifi *WifiObject `json:"wifi,omitempty"`
+	Mobile  *MobileObject `json:"mobile,omitempty"`
+	Unknown interface{}   `json:"unknown,omitempty"`
+	Wifi    *WifiObject   `json:"wifi,omitempty"`
 }
 
 /*
@@ -1209,7 +1209,7 @@ Args:
 Param Carrier (string): The Carrier param. String length must not exceed 1023 characters.
 */
 type MobileObject struct {
-    Carrier string `json:"carrier,omitempty"`
+	Carrier string `json:"carrier,omitempty"`
 }
 
 /*
@@ -1224,7 +1224,7 @@ Args:
 Param Ssid (string): The Ssid param. String length must not exceed 1023 characters.
 */
 type WifiObject struct {
-    Ssid string `json:"ssid,omitempty"`
+	Ssid string `json:"ssid,omitempty"`
 }
 
 /*
@@ -1244,10 +1244,10 @@ Param Unknown (interface{}): The Unknown param. interface{} instance.
 Param Wifi (WifiObject): The Wifi param. WifiObject instance.
 */
 type IsNotObject struct {
-    Ethernet interface{} `json:"ethernet,omitempty"`
-    Mobile *MobileObject `json:"mobile,omitempty"`
-    Unknown interface{} `json:"unknown,omitempty"`
-    Wifi *WifiObject `json:"wifi,omitempty"`
+	Ethernet interface{}   `json:"ethernet,omitempty"`
+	Mobile   *MobileObject `json:"mobile,omitempty"`
+	Unknown  interface{}   `json:"unknown,omitempty"`
+	Wifi     *WifiObject   `json:"wifi,omitempty"`
 }
 
 /*
@@ -1265,9 +1265,9 @@ Param ExcludeVendor (bool): The ExcludeVendor param. Default: false
 Param Vendor (list of VendorObject1 objects): The Vendor param.
 */
 type PatchManagementObject struct {
-    Criteria *CriteriaObject9 `json:"criteria,omitempty"`
-    ExcludeVendor bool `json:"exclude_vendor,omitempty"`
-    Vendor []VendorObject1 `json:"vendor,omitempty"`
+	Criteria      *CriteriaObject9 `json:"criteria,omitempty"`
+	ExcludeVendor bool             `json:"exclude_vendor,omitempty"`
+	Vendor        []VendorObject1  `json:"vendor,omitempty"`
 }
 
 /*
@@ -1285,9 +1285,9 @@ Param IsInstalled (bool): The IsInstalled param. Default: true
 Param MissingPatches (MissingPatchesObject): The MissingPatches param. MissingPatchesObject instance.
 */
 type CriteriaObject9 struct {
-    IsEnabled string `json:"is_enabled,omitempty"`
-    IsInstalled bool `json:"is_installed,omitempty"`
-    MissingPatches *MissingPatchesObject `json:"missing_patches,omitempty"`
+	IsEnabled      string                `json:"is_enabled,omitempty"`
+	IsInstalled    bool                  `json:"is_installed,omitempty"`
+	MissingPatches *MissingPatchesObject `json:"missing_patches,omitempty"`
 }
 
 /*
@@ -1305,9 +1305,9 @@ Param Patches (list of strings): The Patches param.
 Param Severity (SeverityObject): The Severity param. SeverityObject instance.
 */
 type MissingPatchesObject struct {
-    Check string `json:"check"`
-    Patches []string `json:"patches,omitempty"`
-    Severity *SeverityObject `json:"severity,omitempty"`
+	Check    string          `json:"check"`
+	Patches  []string        `json:"patches,omitempty"`
+	Severity *SeverityObject `json:"severity,omitempty"`
 }
 
 /*
@@ -1331,10 +1331,10 @@ Param LessEqual (int64): The LessEqual param. Value must be between 0 and 100000
 Param LessThan (int64): The LessThan param. Value must be between 0 and 100000. One of these params should be specified:  greater_equal, greater_than, is, is_not, less_equal, or less_than.
 */
 type SeverityObject struct {
-    GreaterEqual int64 `json:"greater_equal,omitempty"`
-    GreaterThan int64 `json:"greater_than,omitempty"`
-    Is int64 `json:"is,omitempty"`
-    IsNot int64 `json:"is_not,omitempty"`
-    LessEqual int64 `json:"less_equal,omitempty"`
-    LessThan int64 `json:"less_than,omitempty"`
+	GreaterEqual int64 `json:"greater_equal,omitempty"`
+	GreaterThan  int64 `json:"greater_than,omitempty"`
+	Is           int64 `json:"is,omitempty"`
+	IsNot        int64 `json:"is_not,omitempty"`
+	LessEqual    int64 `json:"less_equal,omitempty"`
+	LessThan     int64 `json:"less_than,omitempty"`
 }

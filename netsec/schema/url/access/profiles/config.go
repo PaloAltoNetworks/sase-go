@@ -39,21 +39,21 @@ Param Name (required, string): The Name param.
 Param SafeSearchEnforcement (bool): The SafeSearchEnforcement param. Default: false
 */
 type Config struct {
-    Alert []string `json:"alert,omitempty"`
-    Allow []string `json:"allow,omitempty"`
-    Block []string `json:"block,omitempty"`
-    Continue []string `json:"continue,omitempty"`
-    CredentialEnforcement *CredentialEnforcementObject `json:"credential_enforcement,omitempty"`
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    LogContainerPageOnly bool `json:"log_container_page_only,omitempty"`
-    LogHttpHdrReferer bool `json:"log_http_hdr_referer,omitempty"`
-    LogHttpHdrUserAgent bool `json:"log_http_hdr_user_agent,omitempty"`
-    LogHttpHdrXff bool `json:"log_http_hdr_xff,omitempty"`
-    MlavCategoryException []string `json:"mlav_category_exception,omitempty"`
-    MlavEngineUrlbasedEnabled []MlavEngineUrlbasedEnabledObject `json:"mlav_engine_urlbased_enabled,omitempty"`
-    Name string `json:"name"`
-    SafeSearchEnforcement bool `json:"safe_search_enforcement,omitempty"`
+	Alert                     []string                          `json:"alert,omitempty"`
+	Allow                     []string                          `json:"allow,omitempty"`
+	Block                     []string                          `json:"block,omitempty"`
+	Continue                  []string                          `json:"continue,omitempty"`
+	CredentialEnforcement     *CredentialEnforcementObject      `json:"credential_enforcement,omitempty"`
+	Description               string                            `json:"description,omitempty"`
+	ObjectId                  string                            `json:"id,omitempty"`
+	LogContainerPageOnly      bool                              `json:"log_container_page_only,omitempty"`
+	LogHttpHdrReferer         bool                              `json:"log_http_hdr_referer,omitempty"`
+	LogHttpHdrUserAgent       bool                              `json:"log_http_hdr_user_agent,omitempty"`
+	LogHttpHdrXff             bool                              `json:"log_http_hdr_xff,omitempty"`
+	MlavCategoryException     []string                          `json:"mlav_category_exception,omitempty"`
+	MlavEngineUrlbasedEnabled []MlavEngineUrlbasedEnabledObject `json:"mlav_engine_urlbased_enabled,omitempty"`
+	Name                      string                            `json:"name"`
+	SafeSearchEnforcement     bool                              `json:"safe_search_enforcement,omitempty"`
 }
 
 /*
@@ -77,12 +77,12 @@ Param LogSeverity (string): The LogSeverity param. Default: "medium".
 Param Mode (ModeObject): The Mode param. ModeObject instance.
 */
 type CredentialEnforcementObject struct {
-    Alert []string `json:"alert,omitempty"`
-    Allow []string `json:"allow,omitempty"`
-    Block []string `json:"block,omitempty"`
-    Continue []string `json:"continue,omitempty"`
-    LogSeverity string `json:"log_severity,omitempty"`
-    Mode *ModeObject `json:"mode,omitempty"`
+	Alert       []string    `json:"alert,omitempty"`
+	Allow       []string    `json:"allow,omitempty"`
+	Block       []string    `json:"block,omitempty"`
+	Continue    []string    `json:"continue,omitempty"`
+	LogSeverity string      `json:"log_severity,omitempty"`
+	Mode        *ModeObject `json:"mode,omitempty"`
 }
 
 /*
@@ -102,10 +102,10 @@ Param GroupMapping (string): The GroupMapping param.
 Param IpUser (interface{}): The IpUser param. interface{} instance.
 */
 type ModeObject struct {
-    Disabled interface{} `json:"disabled,omitempty"`
-    DomainCredentials interface{} `json:"domain_credentials,omitempty"`
-    GroupMapping string `json:"group_mapping,omitempty"`
-    IpUser interface{} `json:"ip_user,omitempty"`
+	Disabled          interface{} `json:"disabled,omitempty"`
+	DomainCredentials interface{} `json:"domain_credentials,omitempty"`
+	GroupMapping      string      `json:"group_mapping,omitempty"`
+	IpUser            interface{} `json:"ip_user,omitempty"`
 }
 
 /*
@@ -121,6 +121,6 @@ Param MlavPolicyAction (string): The MlavPolicyAction param. String values: []st
 Param Name (string): The Name param.
 */
 type MlavEngineUrlbasedEnabledObject struct {
-    MlavPolicyAction string `json:"mlav_policy_action,omitempty"`
-    Name string `json:"name,omitempty"`
+	MlavPolicyAction string `json:"mlav_policy_action,omitempty"`
+	Name             string `json:"name,omitempty"`
 }

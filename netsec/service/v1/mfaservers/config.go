@@ -5,22 +5,22 @@ package mfaservers
 // []string{"netsec", "service", "v1", "mfaservers"}
 
 import (
-    "context"
-    "net/url"
-    "strings"
+	"context"
+	"net/url"
+	"strings"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    deRyMEf "github.com/paloaltonetworks/sase-go/netsec/schema/mfa/servers"
+	"github.com/paloaltonetworks/sase-go/api"
+	deRyMEf "github.com/paloaltonetworks/sase-go/netsec/schema/mfa/servers"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // CreateInput takes some input.
@@ -28,31 +28,31 @@ func NewClient(client api.Client) *Client {
 // path: []string{}
 // query: []string{"position", "folder"}
 type CreateInput struct {
-    Position string
-    Folder string
-    Config deRyMEf.Config
+	Position string
+	Folder   string
+	Config   deRyMEf.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/mfa-servers
-func (c *Client) Create(ctx context.Context, input CreateInput)  (deRyMEf.Config, error) {
-    // Variables.
-    var err error
-    var ans deRyMEf.Config
-    path := "/sse/config/v1/mfa-servers"
+func (c *Client) Create(ctx context.Context, input CreateInput) (deRyMEf.Config, error) {
+	// Variables.
+	var err error
+	var ans deRyMEf.Config
+	path := "/sse/config/v1/mfa-servers"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("position", input.Position)
-    uv.Set("folder", input.Folder)
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("position", input.Position)
+	uv.Set("folder", input.Folder)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "POST", path, uv, input.Config, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // DeleteInput takes some input.
@@ -60,27 +60,27 @@ func (c *Client) Create(ctx context.Context, input CreateInput)  (deRyMEf.Config
 // path: []string{"uuid-required"}
 // query: []string{}
 type DeleteInput struct {
-    ObjectId string
+	ObjectId string
 }
 
 // Delete removes the specified configuration.
 //
 // Method: delete
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (deRyMEf.Config, error) {
-    // Variables.
-    var err error
-    var ans deRyMEf.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+func (c *Client) Delete(ctx context.Context, input DeleteInput) (deRyMEf.Config, error) {
+	// Variables.
+	var err error
+	var ans deRyMEf.Config
+	path := "/sse/config/v1/mfa-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // MfaServersGetInput takes some input.
@@ -88,32 +88,32 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput)  (deRyMEf.Config
 // path: []string{}
 // query: []string{"folder", "name-optional"}
 type MfaServersGetInput struct {
-    Folder string
-    Name *string
+	Folder string
+	Name   *string
 }
 
 // MfaServersGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/mfa-servers
-func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput)  (deRyMEf.Config, error) {
-    // Variables.
-    var err error
-    var ans deRyMEf.Config
-    path := "/sse/config/v1/mfa-servers"
+func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput) (deRyMEf.Config, error) {
+	// Variables.
+	var err error
+	var ans deRyMEf.Config
+	path := "/sse/config/v1/mfa-servers"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("folder", input.Folder)
-    if input.Name != nil {
-        uv.Set("name", *input.Name)
-    }
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
+	if input.Name != nil {
+		uv.Set("name", *input.Name)
+	}
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // ReadInput takes some input.
@@ -121,27 +121,27 @@ func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput)  (
 // path: []string{"uuid-required"}
 // query: []string{}
 type ReadInput struct {
-    ObjectId string
+	ObjectId string
 }
 
 // Read returns the configuration of the specified object.
 //
 // Method: get
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (deRyMEf.Config, error) {
-    // Variables.
-    var err error
-    var ans deRyMEf.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+func (c *Client) Read(ctx context.Context, input ReadInput) (deRyMEf.Config, error) {
+	// Variables.
+	var err error
+	var ans deRyMEf.Config
+	path := "/sse/config/v1/mfa-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // UpdateInput takes some input.
@@ -149,26 +149,26 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (deRyMEf.Config, er
 // path: []string{"uuid-required"}
 // query: []string{}
 type UpdateInput struct {
-    ObjectId string
-    Config deRyMEf.Config
+	ObjectId string
+	Config   deRyMEf.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (deRyMEf.Config, error) {
-    // Variables.
-    var err error
-    var ans deRyMEf.Config
-    path := "/sse/config/v1/mfa-servers/{id}"
+func (c *Client) Update(ctx context.Context, input UpdateInput) (deRyMEf.Config, error) {
+	// Variables.
+	var err error
+	var ans deRyMEf.Config
+	path := "/sse/config/v1/mfa-servers/{id}"
 
-    // Path param handling.
-    path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	// Path param handling.
+	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }

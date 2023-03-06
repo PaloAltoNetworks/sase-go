@@ -19,11 +19,11 @@ Param Qos (QosObject): The Qos param. QosObject instance.
 Param SpnNameList (list of strings): The SpnNameList param.
 */
 type Config struct {
-    AllocatedBandwidth int64 `json:"allocated_bandwidth"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Qos *QosObject `json:"qos,omitempty"`
-    SpnNameList []string `json:"spn_name_list,omitempty"`
+	AllocatedBandwidth int64      `json:"allocated_bandwidth"`
+	ObjectId           string     `json:"id,omitempty"`
+	Name               string     `json:"name"`
+	Qos                *QosObject `json:"qos,omitempty"`
+	SpnNameList        []string   `json:"spn_name_list,omitempty"`
 }
 
 /*
@@ -43,8 +43,8 @@ Param GuaranteedRatio (int64): The GuaranteedRatio param.
 Param Profile (string): The Profile param.
 */
 type QosObject struct {
-    Customized bool `json:"customized,omitempty"`
-    Enabled bool `json:"enabled,omitempty"`
-    GuaranteedRatio int64 `json:"guaranteed_ratio,omitempty"`
-    Profile string `json:"profile,omitempty"`
+	Customized      bool   `json:"customized,omitempty"`
+	Enabled         bool   `json:"enabled,omitempty"`
+	GuaranteedRatio int64  `json:"guaranteed_ratio,omitempty"`
+	Profile         string `json:"profile,omitempty"`
 }

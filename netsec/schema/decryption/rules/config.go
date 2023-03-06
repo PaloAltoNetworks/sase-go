@@ -53,28 +53,28 @@ Param To (required, list of strings): The To param.
 Param Type (TypeObject): The Type param. TypeObject instance.
 */
 type Config struct {
-    Action string `json:"action"`
-    Category []string `json:"category"`
-    Description string `json:"description,omitempty"`
-    Destination []string `json:"destination"`
-    DestinationHip []string `json:"destination_hip,omitempty"`
-    Disabled bool `json:"disabled,omitempty"`
-    From []string `json:"from"`
-    ObjectId string `json:"id,omitempty"`
-    LogFail bool `json:"log_fail,omitempty"`
-    LogSetting string `json:"log_setting,omitempty"`
-    LogSuccess bool `json:"log_success,omitempty"`
-    Name string `json:"name"`
-    NegateDestination bool `json:"negate_destination,omitempty"`
-    NegateSource bool `json:"negate_source,omitempty"`
-    Profile string `json:"profile,omitempty"`
-    Service []string `json:"service"`
-    Source []string `json:"source"`
-    SourceHip []string `json:"source_hip,omitempty"`
-    SourceUser []string `json:"source_user"`
-    Tag []string `json:"tag,omitempty"`
-    To []string `json:"to"`
-    Type *TypeObject `json:"type,omitempty"`
+	Action            string      `json:"action"`
+	Category          []string    `json:"category"`
+	Description       string      `json:"description,omitempty"`
+	Destination       []string    `json:"destination"`
+	DestinationHip    []string    `json:"destination_hip,omitempty"`
+	Disabled          bool        `json:"disabled,omitempty"`
+	From              []string    `json:"from"`
+	ObjectId          string      `json:"id,omitempty"`
+	LogFail           bool        `json:"log_fail,omitempty"`
+	LogSetting        string      `json:"log_setting,omitempty"`
+	LogSuccess        bool        `json:"log_success,omitempty"`
+	Name              string      `json:"name"`
+	NegateDestination bool        `json:"negate_destination,omitempty"`
+	NegateSource      bool        `json:"negate_source,omitempty"`
+	Profile           string      `json:"profile,omitempty"`
+	Service           []string    `json:"service"`
+	Source            []string    `json:"source"`
+	SourceHip         []string    `json:"source_hip,omitempty"`
+	SourceUser        []string    `json:"source_user"`
+	Tag               []string    `json:"tag,omitempty"`
+	To                []string    `json:"to"`
+	Type              *TypeObject `json:"type,omitempty"`
 }
 
 /*
@@ -90,6 +90,6 @@ Param SslForwardProxy (interface{}): The SslForwardProxy param. interface{} inst
 Param SslInboundInspection (string): The SslInboundInspection param. One of these params should be specified:  ssl_inbound_inspection.
 */
 type TypeObject struct {
-    SslForwardProxy interface{} `json:"ssl_forward_proxy,omitempty"`
-    SslInboundInspection string `json:"ssl_inbound_inspection,omitempty"`
+	SslForwardProxy      interface{} `json:"ssl_forward_proxy,omitempty"`
+	SslInboundInspection string      `json:"ssl_inbound_inspection,omitempty"`
 }

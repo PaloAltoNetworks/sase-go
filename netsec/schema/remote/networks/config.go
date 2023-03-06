@@ -31,17 +31,17 @@ Param SpnName (string): The SpnName param.
 Param Subnets (list of strings): The Subnets param.
 */
 type Config struct {
-    EcmpLoadBalancing string `json:"ecmp_load_balancing,omitempty"`
-    EcmpTunnels []EcmpTunnelsObject `json:"ecmp_tunnels,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    IpsecTunnel string `json:"ipsec_tunnel,omitempty"`
-    LicenseType string `json:"license_type"`
-    Name string `json:"name"`
-    Protocol *ProtocolObject `json:"protocol,omitempty"`
-    Region string `json:"region"`
-    SecondaryIpsecTunnel string `json:"secondary_ipsec_tunnel,omitempty"`
-    SpnName string `json:"spn_name,omitempty"`
-    Subnets []string `json:"subnets,omitempty"`
+	EcmpLoadBalancing    string              `json:"ecmp_load_balancing,omitempty"`
+	EcmpTunnels          []EcmpTunnelsObject `json:"ecmp_tunnels,omitempty"`
+	ObjectId             string              `json:"id,omitempty"`
+	IpsecTunnel          string              `json:"ipsec_tunnel,omitempty"`
+	LicenseType          string              `json:"license_type"`
+	Name                 string              `json:"name"`
+	Protocol             *ProtocolObject     `json:"protocol,omitempty"`
+	Region               string              `json:"region"`
+	SecondaryIpsecTunnel string              `json:"secondary_ipsec_tunnel,omitempty"`
+	SpnName              string              `json:"spn_name,omitempty"`
+	Subnets              []string            `json:"subnets,omitempty"`
 }
 
 /*
@@ -73,16 +73,16 @@ Param Secret (string): The Secret param.
 Param SummarizeMobileUserRoutes (bool): The SummarizeMobileUserRoutes param.
 */
 type EcmpTunnelsObject struct {
-    DoNotExportRoutes bool `json:"do_not_export_routes,omitempty"`
-    IpsecTunnel string `json:"ipsec_tunnel"`
-    LocalIpAddress string `json:"local_ip_address,omitempty"`
-    Name string `json:"name"`
-    OriginateDefaultRoute bool `json:"originate_default_route,omitempty"`
-    PeerAs string `json:"peer_as,omitempty"`
-    PeerIpAddress string `json:"peer_ip_address,omitempty"`
-    PeeringType string `json:"peering_type,omitempty"`
-    Secret string `json:"secret,omitempty"`
-    SummarizeMobileUserRoutes bool `json:"summarize_mobile_user_routes,omitempty"`
+	DoNotExportRoutes         bool   `json:"do_not_export_routes,omitempty"`
+	IpsecTunnel               string `json:"ipsec_tunnel"`
+	LocalIpAddress            string `json:"local_ip_address,omitempty"`
+	Name                      string `json:"name"`
+	OriginateDefaultRoute     bool   `json:"originate_default_route,omitempty"`
+	PeerAs                    string `json:"peer_as,omitempty"`
+	PeerIpAddress             string `json:"peer_ip_address,omitempty"`
+	PeeringType               string `json:"peering_type,omitempty"`
+	Secret                    string `json:"secret,omitempty"`
+	SummarizeMobileUserRoutes bool   `json:"summarize_mobile_user_routes,omitempty"`
 }
 
 /*
@@ -98,8 +98,8 @@ Param Bgp (BgpObject): The Bgp param. BgpObject instance.
 Param BgpPeer (BgpPeerObject): The BgpPeer param. BgpPeerObject instance.
 */
 type ProtocolObject struct {
-    Bgp *BgpObject `json:"bgp,omitempty"`
-    BgpPeer *BgpPeerObject `json:"bgp_peer,omitempty"`
+	Bgp     *BgpObject     `json:"bgp,omitempty"`
+	BgpPeer *BgpPeerObject `json:"bgp_peer,omitempty"`
 }
 
 /*
@@ -129,15 +129,15 @@ Param Secret (string): The Secret param.
 Param SummarizeMobileUserRoutes (bool): The SummarizeMobileUserRoutes param.
 */
 type BgpObject struct {
-    DoNotExportRoutes bool `json:"do_not_export_routes,omitempty"`
-    Enable bool `json:"enable,omitempty"`
-    LocalIpAddress string `json:"local_ip_address,omitempty"`
-    OriginateDefaultRoute bool `json:"originate_default_route,omitempty"`
-    PeerAs string `json:"peer_as,omitempty"`
-    PeerIpAddress string `json:"peer_ip_address,omitempty"`
-    PeeringType string `json:"peering_type,omitempty"`
-    Secret string `json:"secret,omitempty"`
-    SummarizeMobileUserRoutes bool `json:"summarize_mobile_user_routes,omitempty"`
+	DoNotExportRoutes         bool   `json:"do_not_export_routes,omitempty"`
+	Enable                    bool   `json:"enable,omitempty"`
+	LocalIpAddress            string `json:"local_ip_address,omitempty"`
+	OriginateDefaultRoute     bool   `json:"originate_default_route,omitempty"`
+	PeerAs                    string `json:"peer_as,omitempty"`
+	PeerIpAddress             string `json:"peer_ip_address,omitempty"`
+	PeeringType               string `json:"peering_type,omitempty"`
+	Secret                    string `json:"secret,omitempty"`
+	SummarizeMobileUserRoutes bool   `json:"summarize_mobile_user_routes,omitempty"`
 }
 
 /*
@@ -155,7 +155,7 @@ Param PeerIpAddress (string): The PeerIpAddress param.
 Param Secret (string): The Secret param.
 */
 type BgpPeerObject struct {
-    LocalIpAddress string `json:"local_ip_address,omitempty"`
-    PeerIpAddress string `json:"peer_ip_address,omitempty"`
-    Secret string `json:"secret,omitempty"`
+	LocalIpAddress string `json:"local_ip_address,omitempty"`
+	PeerIpAddress  string `json:"peer_ip_address,omitempty"`
+	Secret         string `json:"secret,omitempty"`
 }

@@ -23,13 +23,13 @@ Param Rules (list of RulesObject objects): The Rules param.
 Param ThreatException (list of ThreatExceptionObject objects): The ThreatException param.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    MlavException []MlavExceptionObject `json:"mlav_exception,omitempty"`
-    Name string `json:"name"`
-    PacketCapture bool `json:"packet_capture,omitempty"`
-    Rules []RulesObject `json:"rules,omitempty"`
-    ThreatException []ThreatExceptionObject `json:"threat_exception,omitempty"`
+	Description     string                  `json:"description,omitempty"`
+	ObjectId        string                  `json:"id,omitempty"`
+	MlavException   []MlavExceptionObject   `json:"mlav_exception,omitempty"`
+	Name            string                  `json:"name"`
+	PacketCapture   bool                    `json:"packet_capture,omitempty"`
+	Rules           []RulesObject           `json:"rules,omitempty"`
+	ThreatException []ThreatExceptionObject `json:"threat_exception,omitempty"`
 }
 
 /*
@@ -47,9 +47,9 @@ Param Filename (string): The Filename param.
 Param Name (string): The Name param.
 */
 type MlavExceptionObject struct {
-    Description string `json:"description,omitempty"`
-    Filename string `json:"filename,omitempty"`
-    Name string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Filename    string `json:"filename,omitempty"`
+	Name        string `json:"name,omitempty"`
 }
 
 /*
@@ -71,11 +71,11 @@ Param FileType (list of strings): The FileType param.
 Param Name (string): The Name param.
 */
 type RulesObject struct {
-    Analysis string `json:"analysis,omitempty"`
-    Application []string `json:"application,omitempty"`
-    Direction string `json:"direction,omitempty"`
-    FileType []string `json:"file_type,omitempty"`
-    Name string `json:"name,omitempty"`
+	Analysis    string   `json:"analysis,omitempty"`
+	Application []string `json:"application,omitempty"`
+	Direction   string   `json:"direction,omitempty"`
+	FileType    []string `json:"file_type,omitempty"`
+	Name        string   `json:"name,omitempty"`
 }
 
 /*
@@ -91,6 +91,6 @@ Param Name (string): The Name param.
 Param Notes (string): The Notes param.
 */
 type ThreatExceptionObject struct {
-    Name string `json:"name,omitempty"`
-    Notes string `json:"notes,omitempty"`
+	Name  string `json:"name,omitempty"`
+	Notes string `json:"notes,omitempty"`
 }

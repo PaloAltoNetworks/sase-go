@@ -5,21 +5,21 @@ package quarantineddevices
 // []string{"netsec", "service", "v1", "quarantineddevices"}
 
 import (
-    "context"
-    "net/url"
+	"context"
+	"net/url"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    qGeZssX "github.com/paloaltonetworks/sase-go/netsec/schema/objects/quarantined/devices"
+	"github.com/paloaltonetworks/sase-go/api"
+	qGeZssX "github.com/paloaltonetworks/sase-go/netsec/schema/objects/quarantined/devices"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // CreateInput takes some input.
@@ -27,25 +27,24 @@ func NewClient(client api.Client) *Client {
 // path: []string(nil)
 // query: []string(nil)
 type CreateInput struct {
-    Config qGeZssX.Config
+	Config qGeZssX.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/quarantined-devices
-func (c *Client) Create(ctx context.Context, input CreateInput)  (qGeZssX.Config, error) {
-    // Variables.
-    var err error
-    var ans qGeZssX.Config
-    path := "/sse/config/v1/quarantined-devices"
+func (c *Client) Create(ctx context.Context, input CreateInput) (qGeZssX.Config, error) {
+	// Variables.
+	var err error
+	var ans qGeZssX.Config
+	path := "/sse/config/v1/quarantined-devices"
 
+	// Execute the command.
+	_, err = c.client.Do(ctx, "POST", path, nil, input.Config, &ans)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "POST", path, nil, input.Config, &ans)
-
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // QuarantinedDevicesDeleteInput takes some input.
@@ -53,31 +52,31 @@ func (c *Client) Create(ctx context.Context, input CreateInput)  (qGeZssX.Config
 // path: []string{}
 // query: []string{"service_type", "connection_name", "host_id_required"}
 type QuarantinedDevicesDeleteInput struct {
-    ServiceType string
-    ConnectionName string
-    HostId string
+	ServiceType    string
+	ConnectionName string
+	HostId         string
 }
 
 // QuarantinedDevicesDelete performs a the given operation.
 //
 // Method: delete
 // URI: /sse/config/v1/quarantined-devices
-func (c *Client) QuarantinedDevicesDelete(ctx context.Context, input QuarantinedDevicesDeleteInput)  (error) {
-    // Variables.
-    var err error
-    path := "/sse/config/v1/quarantined-devices"
+func (c *Client) QuarantinedDevicesDelete(ctx context.Context, input QuarantinedDevicesDeleteInput) error {
+	// Variables.
+	var err error
+	path := "/sse/config/v1/quarantined-devices"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("service_type", input.ServiceType)
-    uv.Set("connection_name", input.ConnectionName)
-    uv.Set("host_id", input.HostId)
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("service_type", input.ServiceType)
+	uv.Set("connection_name", input.ConnectionName)
+	uv.Set("host_id", input.HostId)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "DELETE", path, uv, nil, nil)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "DELETE", path, uv, nil, nil)
 
-    // Done.
-    return err
+	// Done.
+	return err
 }
 
 // QuarantinedDevicesGetInput takes some input.
@@ -85,36 +84,36 @@ func (c *Client) QuarantinedDevicesDelete(ctx context.Context, input Quarantined
 // path: []string{}
 // query: []string{"service_type", "connection_name", "host_id", "serial_number"}
 type QuarantinedDevicesGetInput struct {
-    ServiceType string
-    ConnectionName string
-    HostId *string
-    SerialNumber *string
+	ServiceType    string
+	ConnectionName string
+	HostId         *string
+	SerialNumber   *string
 }
 
 // QuarantinedDevicesGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/quarantined-devices
-func (c *Client) QuarantinedDevicesGet(ctx context.Context, input QuarantinedDevicesGetInput)  (qGeZssX.Config, error) {
-    // Variables.
-    var err error
-    var ans qGeZssX.Config
-    path := "/sse/config/v1/quarantined-devices"
+func (c *Client) QuarantinedDevicesGet(ctx context.Context, input QuarantinedDevicesGetInput) (qGeZssX.Config, error) {
+	// Variables.
+	var err error
+	var ans qGeZssX.Config
+	path := "/sse/config/v1/quarantined-devices"
 
-    // Query parameter handling.
-    uv := url.Values{}
-    uv.Set("service_type", input.ServiceType)
-    uv.Set("connection_name", input.ConnectionName)
-    if input.HostId != nil {
-        uv.Set("host_id", *input.HostId)
-    }
-    if input.SerialNumber != nil {
-        uv.Set("serial_number", *input.SerialNumber)
-    }
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("service_type", input.ServiceType)
+	uv.Set("connection_name", input.ConnectionName)
+	if input.HostId != nil {
+		uv.Set("host_id", *input.HostId)
+	}
+	if input.SerialNumber != nil {
+		uv.Set("serial_number", *input.SerialNumber)
+	}
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }

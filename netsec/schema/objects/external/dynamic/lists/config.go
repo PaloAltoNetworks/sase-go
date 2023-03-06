@@ -15,9 +15,9 @@ Param Name (required, string): The Name param. String length must not exceed 63 
 Param Type (required, TypeObject): The Type param. TypeObject instance.
 */
 type Config struct {
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Type TypeObject `json:"type"`
+	ObjectId string     `json:"id,omitempty"`
+	Name     string     `json:"name"`
+	Type     TypeObject `json:"type"`
 }
 
 /*
@@ -43,13 +43,13 @@ Param PredefinedUrl (PredefinedUrlObject): The PredefinedUrl param. PredefinedUr
 Param Url (UrlObject): The Url param. UrlObject instance.
 */
 type TypeObject struct {
-    Domain *DomainObject `json:"domain,omitempty"`
-    Imei *ImeiObject `json:"imei,omitempty"`
-    Imsi *ImsiObject `json:"imsi,omitempty"`
-    Ip *IpObject `json:"ip,omitempty"`
-    PredefinedIp *PredefinedIpObject `json:"predefined_ip,omitempty"`
-    PredefinedUrl *PredefinedUrlObject `json:"predefined_url,omitempty"`
-    Url *UrlObject `json:"url,omitempty"`
+	Domain        *DomainObject        `json:"domain,omitempty"`
+	Imei          *ImeiObject          `json:"imei,omitempty"`
+	Imsi          *ImsiObject          `json:"imsi,omitempty"`
+	Ip            *IpObject            `json:"ip,omitempty"`
+	PredefinedIp  *PredefinedIpObject  `json:"predefined_ip,omitempty"`
+	PredefinedUrl *PredefinedUrlObject `json:"predefined_url,omitempty"`
+	Url           *UrlObject           `json:"url,omitempty"`
 }
 
 /*
@@ -75,13 +75,13 @@ Param Recurring (required, RecurringObject): The Recurring param. RecurringObjec
 Param Url (required, string): The Url param. String lengh must be between 0 and 255 characters. Default: "http://".
 */
 type DomainObject struct {
-    Auth *AuthObject `json:"auth,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    ExpandDomain bool `json:"expand_domain,omitempty"`
-    Recurring RecurringObject `json:"recurring"`
-    Url string `json:"url"`
+	Auth               *AuthObject     `json:"auth,omitempty"`
+	CertificateProfile string          `json:"certificate_profile,omitempty"`
+	Description        string          `json:"description,omitempty"`
+	ExceptionList      []string        `json:"exception_list,omitempty"`
+	ExpandDomain       bool            `json:"expand_domain,omitempty"`
+	Recurring          RecurringObject `json:"recurring"`
+	Url                string          `json:"url"`
 }
 
 /*
@@ -101,8 +101,8 @@ Param Password (required, string): The Password param. String length must not ex
 Param Username (required, string): The Username param. String lengh must be between 1 and 255 characters.
 */
 type AuthObject struct {
-    Password string `json:"password"`
-    Username string `json:"username"`
+	Password string `json:"password"`
+	Username string `json:"username"`
 }
 
 /*
@@ -128,11 +128,11 @@ Param Monthly (MonthlyObject): The Monthly param. MonthlyObject instance. One of
 Param Weekly (WeeklyObject): The Weekly param. WeeklyObject instance. One of these params should be specified:  daily, five_minute, hourly, monthly, or weekly.
 */
 type RecurringObject struct {
-    Daily *DailyObject `json:"daily,omitempty"`
-    FiveMinute interface{} `json:"five_minute,omitempty"`
-    Hourly interface{} `json:"hourly,omitempty"`
-    Monthly *MonthlyObject `json:"monthly,omitempty"`
-    Weekly *WeeklyObject `json:"weekly,omitempty"`
+	Daily      *DailyObject   `json:"daily,omitempty"`
+	FiveMinute interface{}    `json:"five_minute,omitempty"`
+	Hourly     interface{}    `json:"hourly,omitempty"`
+	Monthly    *MonthlyObject `json:"monthly,omitempty"`
+	Weekly     *WeeklyObject  `json:"weekly,omitempty"`
 }
 
 /*
@@ -146,7 +146,7 @@ Args:
 Param At (required, string): The At param. String lengh must be between 2 and 2 characters. Default: "00".
 */
 type DailyObject struct {
-    At string `json:"at"`
+	At string `json:"at"`
 }
 
 /*
@@ -162,8 +162,8 @@ Param At (required, string): The At param. String lengh must be between 2 and 2 
 Param DayOfMonth (required, int64): The DayOfMonth param. Value must be between 1 and 31.
 */
 type MonthlyObject struct {
-    At string `json:"at"`
-    DayOfMonth int64 `json:"day_of_month"`
+	At         string `json:"at"`
+	DayOfMonth int64  `json:"day_of_month"`
 }
 
 /*
@@ -179,8 +179,8 @@ Param At (required, string): The At param. String lengh must be between 2 and 2 
 Param DayOfWeek (required, string): The DayOfWeek param. String values: []string{"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"}
 */
 type WeeklyObject struct {
-    At string `json:"at"`
-    DayOfWeek string `json:"day_of_week"`
+	At        string `json:"at"`
+	DayOfWeek string `json:"day_of_week"`
 }
 
 /*
@@ -204,12 +204,12 @@ Param Recurring (required, RecurringObject): The Recurring param. RecurringObjec
 Param Url (required, string): The Url param. String lengh must be between 0 and 255 characters. Default: "http://".
 */
 type ImeiObject struct {
-    Auth *AuthObject `json:"auth,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Recurring RecurringObject `json:"recurring"`
-    Url string `json:"url"`
+	Auth               *AuthObject     `json:"auth,omitempty"`
+	CertificateProfile string          `json:"certificate_profile,omitempty"`
+	Description        string          `json:"description,omitempty"`
+	ExceptionList      []string        `json:"exception_list,omitempty"`
+	Recurring          RecurringObject `json:"recurring"`
+	Url                string          `json:"url"`
 }
 
 /*
@@ -233,12 +233,12 @@ Param Recurring (required, RecurringObject): The Recurring param. RecurringObjec
 Param Url (required, string): The Url param. String lengh must be between 0 and 255 characters. Default: "http://".
 */
 type ImsiObject struct {
-    Auth *AuthObject `json:"auth,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Recurring RecurringObject `json:"recurring"`
-    Url string `json:"url"`
+	Auth               *AuthObject     `json:"auth,omitempty"`
+	CertificateProfile string          `json:"certificate_profile,omitempty"`
+	Description        string          `json:"description,omitempty"`
+	ExceptionList      []string        `json:"exception_list,omitempty"`
+	Recurring          RecurringObject `json:"recurring"`
+	Url                string          `json:"url"`
 }
 
 /*
@@ -262,12 +262,12 @@ Param Recurring (required, RecurringObject): The Recurring param. RecurringObjec
 Param Url (required, string): The Url param. String lengh must be between 0 and 255 characters. Default: "http://".
 */
 type IpObject struct {
-    Auth *AuthObject `json:"auth,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Recurring RecurringObject `json:"recurring"`
-    Url string `json:"url"`
+	Auth               *AuthObject     `json:"auth,omitempty"`
+	CertificateProfile string          `json:"certificate_profile,omitempty"`
+	Description        string          `json:"description,omitempty"`
+	ExceptionList      []string        `json:"exception_list,omitempty"`
+	Recurring          RecurringObject `json:"recurring"`
+	Url                string          `json:"url"`
 }
 
 /*
@@ -285,9 +285,9 @@ Param ExceptionList (list of strings): The ExceptionList param.
 Param Url (required, string): The Url param.
 */
 type PredefinedIpObject struct {
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Url string `json:"url"`
+	Description   string   `json:"description,omitempty"`
+	ExceptionList []string `json:"exception_list,omitempty"`
+	Url           string   `json:"url"`
 }
 
 /*
@@ -305,9 +305,9 @@ Param ExceptionList (list of strings): The ExceptionList param.
 Param Url (required, string): The Url param.
 */
 type PredefinedUrlObject struct {
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Url string `json:"url"`
+	Description   string   `json:"description,omitempty"`
+	ExceptionList []string `json:"exception_list,omitempty"`
+	Url           string   `json:"url"`
 }
 
 /*
@@ -331,10 +331,10 @@ Param Recurring (required, RecurringObject): The Recurring param. RecurringObjec
 Param Url (required, string): The Url param. String lengh must be between 0 and 255 characters. Default: "http://".
 */
 type UrlObject struct {
-    Auth *AuthObject `json:"auth,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    Description string `json:"description,omitempty"`
-    ExceptionList []string `json:"exception_list,omitempty"`
-    Recurring RecurringObject `json:"recurring"`
-    Url string `json:"url"`
+	Auth               *AuthObject     `json:"auth,omitempty"`
+	CertificateProfile string          `json:"certificate_profile,omitempty"`
+	Description        string          `json:"description,omitempty"`
+	ExceptionList      []string        `json:"exception_list,omitempty"`
+	Recurring          RecurringObject `json:"recurring"`
+	Url                string          `json:"url"`
 }

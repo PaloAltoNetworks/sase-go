@@ -25,14 +25,14 @@ Param Quarantine (bool): The Quarantine param.
 Param SendToPanorama (bool): The SendToPanorama param.
 */
 type Config struct {
-    Actions []ActionsObject `json:"actions,omitempty"`
-    Description string `json:"description,omitempty"`
-    Filter string `json:"filter"`
-    ObjectId string `json:"id,omitempty"`
-    LogType string `json:"log_type"`
-    Name string `json:"name"`
-    Quarantine bool `json:"quarantine,omitempty"`
-    SendToPanorama bool `json:"send_to_panorama,omitempty"`
+	Actions        []ActionsObject `json:"actions,omitempty"`
+	Description    string          `json:"description,omitempty"`
+	Filter         string          `json:"filter"`
+	ObjectId       string          `json:"id,omitempty"`
+	LogType        string          `json:"log_type"`
+	Name           string          `json:"name"`
+	Quarantine     bool            `json:"quarantine,omitempty"`
+	SendToPanorama bool            `json:"send_to_panorama,omitempty"`
 }
 
 /*
@@ -48,8 +48,8 @@ Param Name (required, string): The Name param.
 Param Type (required, TypeObject): The Type param. TypeObject instance.
 */
 type ActionsObject struct {
-    Name string `json:"name"`
-    Type TypeObject `json:"type"`
+	Name string     `json:"name"`
+	Type TypeObject `json:"type"`
 }
 
 /*
@@ -63,7 +63,7 @@ Args:
 Param Tagging (required, TaggingObject): The Tagging param. TaggingObject instance.
 */
 type TypeObject struct {
-    Tagging TaggingObject `json:"tagging"`
+	Tagging TaggingObject `json:"tagging"`
 }
 
 /*
@@ -83,8 +83,8 @@ Param Target (required, string): The Target param.
 Param Timeout (int64): The Timeout param.
 */
 type TaggingObject struct {
-    Action string `json:"action"`
-    Tags []string `json:"tags,omitempty"`
-    Target string `json:"target"`
-    Timeout int64 `json:"timeout,omitempty"`
+	Action  string   `json:"action"`
+	Tags    []string `json:"tags,omitempty"`
+	Target  string   `json:"target"`
+	Timeout int64    `json:"timeout,omitempty"`
 }

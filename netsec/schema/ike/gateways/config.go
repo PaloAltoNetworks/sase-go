@@ -25,14 +25,14 @@ Param Protocol (required, ProtocolObject): The Protocol param. ProtocolObject in
 Param ProtocolCommon (ProtocolCommonObject): The ProtocolCommon param. ProtocolCommonObject instance.
 */
 type Config struct {
-    Authentication AuthenticationObject `json:"authentication"`
-    ObjectId string `json:"id,omitempty"`
-    LocalId *LocalIdObject `json:"local_id,omitempty"`
-    Name string `json:"name"`
-    PeerAddress PeerAddressObject `json:"peer_address"`
-    PeerId *PeerIdObject `json:"peer_id,omitempty"`
-    Protocol ProtocolObject `json:"protocol"`
-    ProtocolCommon *ProtocolCommonObject `json:"protocol_common,omitempty"`
+	Authentication AuthenticationObject  `json:"authentication"`
+	ObjectId       string                `json:"id,omitempty"`
+	LocalId        *LocalIdObject        `json:"local_id,omitempty"`
+	Name           string                `json:"name"`
+	PeerAddress    PeerAddressObject     `json:"peer_address"`
+	PeerId         *PeerIdObject         `json:"peer_id,omitempty"`
+	Protocol       ProtocolObject        `json:"protocol"`
+	ProtocolCommon *ProtocolCommonObject `json:"protocol_common,omitempty"`
 }
 
 /*
@@ -56,12 +56,12 @@ Param StrictValidationRevocation (bool): The StrictValidationRevocation param.
 Param UseManagementAsSource (bool): The UseManagementAsSource param.
 */
 type AuthenticationObject struct {
-    AllowIdPayloadMismatch bool `json:"allow_id_payload_mismatch,omitempty"`
-    CertificateProfile string `json:"certificate_profile,omitempty"`
-    LocalCertificate *LocalCertificateObject `json:"local_certificate,omitempty"`
-    PreSharedKey *PreSharedKeyObject `json:"pre_shared_key,omitempty"`
-    StrictValidationRevocation bool `json:"strict_validation_revocation,omitempty"`
-    UseManagementAsSource bool `json:"use_management_as_source,omitempty"`
+	AllowIdPayloadMismatch     bool                    `json:"allow_id_payload_mismatch,omitempty"`
+	CertificateProfile         string                  `json:"certificate_profile,omitempty"`
+	LocalCertificate           *LocalCertificateObject `json:"local_certificate,omitempty"`
+	PreSharedKey               *PreSharedKeyObject     `json:"pre_shared_key,omitempty"`
+	StrictValidationRevocation bool                    `json:"strict_validation_revocation,omitempty"`
+	UseManagementAsSource      bool                    `json:"use_management_as_source,omitempty"`
 }
 
 /*
@@ -75,7 +75,7 @@ Args:
 Param LocalCertificateName (string): The LocalCertificateName param.
 */
 type LocalCertificateObject struct {
-    LocalCertificateName string `json:"local_certificate_name,omitempty"`
+	LocalCertificateName string `json:"local_certificate_name,omitempty"`
 }
 
 /*
@@ -89,7 +89,7 @@ Args:
 Param Key (string): The Key param.
 */
 type PreSharedKeyObject struct {
-    Key string `json:"key,omitempty"`
+	Key string `json:"key,omitempty"`
 }
 
 /*
@@ -105,8 +105,8 @@ Param ObjectId (string): The ObjectId param. String lengh must be between 1 and 
 Param Type (string): The Type param.
 */
 type LocalIdObject struct {
-    ObjectId string `json:"id,omitempty"`
-    Type string `json:"type,omitempty"`
+	ObjectId string `json:"id,omitempty"`
+	Type     string `json:"type,omitempty"`
 }
 
 /*
@@ -124,9 +124,9 @@ Param Fqdn (string): The Fqdn param. String length must not exceed 255 character
 Param Ip (string): The Ip param.
 */
 type PeerAddressObject struct {
-    DynamicValue interface{} `json:"dynamic,omitempty"`
-    Fqdn string `json:"fqdn,omitempty"`
-    Ip string `json:"ip,omitempty"`
+	DynamicValue interface{} `json:"dynamic,omitempty"`
+	Fqdn         string      `json:"fqdn,omitempty"`
+	Ip           string      `json:"ip,omitempty"`
 }
 
 /*
@@ -142,8 +142,8 @@ Param ObjectId (string): The ObjectId param. String lengh must be between 1 and 
 Param Type (string): The Type param. String values: []string{"ipaddr", "keyid", "fqdn", "ufqdn"}
 */
 type PeerIdObject struct {
-    ObjectId string `json:"id,omitempty"`
-    Type string `json:"type,omitempty"`
+	ObjectId string `json:"id,omitempty"`
+	Type     string `json:"type,omitempty"`
 }
 
 /*
@@ -161,9 +161,9 @@ Param Ikev2 (Ikev2Object): The Ikev2 param. Ikev2Object instance.
 Param Version (string): The Version param. String values: []string{"ikev2-preferred", "ikev1", "ikev2"} Default: "ikev2-preferred".
 */
 type ProtocolObject struct {
-    Ikev1 *Ikev1Object `json:"ikev1,omitempty"`
-    Ikev2 *Ikev2Object `json:"ikev2,omitempty"`
-    Version string `json:"version,omitempty"`
+	Ikev1   *Ikev1Object `json:"ikev1,omitempty"`
+	Ikev2   *Ikev2Object `json:"ikev2,omitempty"`
+	Version string       `json:"version,omitempty"`
 }
 
 /*
@@ -179,8 +179,8 @@ Param Dpd (DpdObject): The Dpd param. DpdObject instance.
 Param IkeCryptoProfile (string): The IkeCryptoProfile param.
 */
 type Ikev1Object struct {
-    Dpd *DpdObject `json:"dpd,omitempty"`
-    IkeCryptoProfile string `json:"ike_crypto_profile,omitempty"`
+	Dpd              *DpdObject `json:"dpd,omitempty"`
+	IkeCryptoProfile string     `json:"ike_crypto_profile,omitempty"`
 }
 
 /*
@@ -195,7 +195,7 @@ Args:
 Param Enable (bool): The Enable param.
 */
 type DpdObject struct {
-    Enable bool `json:"enable,omitempty"`
+	Enable bool `json:"enable,omitempty"`
 }
 
 /*
@@ -211,8 +211,8 @@ Param Dpd (DpdObject): The Dpd param. DpdObject instance.
 Param IkeCryptoProfile (string): The IkeCryptoProfile param.
 */
 type Ikev2Object struct {
-    Dpd *DpdObject `json:"dpd,omitempty"`
-    IkeCryptoProfile string `json:"ike_crypto_profile,omitempty"`
+	Dpd              *DpdObject `json:"dpd,omitempty"`
+	IkeCryptoProfile string     `json:"ike_crypto_profile,omitempty"`
 }
 
 /*
@@ -230,9 +230,9 @@ Param NatTraversal (NatTraversalObject): The NatTraversal param. NatTraversalObj
 Param PassiveMode (bool): The PassiveMode param.
 */
 type ProtocolCommonObject struct {
-    Fragmentation *FragmentationObject `json:"fragmentation,omitempty"`
-    NatTraversal *NatTraversalObject `json:"nat_traversal,omitempty"`
-    PassiveMode bool `json:"passive_mode,omitempty"`
+	Fragmentation *FragmentationObject `json:"fragmentation,omitempty"`
+	NatTraversal  *NatTraversalObject  `json:"nat_traversal,omitempty"`
+	PassiveMode   bool                 `json:"passive_mode,omitempty"`
 }
 
 /*
@@ -246,7 +246,7 @@ Args:
 Param Enable (bool): The Enable param. Default: false
 */
 type FragmentationObject struct {
-    Enable bool `json:"enable,omitempty"`
+	Enable bool `json:"enable,omitempty"`
 }
 
 /*
@@ -260,5 +260,5 @@ Args:
 Param Enable (bool): The Enable param.
 */
 type NatTraversalObject struct {
-    Enable bool `json:"enable,omitempty"`
+	Enable bool `json:"enable,omitempty"`
 }

@@ -23,13 +23,13 @@ Param Source (required, list of strings): The Source param.
 Param SourceUser (list of strings): The SourceUser param.
 */
 type Config struct {
-    Action *ActionObject `json:"action,omitempty"`
-    Category []string `json:"category,omitempty"`
-    Destination []string `json:"destination,omitempty"`
-    Name string `json:"name"`
-    Service []string `json:"service"`
-    Source []string `json:"source"`
-    SourceUser []string `json:"source_user,omitempty"`
+	Action      *ActionObject `json:"action,omitempty"`
+	Category    []string      `json:"category,omitempty"`
+	Destination []string      `json:"destination,omitempty"`
+	Name        string        `json:"name"`
+	Service     []string      `json:"service"`
+	Source      []string      `json:"source"`
+	SourceUser  []string      `json:"source_user,omitempty"`
 }
 
 /*
@@ -45,8 +45,8 @@ Param Forward (ForwardObject): The Forward param. ForwardObject instance.
 Param NoPbf (interface{}): The NoPbf param. interface{} instance.
 */
 type ActionObject struct {
-    Forward *ForwardObject `json:"forward,omitempty"`
-    NoPbf interface{} `json:"no-pbf,omitempty"`
+	Forward *ForwardObject `json:"forward,omitempty"`
+	NoPbf   interface{}    `json:"no-pbf,omitempty"`
 }
 
 /*
@@ -60,5 +60,5 @@ Args:
 Param Target (string): The Target param.
 */
 type ForwardObject struct {
-    Target string `json:"target,omitempty"`
+	Target string `json:"target,omitempty"`
 }

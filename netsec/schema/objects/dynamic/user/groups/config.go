@@ -19,9 +19,9 @@ Param Name (required, string): The Name param. String length must not exceed 63 
 Param Tag (list of strings): The Tag param. Array should contain at most 64 items.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    Filter string `json:"filter"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Tag []string `json:"tag,omitempty"`
+	Description string   `json:"description,omitempty"`
+	Filter      string   `json:"filter"`
+	ObjectId    string   `json:"id,omitempty"`
+	Name        string   `json:"name"`
+	Tag         []string `json:"tag,omitempty"`
 }

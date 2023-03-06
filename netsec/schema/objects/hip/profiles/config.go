@@ -17,8 +17,8 @@ Param Match (required, string): The Match param. String length must not exceed 2
 Param Name (required, string): The Name param. String length must not exceed 31 characters.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Match string `json:"match"`
-    Name string `json:"name"`
+	Description string `json:"description,omitempty"`
+	ObjectId    string `json:"id,omitempty"`
+	Match       string `json:"match"`
+	Name        string `json:"name"`
 }

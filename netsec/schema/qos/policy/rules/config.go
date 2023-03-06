@@ -21,12 +21,12 @@ Param Name (required, string): The Name param.
 Param Schedule (string): The Schedule param.
 */
 type Config struct {
-    Action ActionObject `json:"action"`
-    Description string `json:"description,omitempty"`
-    DscpTos *DscpTosObject `json:"dscp_tos,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Schedule string `json:"schedule,omitempty"`
+	Action      ActionObject   `json:"action"`
+	Description string         `json:"description,omitempty"`
+	DscpTos     *DscpTosObject `json:"dscp_tos,omitempty"`
+	ObjectId    string         `json:"id,omitempty"`
+	Name        string         `json:"name"`
+	Schedule    string         `json:"schedule,omitempty"`
 }
 
 /*
@@ -40,7 +40,7 @@ Args:
 Param Class (string): The Class param.
 */
 type ActionObject struct {
-    Class string `json:"class,omitempty"`
+	Class string `json:"class,omitempty"`
 }
 
 /*
@@ -54,7 +54,7 @@ Args:
 Param Codepoints (list of CodepointsObject objects): The Codepoints param.
 */
 type DscpTosObject struct {
-    Codepoints []CodepointsObject `json:"codepoints,omitempty"`
+	Codepoints []CodepointsObject `json:"codepoints,omitempty"`
 }
 
 /*
@@ -70,8 +70,8 @@ Param Name (string): The Name param.
 Param Type (TypeObject): The Type param. TypeObject instance.
 */
 type CodepointsObject struct {
-    Name string `json:"name,omitempty"`
-    Type *TypeObject `json:"type,omitempty"`
+	Name string      `json:"name,omitempty"`
+	Type *TypeObject `json:"type,omitempty"`
 }
 
 /*
@@ -93,11 +93,11 @@ Param Ef (interface{}): The Ef param. interface{} instance.
 Param Tos (TosObject): The Tos param. TosObject instance.
 */
 type TypeObject struct {
-    Af *AfObject `json:"af,omitempty"`
-    Cs *CsObject `json:"cs,omitempty"`
-    Custom *CustomObject `json:"custom,omitempty"`
-    Ef interface{} `json:"ef,omitempty"`
-    Tos *TosObject `json:"tos,omitempty"`
+	Af     *AfObject     `json:"af,omitempty"`
+	Cs     *CsObject     `json:"cs,omitempty"`
+	Custom *CustomObject `json:"custom,omitempty"`
+	Ef     interface{}   `json:"ef,omitempty"`
+	Tos    *TosObject    `json:"tos,omitempty"`
 }
 
 /*
@@ -111,7 +111,7 @@ Args:
 Param Codepoint (string): The Codepoint param.
 */
 type AfObject struct {
-    Codepoint string `json:"codepoint,omitempty"`
+	Codepoint string `json:"codepoint,omitempty"`
 }
 
 /*
@@ -125,7 +125,7 @@ Args:
 Param Codepoint (string): The Codepoint param.
 */
 type CsObject struct {
-    Codepoint string `json:"codepoint,omitempty"`
+	Codepoint string `json:"codepoint,omitempty"`
 }
 
 /*
@@ -139,7 +139,7 @@ Args:
 Param Codepoint (CodepointObject): The Codepoint param. CodepointObject instance.
 */
 type CustomObject struct {
-    Codepoint *CodepointObject `json:"codepoint,omitempty"`
+	Codepoint *CodepointObject `json:"codepoint,omitempty"`
 }
 
 /*
@@ -155,8 +155,8 @@ Param BinaryValue (string): The BinaryValue param.
 Param CodepointName (string): The CodepointName param.
 */
 type CodepointObject struct {
-    BinaryValue string `json:"binary_value,omitempty"`
-    CodepointName string `json:"codepoint_name,omitempty"`
+	BinaryValue   string `json:"binary_value,omitempty"`
+	CodepointName string `json:"codepoint_name,omitempty"`
 }
 
 /*
@@ -170,5 +170,5 @@ Args:
 Param Codepoint (string): The Codepoint param.
 */
 type TosObject struct {
-    Codepoint string `json:"codepoint,omitempty"`
+	Codepoint string `json:"codepoint,omitempty"`
 }

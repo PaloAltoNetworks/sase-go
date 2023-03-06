@@ -19,11 +19,11 @@ Param Rules (list of RulesObject objects): The Rules param.
 Param ThreatException (list of ThreatExceptionObject objects): The ThreatException param.
 */
 type Config struct {
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    Rules []RulesObject `json:"rules,omitempty"`
-    ThreatException []ThreatExceptionObject `json:"threat_exception,omitempty"`
+	Description     string                  `json:"description,omitempty"`
+	ObjectId        string                  `json:"id,omitempty"`
+	Name            string                  `json:"name"`
+	Rules           []RulesObject           `json:"rules,omitempty"`
+	ThreatException []ThreatExceptionObject `json:"threat_exception,omitempty"`
 }
 
 /*
@@ -47,12 +47,12 @@ Param Severity (list of strings): The Severity param.
 Param ThreatName (string): The ThreatName param. String length must exceed 4 characters.
 */
 type RulesObject struct {
-    Action *ActionObject `json:"action,omitempty"`
-    Category string `json:"category,omitempty"`
-    Name string `json:"name,omitempty"`
-    PacketCapture string `json:"packet_capture,omitempty"`
-    Severity []string `json:"severity,omitempty"`
-    ThreatName string `json:"threat_name,omitempty"`
+	Action        *ActionObject `json:"action,omitempty"`
+	Category      string        `json:"category,omitempty"`
+	Name          string        `json:"name,omitempty"`
+	PacketCapture string        `json:"packet_capture,omitempty"`
+	Severity      []string      `json:"severity,omitempty"`
+	ThreatName    string        `json:"threat_name,omitempty"`
 }
 
 /*
@@ -78,13 +78,13 @@ Param ResetClient (interface{}): The ResetClient param. interface{} instance.
 Param ResetServer (interface{}): The ResetServer param. interface{} instance.
 */
 type ActionObject struct {
-    Alert interface{} `json:"alert,omitempty"`
-    Allow interface{} `json:"allow,omitempty"`
-    BlockIp *BlockIpObject `json:"block_ip,omitempty"`
-    Drop interface{} `json:"drop,omitempty"`
-    ResetBoth interface{} `json:"reset_both,omitempty"`
-    ResetClient interface{} `json:"reset_client,omitempty"`
-    ResetServer interface{} `json:"reset_server,omitempty"`
+	Alert       interface{}    `json:"alert,omitempty"`
+	Allow       interface{}    `json:"allow,omitempty"`
+	BlockIp     *BlockIpObject `json:"block_ip,omitempty"`
+	Drop        interface{}    `json:"drop,omitempty"`
+	ResetBoth   interface{}    `json:"reset_both,omitempty"`
+	ResetClient interface{}    `json:"reset_client,omitempty"`
+	ResetServer interface{}    `json:"reset_server,omitempty"`
 }
 
 /*
@@ -101,8 +101,8 @@ Param Duration (int64): The Duration param. Value must be between 1 and 3600.
 Param TrackBy (string): The TrackBy param. String values: []string{"source-and-destination", "source"}
 */
 type BlockIpObject struct {
-    Duration int64 `json:"duration,omitempty"`
-    TrackBy string `json:"track_by,omitempty"`
+	Duration int64  `json:"duration,omitempty"`
+	TrackBy  string `json:"track_by,omitempty"`
 }
 
 /*
@@ -124,11 +124,11 @@ Param Notes (string): The Notes param.
 Param PacketCapture (string): The PacketCapture param. String values: []string{"disable", "single-packet", "extended-capture"}
 */
 type ThreatExceptionObject struct {
-    Action *ActionObject1 `json:"action,omitempty"`
-    ExemptIp []ExemptIpObject `json:"exempt_ip,omitempty"`
-    Name string `json:"name,omitempty"`
-    Notes string `json:"notes,omitempty"`
-    PacketCapture string `json:"packet_capture,omitempty"`
+	Action        *ActionObject1   `json:"action,omitempty"`
+	ExemptIp      []ExemptIpObject `json:"exempt_ip,omitempty"`
+	Name          string           `json:"name,omitempty"`
+	Notes         string           `json:"notes,omitempty"`
+	PacketCapture string           `json:"packet_capture,omitempty"`
 }
 
 /*
@@ -156,14 +156,14 @@ Param ResetClient (interface{}): The ResetClient param. interface{} instance.
 Param ResetServer (interface{}): The ResetServer param. interface{} instance.
 */
 type ActionObject1 struct {
-    Alert interface{} `json:"alert,omitempty"`
-    Allow interface{} `json:"allow,omitempty"`
-    BlockIp *BlockIpObject `json:"block_ip,omitempty"`
-    Default interface{} `json:"default,omitempty"`
-    Drop interface{} `json:"drop,omitempty"`
-    ResetBoth interface{} `json:"reset_both,omitempty"`
-    ResetClient interface{} `json:"reset_client,omitempty"`
-    ResetServer interface{} `json:"reset_server,omitempty"`
+	Alert       interface{}    `json:"alert,omitempty"`
+	Allow       interface{}    `json:"allow,omitempty"`
+	BlockIp     *BlockIpObject `json:"block_ip,omitempty"`
+	Default     interface{}    `json:"default,omitempty"`
+	Drop        interface{}    `json:"drop,omitempty"`
+	ResetBoth   interface{}    `json:"reset_both,omitempty"`
+	ResetClient interface{}    `json:"reset_client,omitempty"`
+	ResetServer interface{}    `json:"reset_server,omitempty"`
 }
 
 /*
@@ -177,5 +177,5 @@ Args:
 Param Name (required, string): The Name param.
 */
 type ExemptIpObject struct {
-    Name string `json:"name"`
+	Name string `json:"name"`
 }

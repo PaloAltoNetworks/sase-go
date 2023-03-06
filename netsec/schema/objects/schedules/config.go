@@ -15,9 +15,9 @@ Param Name (required, string): The Name param. String length must not exceed 31 
 Param ScheduleType (required, ScheduleTypeObject): The ScheduleType param. ScheduleTypeObject instance.
 */
 type Config struct {
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    ScheduleType ScheduleTypeObject `json:"schedule_type"`
+	ObjectId     string             `json:"id,omitempty"`
+	Name         string             `json:"name"`
+	ScheduleType ScheduleTypeObject `json:"schedule_type"`
 }
 
 /*
@@ -33,8 +33,8 @@ Param NonRecurring (list of strings): The NonRecurring param.
 Param Recurring (RecurringObject): The Recurring param. RecurringObject instance.
 */
 type ScheduleTypeObject struct {
-    NonRecurring []string `json:"non_recurring,omitempty"`
-    Recurring *RecurringObject `json:"recurring,omitempty"`
+	NonRecurring []string         `json:"non_recurring,omitempty"`
+	Recurring    *RecurringObject `json:"recurring,omitempty"`
 }
 
 /*
@@ -50,8 +50,8 @@ Param Daily (list of strings): The Daily param.
 Param Weekly (WeeklyObject): The Weekly param. WeeklyObject instance.
 */
 type RecurringObject struct {
-    Daily []string `json:"daily,omitempty"`
-    Weekly *WeeklyObject `json:"weekly,omitempty"`
+	Daily  []string      `json:"daily,omitempty"`
+	Weekly *WeeklyObject `json:"weekly,omitempty"`
 }
 
 /*
@@ -77,11 +77,11 @@ Param Tuesday (list of strings): The Tuesday param.
 Param Wednesday (list of strings): The Wednesday param.
 */
 type WeeklyObject struct {
-    Friday []string `json:"friday,omitempty"`
-    Monday []string `json:"monday,omitempty"`
-    Saturday []string `json:"saturday,omitempty"`
-    Sunday []string `json:"sunday,omitempty"`
-    Thursday []string `json:"thursday,omitempty"`
-    Tuesday []string `json:"tuesday,omitempty"`
-    Wednesday []string `json:"wednesday,omitempty"`
+	Friday    []string `json:"friday,omitempty"`
+	Monday    []string `json:"monday,omitempty"`
+	Saturday  []string `json:"saturday,omitempty"`
+	Sunday    []string `json:"sunday,omitempty"`
+	Thursday  []string `json:"thursday,omitempty"`
+	Tuesday   []string `json:"tuesday,omitempty"`
+	Wednesday []string `json:"wednesday,omitempty"`
 }

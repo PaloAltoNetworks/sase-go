@@ -23,13 +23,13 @@ Param Lifetime (LifetimeObject): The Lifetime param. LifetimeObject instance.
 Param Name (required, string): The Name param. String length must not exceed 31 characters.
 */
 type Config struct {
-    AuthenticationMultiple int64 `json:"authentication_multiple,omitempty"`
-    DhGroup []string `json:"dh_group"`
-    Encryption []string `json:"encryption"`
-    Hash []string `json:"hash"`
-    ObjectId string `json:"id,omitempty"`
-    Lifetime *LifetimeObject `json:"lifetime,omitempty"`
-    Name string `json:"name"`
+	AuthenticationMultiple int64           `json:"authentication_multiple,omitempty"`
+	DhGroup                []string        `json:"dh_group"`
+	Encryption             []string        `json:"encryption"`
+	Hash                   []string        `json:"hash"`
+	ObjectId               string          `json:"id,omitempty"`
+	Lifetime               *LifetimeObject `json:"lifetime,omitempty"`
+	Name                   string          `json:"name"`
 }
 
 /*
@@ -49,8 +49,8 @@ Param Minutes (int64): The Minutes param. Value must be between 3 and 65535.
 Param Seconds (int64): The Seconds param. Value must be between 180 and 65535.
 */
 type LifetimeObject struct {
-    Days int64 `json:"days,omitempty"`
-    Hours int64 `json:"hours,omitempty"`
-    Minutes int64 `json:"minutes,omitempty"`
-    Seconds int64 `json:"seconds,omitempty"`
+	Days    int64 `json:"days,omitempty"`
+	Hours   int64 `json:"hours,omitempty"`
+	Minutes int64 `json:"minutes,omitempty"`
+	Seconds int64 `json:"seconds,omitempty"`
 }

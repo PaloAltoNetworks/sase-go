@@ -39,19 +39,19 @@ Param Tag (list of strings): The Tag param.
 Param To (required, list of strings): The To param.
 */
 type Config struct {
-    Application string `json:"application"`
-    Description string `json:"description,omitempty"`
-    Destination []string `json:"destination"`
-    Disabled bool `json:"disabled,omitempty"`
-    From []string `json:"from"`
-    GroupTag string `json:"group_tag,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name"`
-    NegateDestination bool `json:"negate_destination,omitempty"`
-    NegateSource bool `json:"negate_source,omitempty"`
-    Port int64 `json:"port"`
-    Protocol string `json:"protocol"`
-    Source []string `json:"source"`
-    Tag []string `json:"tag,omitempty"`
-    To []string `json:"to"`
+	Application       string   `json:"application"`
+	Description       string   `json:"description,omitempty"`
+	Destination       []string `json:"destination"`
+	Disabled          bool     `json:"disabled,omitempty"`
+	From              []string `json:"from"`
+	GroupTag          string   `json:"group_tag,omitempty"`
+	ObjectId          string   `json:"id,omitempty"`
+	Name              string   `json:"name"`
+	NegateDestination bool     `json:"negate_destination,omitempty"`
+	NegateSource      bool     `json:"negate_source,omitempty"`
+	Port              int64    `json:"port"`
+	Protocol          string   `json:"protocol"`
+	Source            []string `json:"source"`
+	Tag               []string `json:"tag,omitempty"`
+	To                []string `json:"to"`
 }

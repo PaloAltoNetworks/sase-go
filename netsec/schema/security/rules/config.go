@@ -49,26 +49,26 @@ Param Tag (list of strings): The Tag param.
 Param To (required, list of strings): The To param.
 */
 type Config struct {
-    Action string `json:"action"`
-    Application []string `json:"application"`
-    Category []string `json:"category"`
-    Description string `json:"description,omitempty"`
-    Destination []string `json:"destination"`
-    DestinationHip []string `json:"destination_hip,omitempty"`
-    Disabled bool `json:"disabled,omitempty"`
-    From []string `json:"from"`
-    ObjectId string `json:"id,omitempty"`
-    LogSetting string `json:"log_setting,omitempty"`
-    Name string `json:"name"`
-    NegateDestination bool `json:"negate_destination,omitempty"`
-    NegateSource bool `json:"negate_source,omitempty"`
-    ProfileSetting *ProfileSettingObject `json:"profile_setting,omitempty"`
-    Service []string `json:"service"`
-    Source []string `json:"source"`
-    SourceHip []string `json:"source_hip,omitempty"`
-    SourceUser []string `json:"source_user"`
-    Tag []string `json:"tag,omitempty"`
-    To []string `json:"to"`
+	Action            string                `json:"action"`
+	Application       []string              `json:"application"`
+	Category          []string              `json:"category"`
+	Description       string                `json:"description,omitempty"`
+	Destination       []string              `json:"destination"`
+	DestinationHip    []string              `json:"destination_hip,omitempty"`
+	Disabled          bool                  `json:"disabled,omitempty"`
+	From              []string              `json:"from"`
+	ObjectId          string                `json:"id,omitempty"`
+	LogSetting        string                `json:"log_setting,omitempty"`
+	Name              string                `json:"name"`
+	NegateDestination bool                  `json:"negate_destination,omitempty"`
+	NegateSource      bool                  `json:"negate_source,omitempty"`
+	ProfileSetting    *ProfileSettingObject `json:"profile_setting,omitempty"`
+	Service           []string              `json:"service"`
+	Source            []string              `json:"source"`
+	SourceHip         []string              `json:"source_hip,omitempty"`
+	SourceUser        []string              `json:"source_user"`
+	Tag               []string              `json:"tag,omitempty"`
+	To                []string              `json:"to"`
 }
 
 /*
@@ -82,5 +82,5 @@ Args:
 Param Group (list of strings): The Group param.
 */
 type ProfileSettingObject struct {
-    Group []string `json:"group,omitempty"`
+	Group []string `json:"group,omitempty"`
 }

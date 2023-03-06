@@ -15,7 +15,7 @@ Param Os (required, string): The Os param. String values: []string{"Any", "Andro
 Param UserCredentialOrClientCertRequired (required, bool): The UserCredentialOrClientCertRequired param.
 */
 type Config struct {
-    AuthenticationProfile string `json:"authentication_profile"`
-    Os string `json:"os"`
-    UserCredentialOrClientCertRequired bool `json:"user_credential_or_client_cert_required"`
+	AuthenticationProfile              string `json:"authentication_profile"`
+	Os                                 string `json:"os"`
+	UserCredentialOrClientCertRequired bool   `json:"user_credential_or_client_cert_required"`
 }

@@ -17,8 +17,8 @@ Param Primary (required, string): The Primary param.
 Param Secondary (string): The Secondary param.
 */
 type Config struct {
-    DomainName []string `json:"domain_name"`
-    Name string `json:"name"`
-    Primary string `json:"primary"`
-    Secondary string `json:"secondary,omitempty"`
+	DomainName []string `json:"domain_name"`
+	Name       string   `json:"name"`
+	Primary    string   `json:"primary"`
+	Secondary  string   `json:"secondary,omitempty"`
 }

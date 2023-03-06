@@ -5,38 +5,37 @@ package globalsettings
 // []string{"netsec", "service", "v1", "mobileagent", "globalsettings"}
 
 import (
-    "context"
+	"context"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    wajgxii "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/global/settings"
+	"github.com/paloaltonetworks/sase-go/api"
+	wajgxii "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/global/settings"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // GlobalSettingsGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/mobile-agent/global-settings
-func (c *Client) GlobalSettingsGet(ctx context.Context)  (wajgxii.Config, error) {
-    // Variables.
-    var err error
-    var ans wajgxii.Config
-    path := "/sse/config/v1/mobile-agent/global-settings"
+func (c *Client) GlobalSettingsGet(ctx context.Context) (wajgxii.Config, error) {
+	// Variables.
+	var err error
+	var ans wajgxii.Config
+	path := "/sse/config/v1/mobile-agent/global-settings"
 
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
-
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }
 
 // GlobalSettingsPutInput takes some input.
@@ -44,22 +43,21 @@ func (c *Client) GlobalSettingsGet(ctx context.Context)  (wajgxii.Config, error)
 // path: []string(nil)
 // query: []string(nil)
 type GlobalSettingsPutInput struct {
-    Config wajgxii.Config
+	Config wajgxii.Config
 }
 
 // GlobalSettingsPut performs a the given operation.
 //
 // Method: put
 // URI: /sse/config/v1/mobile-agent/global-settings
-func (c *Client) GlobalSettingsPut(ctx context.Context, input GlobalSettingsPutInput)  (error) {
-    // Variables.
-    var err error
-    path := "/sse/config/v1/mobile-agent/global-settings"
+func (c *Client) GlobalSettingsPut(ctx context.Context, input GlobalSettingsPutInput) error {
+	// Variables.
+	var err error
+	path := "/sse/config/v1/mobile-agent/global-settings"
 
+	// Execute the command.
+	_, err = c.client.Do(ctx, "PUT", path, nil, input.Config, nil)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "PUT", path, nil, input.Config, nil)
-
-    // Done.
-    return err
+	// Done.
+	return err
 }

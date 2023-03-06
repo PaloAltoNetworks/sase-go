@@ -29,14 +29,14 @@ Param Updated (int64): The Updated param.
 Param Version (string): The Version param.
 */
 type Config struct {
-    Admin string `json:"admin,omitempty"`
-    Created int64 `json:"created,omitempty"`
-    Date string `json:"date,omitempty"`
-    Deleted int64 `json:"deleted,omitempty"`
-    Description string `json:"description,omitempty"`
-    ObjectId int64 `json:"id,omitempty"`
-    Scope string `json:"scope,omitempty"`
-    SwgConfig string `json:"swg_config,omitempty"`
-    Updated int64 `json:"updated,omitempty"`
-    Version string `json:"version,omitempty"`
+	Admin       string `json:"admin,omitempty"`
+	Created     int64  `json:"created,omitempty"`
+	Date        string `json:"date,omitempty"`
+	Deleted     int64  `json:"deleted,omitempty"`
+	Description string `json:"description,omitempty"`
+	ObjectId    int64  `json:"id,omitempty"`
+	Scope       string `json:"scope,omitempty"`
+	SwgConfig   string `json:"swg_config,omitempty"`
+	Updated     int64  `json:"updated,omitempty"`
+	Version     string `json:"version,omitempty"`
 }

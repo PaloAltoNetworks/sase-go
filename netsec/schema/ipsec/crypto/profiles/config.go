@@ -23,13 +23,13 @@ Param Lifetime (required, LifetimeObject): The Lifetime param. LifetimeObject in
 Param Name (required, string): The Name param. String length must not exceed 31 characters.
 */
 type Config struct {
-    Ah *AhObject `json:"ah,omitempty"`
-    DhGroup string `json:"dh_group,omitempty"`
-    Esp *EspObject `json:"esp,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Lifesize *LifesizeObject `json:"lifesize,omitempty"`
-    Lifetime LifetimeObject `json:"lifetime"`
-    Name string `json:"name"`
+	Ah       *AhObject       `json:"ah,omitempty"`
+	DhGroup  string          `json:"dh_group,omitempty"`
+	Esp      *EspObject      `json:"esp,omitempty"`
+	ObjectId string          `json:"id,omitempty"`
+	Lifesize *LifesizeObject `json:"lifesize,omitempty"`
+	Lifetime LifetimeObject  `json:"lifetime"`
+	Name     string          `json:"name"`
 }
 
 /*
@@ -43,7 +43,7 @@ Args:
 Param Authentication (required, list of strings): The Authentication param.
 */
 type AhObject struct {
-    Authentication []string `json:"authentication"`
+	Authentication []string `json:"authentication"`
 }
 
 /*
@@ -59,8 +59,8 @@ Param Authentication (required, list of strings): The Authentication param.
 Param Encryption (required, list of strings): The Encryption param.
 */
 type EspObject struct {
-    Authentication []string `json:"authentication"`
-    Encryption []string `json:"encryption"`
+	Authentication []string `json:"authentication"`
+	Encryption     []string `json:"encryption"`
 }
 
 /*
@@ -80,10 +80,10 @@ Param Mb (int64): The Mb param. Value must be between 1 and 65535.
 Param Tb (int64): The Tb param. Value must be between 1 and 65535.
 */
 type LifesizeObject struct {
-    Gb int64 `json:"gb,omitempty"`
-    Kb int64 `json:"kb,omitempty"`
-    Mb int64 `json:"mb,omitempty"`
-    Tb int64 `json:"tb,omitempty"`
+	Gb int64 `json:"gb,omitempty"`
+	Kb int64 `json:"kb,omitempty"`
+	Mb int64 `json:"mb,omitempty"`
+	Tb int64 `json:"tb,omitempty"`
 }
 
 /*
@@ -103,8 +103,8 @@ Param Minutes (int64): The Minutes param. Value must be between 3 and 65535.
 Param Seconds (int64): The Seconds param. Value must be between 180 and 65535.
 */
 type LifetimeObject struct {
-    Days int64 `json:"days,omitempty"`
-    Hours int64 `json:"hours,omitempty"`
-    Minutes int64 `json:"minutes,omitempty"`
-    Seconds int64 `json:"seconds,omitempty"`
+	Days    int64 `json:"days,omitempty"`
+	Hours   int64 `json:"hours,omitempty"`
+	Minutes int64 `json:"minutes,omitempty"`
+	Seconds int64 `json:"seconds,omitempty"`
 }

@@ -21,12 +21,12 @@ Param RoutingPreference (RoutingPreferenceObject): The RoutingPreference param. 
 Param WithdrawStaticRoute (bool): The WithdrawStaticRoute param.
 */
 type Config struct {
-    AcceptRouteOverSC bool `json:"accept_route_over_SC,omitempty"`
-    AddHostRouteToIkePeer bool `json:"add_host_route_to_ike_peer,omitempty"`
-    BackboneRouting string `json:"backbone_routing,omitempty"`
-    OutboundRoutesForServices []string `json:"outbound_routes_for_services,omitempty"`
-    RoutingPreference *RoutingPreferenceObject `json:"routing_preference,omitempty"`
-    WithdrawStaticRoute bool `json:"withdraw_static_route,omitempty"`
+	AcceptRouteOverSC         bool                     `json:"accept_route_over_SC,omitempty"`
+	AddHostRouteToIkePeer     bool                     `json:"add_host_route_to_ike_peer,omitempty"`
+	BackboneRouting           string                   `json:"backbone_routing,omitempty"`
+	OutboundRoutesForServices []string                 `json:"outbound_routes_for_services,omitempty"`
+	RoutingPreference         *RoutingPreferenceObject `json:"routing_preference,omitempty"`
+	WithdrawStaticRoute       bool                     `json:"withdraw_static_route,omitempty"`
 }
 
 /*
@@ -42,6 +42,6 @@ Param Default (interface{}): The Default param. interface{} instance.
 Param HotPotatoRouting (interface{}): The HotPotatoRouting param. interface{} instance.
 */
 type RoutingPreferenceObject struct {
-    Default interface{} `json:"default,omitempty"`
-    HotPotatoRouting interface{} `json:"hot_potato_routing,omitempty"`
+	Default          interface{} `json:"default,omitempty"`
+	HotPotatoRouting interface{} `json:"hot_potato_routing,omitempty"`
 }

@@ -5,36 +5,35 @@ package licensetypes
 // []string{"netsec", "service", "v1", "licensetypes"}
 
 import (
-    "context"
+	"context"
 
-    "github.com/paloaltonetworks/sase-go/api"
-    oYXHuUA "github.com/paloaltonetworks/sase-go/netsec/schema/license/types"
+	"github.com/paloaltonetworks/sase-go/api"
+	oYXHuUA "github.com/paloaltonetworks/sase-go/netsec/schema/license/types"
 )
 
 // Client is the client for this namespace.
 type Client struct {
-    client api.Client
+	client api.Client
 }
 
 // NewClient returns a new client for this namespace.
 func NewClient(client api.Client) *Client {
-    return &Client{client: client}
+	return &Client{client: client}
 }
 
 // LicenseTypesGet performs a the given operation.
 //
 // Method: get
 // URI: /sse/config/v1/license-types
-func (c *Client) LicenseTypesGet(ctx context.Context)  (oYXHuUA.Config, error) {
-    // Variables.
-    var err error
-    var ans oYXHuUA.Config
-    path := "/sse/config/v1/license-types"
+func (c *Client) LicenseTypesGet(ctx context.Context) (oYXHuUA.Config, error) {
+	// Variables.
+	var err error
+	var ans oYXHuUA.Config
+	path := "/sse/config/v1/license-types"
 
+	// Execute the command.
+	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
 
-    // Execute the command.
-    _, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
-
-    // Done.
-    return ans, err
+	// Done.
+	return ans, err
 }

@@ -25,14 +25,14 @@ Param RegionIpv6 (required, RegionIpv6Object): The RegionIpv6 param. RegionIpv6O
 Param UdpQueries (UdpQueriesObject): The UdpQueries param. UdpQueriesObject instance.
 */
 type Config struct {
-    DnsServers []DnsServersObject `json:"dns_servers"`
-    EnableWins *EnableWinsObject `json:"enable_wins,omitempty"`
-    IpPools []IpPoolsObject `json:"ip_pools"`
-    Ipv6 bool `json:"ipv6,omitempty"`
-    Name string `json:"name"`
-    PortalHostname PortalHostnameObject `json:"portal_hostname"`
-    RegionIpv6 RegionIpv6Object `json:"region_ipv6"`
-    UdpQueries *UdpQueriesObject `json:"udp_queries,omitempty"`
+	DnsServers     []DnsServersObject   `json:"dns_servers"`
+	EnableWins     *EnableWinsObject    `json:"enable_wins,omitempty"`
+	IpPools        []IpPoolsObject      `json:"ip_pools"`
+	Ipv6           bool                 `json:"ipv6,omitempty"`
+	Name           string               `json:"name"`
+	PortalHostname PortalHostnameObject `json:"portal_hostname"`
+	RegionIpv6     RegionIpv6Object     `json:"region_ipv6"`
+	UdpQueries     *UdpQueriesObject    `json:"udp_queries,omitempty"`
 }
 
 /*
@@ -54,11 +54,11 @@ Param PrimaryPublicDns (PrimaryPublicDnsObject): The PrimaryPublicDns param. Pri
 Param SecondaryPublicDns (SecondaryPublicDnsObject): The SecondaryPublicDns param. SecondaryPublicDnsObject instance.
 */
 type DnsServersObject struct {
-    DnsSuffix []string `json:"dns_suffix,omitempty"`
-    InternalDnsMatch []InternalDnsMatchObject `json:"internal_dns_match,omitempty"`
-    Name string `json:"name,omitempty"`
-    PrimaryPublicDns *PrimaryPublicDnsObject `json:"primary_public_dns,omitempty"`
-    SecondaryPublicDns *SecondaryPublicDnsObject `json:"secondary_public_dns,omitempty"`
+	DnsSuffix          []string                  `json:"dns_suffix,omitempty"`
+	InternalDnsMatch   []InternalDnsMatchObject  `json:"internal_dns_match,omitempty"`
+	Name               string                    `json:"name,omitempty"`
+	PrimaryPublicDns   *PrimaryPublicDnsObject   `json:"primary_public_dns,omitempty"`
+	SecondaryPublicDns *SecondaryPublicDnsObject `json:"secondary_public_dns,omitempty"`
 }
 
 /*
@@ -78,10 +78,10 @@ Param Primary (PrimaryObject): The Primary param. PrimaryObject instance.
 Param Secondary (SecondaryObject): The Secondary param. SecondaryObject instance.
 */
 type InternalDnsMatchObject struct {
-    DomainList []string `json:"domain_list,omitempty"`
-    Name string `json:"name,omitempty"`
-    Primary *PrimaryObject `json:"primary,omitempty"`
-    Secondary *SecondaryObject `json:"secondary,omitempty"`
+	DomainList []string         `json:"domain_list,omitempty"`
+	Name       string           `json:"name,omitempty"`
+	Primary    *PrimaryObject   `json:"primary,omitempty"`
+	Secondary  *SecondaryObject `json:"secondary,omitempty"`
 }
 
 /*
@@ -97,8 +97,8 @@ Param DnsServer (interface{}): The DnsServer param. interface{} instance.
 Param UseCloudDefault (interface{}): The UseCloudDefault param. interface{} instance.
 */
 type PrimaryObject struct {
-    DnsServer interface{} `json:"dns_server,omitempty"`
-    UseCloudDefault interface{} `json:"use_cloud_default,omitempty"`
+	DnsServer       interface{} `json:"dns_server,omitempty"`
+	UseCloudDefault interface{} `json:"use_cloud_default,omitempty"`
 }
 
 /*
@@ -114,8 +114,8 @@ Param DnsServer (interface{}): The DnsServer param. interface{} instance.
 Param UseCloudDefault (interface{}): The UseCloudDefault param. interface{} instance.
 */
 type SecondaryObject struct {
-    DnsServer interface{} `json:"dns_server,omitempty"`
-    UseCloudDefault interface{} `json:"use_cloud_default,omitempty"`
+	DnsServer       interface{} `json:"dns_server,omitempty"`
+	UseCloudDefault interface{} `json:"use_cloud_default,omitempty"`
 }
 
 /*
@@ -129,7 +129,7 @@ Args:
 Param DnsServer (string): The DnsServer param.
 */
 type PrimaryPublicDnsObject struct {
-    DnsServer string `json:"dns_server,omitempty"`
+	DnsServer string `json:"dns_server,omitempty"`
 }
 
 /*
@@ -143,7 +143,7 @@ Args:
 Param DnsServer (string): The DnsServer param.
 */
 type SecondaryPublicDnsObject struct {
-    DnsServer string `json:"dns_server,omitempty"`
+	DnsServer string `json:"dns_server,omitempty"`
 }
 
 /*
@@ -159,8 +159,8 @@ Param No (interface{}): The No param. interface{} instance.
 Param Yes (YesObject): The Yes param. YesObject instance.
 */
 type EnableWinsObject struct {
-    No interface{} `json:"no,omitempty"`
-    Yes *YesObject `json:"yes,omitempty"`
+	No  interface{} `json:"no,omitempty"`
+	Yes *YesObject  `json:"yes,omitempty"`
 }
 
 /*
@@ -174,7 +174,7 @@ Args:
 Param WinsServers (list of WinsServersObject objects): The WinsServers param.
 */
 type YesObject struct {
-    WinsServers []WinsServersObject `json:"wins_servers,omitempty"`
+	WinsServers []WinsServersObject `json:"wins_servers,omitempty"`
 }
 
 /*
@@ -192,9 +192,9 @@ Param Primary (string): The Primary param.
 Param Secondary (string): The Secondary param.
 */
 type WinsServersObject struct {
-    Name string `json:"name,omitempty"`
-    Primary string `json:"primary,omitempty"`
-    Secondary string `json:"secondary,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Primary   string `json:"primary,omitempty"`
+	Secondary string `json:"secondary,omitempty"`
 }
 
 /*
@@ -210,8 +210,8 @@ Param IpPool (list of strings): The IpPool param.
 Param Name (string): The Name param.
 */
 type IpPoolsObject struct {
-    IpPool []string `json:"ip_pool,omitempty"`
-    Name string `json:"name,omitempty"`
+	IpPool []string `json:"ip_pool,omitempty"`
+	Name   string   `json:"name,omitempty"`
 }
 
 /*
@@ -227,8 +227,8 @@ Param CustomDomain (CustomDomainObject): The CustomDomain param. CustomDomainObj
 Param DefaultDomain (DefaultDomainObject): The DefaultDomain param. DefaultDomainObject instance.
 */
 type PortalHostnameObject struct {
-    CustomDomain *CustomDomainObject `json:"custom_domain,omitempty"`
-    DefaultDomain *DefaultDomainObject `json:"default_domain,omitempty"`
+	CustomDomain  *CustomDomainObject  `json:"custom_domain,omitempty"`
+	DefaultDomain *DefaultDomainObject `json:"default_domain,omitempty"`
 }
 
 /*
@@ -246,9 +246,9 @@ Param Hostname (string): The Hostname param.
 Param SslTlsServiceProfile (string): The SslTlsServiceProfile param.
 */
 type CustomDomainObject struct {
-    Cname string `json:"cname,omitempty"`
-    Hostname string `json:"hostname,omitempty"`
-    SslTlsServiceProfile string `json:"ssl_tls_service_profile,omitempty"`
+	Cname                string `json:"cname,omitempty"`
+	Hostname             string `json:"hostname,omitempty"`
+	SslTlsServiceProfile string `json:"ssl_tls_service_profile,omitempty"`
 }
 
 /*
@@ -262,7 +262,7 @@ Args:
 Param Hostname (string): The Hostname param.
 */
 type DefaultDomainObject struct {
-    Hostname string `json:"hostname,omitempty"`
+	Hostname string `json:"hostname,omitempty"`
 }
 
 /*
@@ -276,7 +276,7 @@ Args:
 Param Region (list of RegionObject objects): The Region param.
 */
 type RegionIpv6Object struct {
-    Region []RegionObject `json:"region,omitempty"`
+	Region []RegionObject `json:"region,omitempty"`
 }
 
 /*
@@ -292,8 +292,8 @@ Param Locations (list of strings): The Locations param.
 Param Name (string): The Name param.
 */
 type RegionObject struct {
-    Locations []string `json:"locations,omitempty"`
-    Name string `json:"name,omitempty"`
+	Locations []string `json:"locations,omitempty"`
+	Name      string   `json:"name,omitempty"`
 }
 
 /*
@@ -307,7 +307,7 @@ Args:
 Param Retries (RetriesObject): The Retries param. RetriesObject instance.
 */
 type UdpQueriesObject struct {
-    Retries *RetriesObject `json:"retries,omitempty"`
+	Retries *RetriesObject `json:"retries,omitempty"`
 }
 
 /*
@@ -323,6 +323,6 @@ Param Attempts (int64): The Attempts param. Value must be between 1 and 30.
 Param Interval (int64): The Interval param. Value must be between 1 and 30.
 */
 type RetriesObject struct {
-    Attempts int64 `json:"attempts,omitempty"`
-    Interval int64 `json:"interval,omitempty"`
+	Attempts int64 `json:"attempts,omitempty"`
+	Interval int64 `json:"interval,omitempty"`
 }

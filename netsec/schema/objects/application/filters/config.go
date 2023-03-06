@@ -49,26 +49,26 @@ Param TunnelsOtherApps (bool): The TunnelsOtherApps param.
 Param UsedByMalware (bool): The UsedByMalware param.
 */
 type Config struct {
-    Category []string `json:"category,omitempty"`
-    Evasive bool `json:"evasive,omitempty"`
-    ExcessiveBandwidthUse bool `json:"excessive_bandwidth_use,omitempty"`
-    Exclude []string `json:"exclude,omitempty"`
-    HasKnownVulnerabilities bool `json:"has_known_vulnerabilities,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    IsSaas bool `json:"is_saas,omitempty"`
-    Name string `json:"name"`
-    NewAppid bool `json:"new_appid,omitempty"`
-    Pervasive bool `json:"pervasive,omitempty"`
-    ProneToMisuse bool `json:"prone_to_misuse,omitempty"`
-    Risk []int64 `json:"risk,omitempty"`
-    SaasCertifications []string `json:"saas_certifications,omitempty"`
-    SaasRisk []string `json:"saas_risk,omitempty"`
-    Subcategory []string `json:"subcategory,omitempty"`
-    Tagging *TaggingObject `json:"tagging,omitempty"`
-    Technology []string `json:"technology,omitempty"`
-    TransfersFiles bool `json:"transfers_files,omitempty"`
-    TunnelsOtherApps bool `json:"tunnels_other_apps,omitempty"`
-    UsedByMalware bool `json:"used_by_malware,omitempty"`
+	Category                []string       `json:"category,omitempty"`
+	Evasive                 bool           `json:"evasive,omitempty"`
+	ExcessiveBandwidthUse   bool           `json:"excessive_bandwidth_use,omitempty"`
+	Exclude                 []string       `json:"exclude,omitempty"`
+	HasKnownVulnerabilities bool           `json:"has_known_vulnerabilities,omitempty"`
+	ObjectId                string         `json:"id,omitempty"`
+	IsSaas                  bool           `json:"is_saas,omitempty"`
+	Name                    string         `json:"name"`
+	NewAppid                bool           `json:"new_appid,omitempty"`
+	Pervasive               bool           `json:"pervasive,omitempty"`
+	ProneToMisuse           bool           `json:"prone_to_misuse,omitempty"`
+	Risk                    []int64        `json:"risk,omitempty"`
+	SaasCertifications      []string       `json:"saas_certifications,omitempty"`
+	SaasRisk                []string       `json:"saas_risk,omitempty"`
+	Subcategory             []string       `json:"subcategory,omitempty"`
+	Tagging                 *TaggingObject `json:"tagging,omitempty"`
+	Technology              []string       `json:"technology,omitempty"`
+	TransfersFiles          bool           `json:"transfers_files,omitempty"`
+	TunnelsOtherApps        bool           `json:"tunnels_other_apps,omitempty"`
+	UsedByMalware           bool           `json:"used_by_malware,omitempty"`
 }
 
 /*
@@ -84,6 +84,6 @@ Param NoTag (bool): The NoTag param.
 Param Tag (list of strings): The Tag param.
 */
 type TaggingObject struct {
-    NoTag bool `json:"no_tag,omitempty"`
-    Tag []string `json:"tag,omitempty"`
+	NoTag bool     `json:"no_tag,omitempty"`
+	Tag   []string `json:"tag,omitempty"`
 }

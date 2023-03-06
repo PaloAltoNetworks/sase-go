@@ -17,10 +17,10 @@ Param ObjectId (string, read-only): The ObjectId param. Example: "abcd-1234".
 Param Name (string): The Name param.
 */
 type Config struct {
-    BotnetDomains *BotnetDomainsObject `json:"botnet_domains,omitempty"`
-    Description string `json:"description,omitempty"`
-    ObjectId string `json:"id,omitempty"`
-    Name string `json:"name,omitempty"`
+	BotnetDomains *BotnetDomainsObject `json:"botnet_domains,omitempty"`
+	Description   string               `json:"description,omitempty"`
+	ObjectId      string               `json:"id,omitempty"`
+	Name          string               `json:"name,omitempty"`
 }
 
 /*
@@ -40,10 +40,10 @@ Param Sinkhole (SinkholeObject): The Sinkhole param. SinkholeObject instance.
 Param Whitelist (list of WhitelistObject objects): The Whitelist param.
 */
 type BotnetDomainsObject struct {
-    DnsSecurityCategories []DnsSecurityCategoriesObject `json:"dns_security_categories,omitempty"`
-    Lists []ListsObject `json:"lists,omitempty"`
-    Sinkhole *SinkholeObject `json:"sinkhole,omitempty"`
-    Whitelist []WhitelistObject `json:"whitelist,omitempty"`
+	DnsSecurityCategories []DnsSecurityCategoriesObject `json:"dns_security_categories,omitempty"`
+	Lists                 []ListsObject                 `json:"lists,omitempty"`
+	Sinkhole              *SinkholeObject               `json:"sinkhole,omitempty"`
+	Whitelist             []WhitelistObject             `json:"whitelist,omitempty"`
 }
 
 /*
@@ -63,10 +63,10 @@ Param Name (string): The Name param.
 Param PacketCapture (string): The PacketCapture param. String values: []string{"disable", "single-packet", "extended-capture"}
 */
 type DnsSecurityCategoriesObject struct {
-    Action string `json:"action,omitempty"`
-    LogLevel string `json:"log_level,omitempty"`
-    Name string `json:"name,omitempty"`
-    PacketCapture string `json:"packet_capture,omitempty"`
+	Action        string `json:"action,omitempty"`
+	LogLevel      string `json:"log_level,omitempty"`
+	Name          string `json:"name,omitempty"`
+	PacketCapture string `json:"packet_capture,omitempty"`
 }
 
 /*
@@ -84,9 +84,9 @@ Param Name (required, string): The Name param.
 Param PacketCapture (string): The PacketCapture param. String values: []string{"disable", "single-packet", "extended-capture"}
 */
 type ListsObject struct {
-    Action *ActionObject `json:"action,omitempty"`
-    Name string `json:"name"`
-    PacketCapture string `json:"packet_capture,omitempty"`
+	Action        *ActionObject `json:"action,omitempty"`
+	Name          string        `json:"name"`
+	PacketCapture string        `json:"packet_capture,omitempty"`
 }
 
 /*
@@ -106,10 +106,10 @@ Param Block (interface{}): The Block param. interface{} instance.
 Param Sinkhole (interface{}): The Sinkhole param. interface{} instance.
 */
 type ActionObject struct {
-    Alert interface{} `json:"alert,omitempty"`
-    Allow interface{} `json:"allow,omitempty"`
-    Block interface{} `json:"block,omitempty"`
-    Sinkhole interface{} `json:"sinkhole,omitempty"`
+	Alert    interface{} `json:"alert,omitempty"`
+	Allow    interface{} `json:"allow,omitempty"`
+	Block    interface{} `json:"block,omitempty"`
+	Sinkhole interface{} `json:"sinkhole,omitempty"`
 }
 
 /*
@@ -125,8 +125,8 @@ Param Ipv4Address (string): The Ipv4Address param. String values: []string{"127.
 Param Ipv6Address (string): The Ipv6Address param. String values: []string{"::1"}
 */
 type SinkholeObject struct {
-    Ipv4Address string `json:"ipv4_address,omitempty"`
-    Ipv6Address string `json:"ipv6_address,omitempty"`
+	Ipv4Address string `json:"ipv4_address,omitempty"`
+	Ipv6Address string `json:"ipv6_address,omitempty"`
 }
 
 /*
@@ -142,6 +142,6 @@ Param Description (string): The Description param.
 Param Name (required, string): The Name param.
 */
 type WhitelistObject struct {
-    Description string `json:"description,omitempty"`
-    Name string `json:"name"`
+	Description string `json:"description,omitempty"`
+	Name        string `json:"name"`
 }
