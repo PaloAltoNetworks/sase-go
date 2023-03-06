@@ -6,7 +6,6 @@ package jobs
 
 import (
     "context"
-    "math"
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"

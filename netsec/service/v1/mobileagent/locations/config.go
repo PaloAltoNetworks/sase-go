@@ -6,7 +6,6 @@ package locations
 
 import (
     "context"
-    "math"
     "net/url"
 
     "github.com/paloaltonetworks/sase-go/api"

@@ -12,7 +12,7 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    qvhTWvz "github.com/paloaltonetworks/sase-go/netsec/schema/objects/addresses"
+    evToKLE "github.com/paloaltonetworks/sase-go/netsec/schema/objects/addresses"
 )
 
 // Client is the client for this namespace.
@@ -31,17 +31,17 @@ func NewClient(client api.Client) *Client {
 // query: []string{"folder"}
 type CreateInput struct {
     Folder string
-    Config qvhTWvz.Config
+    Config evToKLE.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/addresses
-func (c *Client) Create(ctx context.Context, input CreateInput)  (qvhTWvz.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (evToKLE.Config, error) {
     // Variables.
     var err error
-    var ans qvhTWvz.Config
+    var ans evToKLE.Config
     path := "/sse/config/v1/addresses"
 
     // Query parameter handling.
@@ -67,10 +67,10 @@ type DeleteInput struct {
 //
 // Method: delete
 // URI: /sse/config/v1/addresses/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (qvhTWvz.Config, error) {
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (evToKLE.Config, error) {
     // Variables.
     var err error
-    var ans qvhTWvz.Config
+    var ans evToKLE.Config
     path := "/sse/config/v1/addresses/{id}"
 
     // Path param handling.
@@ -111,7 +111,7 @@ Param Offset (int64): The Offset param. Default: 0
 Param Total (int64): The Total param.
 */
 type ListOutput struct {
-    Data []qvhTWvz.Config `json:"data,omitempty"`
+    Data []evToKLE.Config `json:"data,omitempty"`
     Limit int64 `json:"limit,omitempty"`
     Offset int64 `json:"offset,omitempty"`
     Total int64 `json:"total,omitempty"`
@@ -160,7 +160,7 @@ type listResponse struct {
 func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, error) {
     var ans ListOutput
     var err error
-    var items map[string] qvhTWvz.Config
+    var items map[string] evToKLE.Config
     everything := ListInput{
         Limit: api.Int(api.MaxLimit),
         Folder: input.Folder,
@@ -175,7 +175,7 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
         }
 
         total := int(ans.Total)
-        items = make(map[string] qvhTWvz.Config)
+        items = make(map[string] evToKLE.Config)
         numRetrievers := int(math.Ceil(float64(total)/float64(api.MaxLimit)))
         responses := make(chan listResponse, numRetrievers)
 
@@ -221,7 +221,7 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
         }
     }
 
-    listing := make([]qvhTWvz.Config, 0, len(items))
+    listing := make([]evToKLE.Config, 0, len(items))
     for key := range items {
         listing = append(listing, items[key])
     }
@@ -238,6 +238,7 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 // name:"Read" nsfName:"Read" param:1 query:0
 // path: []string{"uuid-required"}
 // query: []string{}
+// NOTE: manually modified because the schema is wrong
 type ReadInput struct {
     ObjectId string
     Folder string
@@ -247,17 +248,18 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/addresses/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (qvhTWvz.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (evToKLE.Config, error) {
     // Variables.
     var err error
-    var ans qvhTWvz.Config
+    var ans evToKLE.Config
     path := "/sse/config/v1/addresses/{id}"
+
+    // Query parameter handling.
+    uv := url.Values{}
+    uv.Set("folder", input.Folder)
 
     // Path param handling.
     path = strings.ReplaceAll(path, "{id}", input.ObjectId)
-
-    uv := url.Values{}
-    uv.Set("folder", input.Folder)
 
     // Execute the command.
     _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
@@ -272,17 +274,17 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (qvhTWvz.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config qvhTWvz.Config
+    Config evToKLE.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/addresses/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (qvhTWvz.Config, error) {
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (evToKLE.Config, error) {
     // Variables.
     var err error
-    var ans qvhTWvz.Config
+    var ans evToKLE.Config
     path := "/sse/config/v1/addresses/{id}"
 
     // Path param handling.
