@@ -10,7 +10,7 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    esegVXo "github.com/paloaltonetworks/sase-go/netsec/schema/decryption/exclusions"
+    jxvqaET "github.com/paloaltonetworks/sase-go/netsec/schema/decryption/exclusions"
 )
 
 // Client is the client for this namespace.
@@ -29,17 +29,17 @@ func NewClient(client api.Client) *Client {
 // query: []string{"folder"}
 type CreateInput struct {
     Folder string
-    Config esegVXo.Config
+    Config jxvqaET.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/decryption-exclusions
-func (c *Client) Create(ctx context.Context, input CreateInput)  (esegVXo.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (jxvqaET.Config, error) {
     // Variables.
     var err error
-    var ans esegVXo.Config
+    var ans jxvqaET.Config
     path := "/sse/config/v1/decryption-exclusions"
 
     // Query parameter handling.
@@ -66,10 +66,10 @@ type DecryptionExclusionsGetInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/decryption-exclusions
-func (c *Client) DecryptionExclusionsGet(ctx context.Context, input DecryptionExclusionsGetInput)  (esegVXo.Config, error) {
+func (c *Client) DecryptionExclusionsGet(ctx context.Context, input DecryptionExclusionsGetInput)  (jxvqaET.Config, error) {
     // Variables.
     var err error
-    var ans esegVXo.Config
+    var ans jxvqaET.Config
     path := "/sse/config/v1/decryption-exclusions"
 
     // Query parameter handling.
@@ -98,10 +98,10 @@ type DeleteInput struct {
 //
 // Method: delete
 // URI: /sse/config/v1/decryption-exclusions/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (esegVXo.Config, error) {
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (jxvqaET.Config, error) {
     // Variables.
     var err error
-    var ans esegVXo.Config
+    var ans jxvqaET.Config
     path := "/sse/config/v1/decryption-exclusions/{id}"
 
     // Path param handling.
@@ -126,10 +126,10 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/decryption-exclusions/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (esegVXo.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (jxvqaET.Config, error) {
     // Variables.
     var err error
-    var ans esegVXo.Config
+    var ans jxvqaET.Config
     path := "/sse/config/v1/decryption-exclusions/{id}"
 
     // Path param handling.
@@ -148,17 +148,17 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (esegVXo.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config esegVXo.Config
+    Config jxvqaET.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/decryption-exclusions/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (esegVXo.Config, error) {
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (jxvqaET.Config, error) {
     // Variables.
     var err error
-    var ans esegVXo.Config
+    var ans jxvqaET.Config
     path := "/sse/config/v1/decryption-exclusions/{id}"
 
     // Path param handling.

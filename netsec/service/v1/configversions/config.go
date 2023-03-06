@@ -11,8 +11,8 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    qIUdqZQ "github.com/paloaltonetworks/sase-go/netsec/schema/candidate/config/versions"
-    uYeKDui "github.com/paloaltonetworks/sase-go/netsec/schema/load/config"
+    bUPXiuP "github.com/paloaltonetworks/sase-go/netsec/schema/candidate/config/versions"
+    gjFlAYT "github.com/paloaltonetworks/sase-go/netsec/schema/load/config"
 )
 
 // Client is the client for this namespace.
@@ -38,10 +38,10 @@ type ConfigVersionsGetInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/config-versions
-func (c *Client) ConfigVersionsGet(ctx context.Context, input ConfigVersionsGetInput)  (qIUdqZQ.Config, error) {
+func (c *Client) ConfigVersionsGet(ctx context.Context, input ConfigVersionsGetInput)  (bUPXiuP.Config, error) {
     // Variables.
     var err error
-    var ans qIUdqZQ.Config
+    var ans bUPXiuP.Config
     path := "/sse/config/v1/config-versions"
 
     // Query parameter handling.
@@ -65,17 +65,17 @@ func (c *Client) ConfigVersionsGet(ctx context.Context, input ConfigVersionsGetI
 // path: []string(nil)
 // query: []string(nil)
 type CreateInput struct {
-    Config uYeKDui.Config
+    Config gjFlAYT.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/config-versions:load
-func (c *Client) Create(ctx context.Context, input CreateInput)  (uYeKDui.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (gjFlAYT.Config, error) {
     // Variables.
     var err error
-    var ans uYeKDui.Config
+    var ans gjFlAYT.Config
     path := "/sse/config/v1/config-versions:load"
 
 
@@ -98,10 +98,10 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/config-versions/{version}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (qIUdqZQ.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (bUPXiuP.Config, error) {
     // Variables.
     var err error
-    var ans qIUdqZQ.Config
+    var ans bUPXiuP.Config
     path := "/sse/config/v1/config-versions/{version}"
 
     // Path param handling.

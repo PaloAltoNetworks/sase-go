@@ -9,7 +9,7 @@ import (
     "net/url"
 
     "github.com/paloaltonetworks/sase-go/api"
-    xvBIDXu "github.com/paloaltonetworks/sase-go/netsec/schema/objects/quarantined/devices"
+    qGeZssX "github.com/paloaltonetworks/sase-go/netsec/schema/objects/quarantined/devices"
 )
 
 // Client is the client for this namespace.
@@ -27,17 +27,17 @@ func NewClient(client api.Client) *Client {
 // path: []string(nil)
 // query: []string(nil)
 type CreateInput struct {
-    Config xvBIDXu.Config
+    Config qGeZssX.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/quarantined-devices
-func (c *Client) Create(ctx context.Context, input CreateInput)  (xvBIDXu.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (qGeZssX.Config, error) {
     // Variables.
     var err error
-    var ans xvBIDXu.Config
+    var ans qGeZssX.Config
     path := "/sse/config/v1/quarantined-devices"
 
 
@@ -95,10 +95,10 @@ type QuarantinedDevicesGetInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/quarantined-devices
-func (c *Client) QuarantinedDevicesGet(ctx context.Context, input QuarantinedDevicesGetInput)  (xvBIDXu.Config, error) {
+func (c *Client) QuarantinedDevicesGet(ctx context.Context, input QuarantinedDevicesGetInput)  (qGeZssX.Config, error) {
     // Variables.
     var err error
-    var ans xvBIDXu.Config
+    var ans qGeZssX.Config
     path := "/sse/config/v1/quarantined-devices"
 
     // Query parameter handling.

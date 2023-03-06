@@ -8,7 +8,7 @@ import (
     "context"
 
     "github.com/paloaltonetworks/sase-go/api"
-    kQseSLC "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/global/settings"
+    wajgxii "github.com/paloaltonetworks/sase-go/netsec/schema/mobile/agent/global/settings"
 )
 
 // Client is the client for this namespace.
@@ -25,10 +25,10 @@ func NewClient(client api.Client) *Client {
 //
 // Method: get
 // URI: /sse/config/v1/mobile-agent/global-settings
-func (c *Client) GlobalSettingsGet(ctx context.Context)  (kQseSLC.Config, error) {
+func (c *Client) GlobalSettingsGet(ctx context.Context)  (wajgxii.Config, error) {
     // Variables.
     var err error
-    var ans kQseSLC.Config
+    var ans wajgxii.Config
     path := "/sse/config/v1/mobile-agent/global-settings"
 
 
@@ -44,7 +44,7 @@ func (c *Client) GlobalSettingsGet(ctx context.Context)  (kQseSLC.Config, error)
 // path: []string(nil)
 // query: []string(nil)
 type GlobalSettingsPutInput struct {
-    Config kQseSLC.Config
+    Config wajgxii.Config
 }
 
 // GlobalSettingsPut performs a the given operation.

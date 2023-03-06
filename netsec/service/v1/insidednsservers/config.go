@@ -11,7 +11,7 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    yYYdAbD "github.com/paloaltonetworks/sase-go/netsec/schema/inside/dns/servers"
+    hxkxRrV "github.com/paloaltonetworks/sase-go/netsec/schema/inside/dns/servers"
 )
 
 // Client is the client for this namespace.
@@ -30,17 +30,17 @@ func NewClient(client api.Client) *Client {
 // query: []string{"folder"}
 type CreateInput struct {
     Folder string
-    Config yYYdAbD.Config
+    Config hxkxRrV.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/internal-dns-servers
-func (c *Client) Create(ctx context.Context, input CreateInput)  (yYYdAbD.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (hxkxRrV.Config, error) {
     // Variables.
     var err error
-    var ans yYYdAbD.Config
+    var ans hxkxRrV.Config
     path := "/sse/config/v1/internal-dns-servers"
 
     // Query parameter handling.
@@ -66,10 +66,10 @@ type DeleteInput struct {
 //
 // Method: delete
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (yYYdAbD.Config, error) {
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (hxkxRrV.Config, error) {
     // Variables.
     var err error
-    var ans yYYdAbD.Config
+    var ans hxkxRrV.Config
     path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.
@@ -97,10 +97,10 @@ type InternalDnsServersGetInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/internal-dns-servers
-func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsServersGetInput)  (yYYdAbD.Config, error) {
+func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsServersGetInput)  (hxkxRrV.Config, error) {
     // Variables.
     var err error
-    var ans yYYdAbD.Config
+    var ans hxkxRrV.Config
     path := "/sse/config/v1/internal-dns-servers"
 
     // Query parameter handling.
@@ -135,10 +135,10 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (yYYdAbD.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (hxkxRrV.Config, error) {
     // Variables.
     var err error
-    var ans yYYdAbD.Config
+    var ans hxkxRrV.Config
     path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.
@@ -157,17 +157,17 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (yYYdAbD.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config yYYdAbD.Config
+    Config hxkxRrV.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/internal-dns-servers/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (yYYdAbD.Config, error) {
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (hxkxRrV.Config, error) {
     // Variables.
     var err error
-    var ans yYYdAbD.Config
+    var ans hxkxRrV.Config
     path := "/sse/config/v1/internal-dns-servers/{id}"
 
     // Path param handling.

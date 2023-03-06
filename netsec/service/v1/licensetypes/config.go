@@ -8,7 +8,7 @@ import (
     "context"
 
     "github.com/paloaltonetworks/sase-go/api"
-    prfBhvs "github.com/paloaltonetworks/sase-go/netsec/schema/license/types"
+    oYXHuUA "github.com/paloaltonetworks/sase-go/netsec/schema/license/types"
 )
 
 // Client is the client for this namespace.
@@ -25,10 +25,10 @@ func NewClient(client api.Client) *Client {
 //
 // Method: get
 // URI: /sse/config/v1/license-types
-func (c *Client) LicenseTypesGet(ctx context.Context)  (prfBhvs.Config, error) {
+func (c *Client) LicenseTypesGet(ctx context.Context)  (oYXHuUA.Config, error) {
     // Variables.
     var err error
-    var ans prfBhvs.Config
+    var ans oYXHuUA.Config
     path := "/sse/config/v1/license-types"
 
 

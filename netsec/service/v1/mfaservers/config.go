@@ -10,7 +10,7 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    pLDImfK "github.com/paloaltonetworks/sase-go/netsec/schema/mfa/servers"
+    deRyMEf "github.com/paloaltonetworks/sase-go/netsec/schema/mfa/servers"
 )
 
 // Client is the client for this namespace.
@@ -30,17 +30,17 @@ func NewClient(client api.Client) *Client {
 type CreateInput struct {
     Position string
     Folder string
-    Config pLDImfK.Config
+    Config deRyMEf.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/mfa-servers
-func (c *Client) Create(ctx context.Context, input CreateInput)  (pLDImfK.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (deRyMEf.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
+    var ans deRyMEf.Config
     path := "/sse/config/v1/mfa-servers"
 
     // Query parameter handling.
@@ -67,10 +67,10 @@ type DeleteInput struct {
 //
 // Method: delete
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (pLDImfK.Config, error) {
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (deRyMEf.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
+    var ans deRyMEf.Config
     path := "/sse/config/v1/mfa-servers/{id}"
 
     // Path param handling.
@@ -96,10 +96,10 @@ type MfaServersGetInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/mfa-servers
-func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput)  (pLDImfK.Config, error) {
+func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput)  (deRyMEf.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
+    var ans deRyMEf.Config
     path := "/sse/config/v1/mfa-servers"
 
     // Query parameter handling.
@@ -128,10 +128,10 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (pLDImfK.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (deRyMEf.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
+    var ans deRyMEf.Config
     path := "/sse/config/v1/mfa-servers/{id}"
 
     // Path param handling.
@@ -150,17 +150,17 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (pLDImfK.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config pLDImfK.Config
+    Config deRyMEf.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/mfa-servers/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (pLDImfK.Config, error) {
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (deRyMEf.Config, error) {
     // Variables.
     var err error
-    var ans pLDImfK.Config
+    var ans deRyMEf.Config
     path := "/sse/config/v1/mfa-servers/{id}"
 
     // Path param handling.

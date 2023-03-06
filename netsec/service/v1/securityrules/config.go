@@ -12,7 +12,7 @@ import (
     "strings"
 
     "github.com/paloaltonetworks/sase-go/api"
-    ctxiDBJ "github.com/paloaltonetworks/sase-go/netsec/schema/security/rules"
+    ffcMtmY "github.com/paloaltonetworks/sase-go/netsec/schema/security/rules"
 )
 
 // Client is the client for this namespace.
@@ -32,17 +32,17 @@ func NewClient(client api.Client) *Client {
 type CreateInput struct {
     Position string
     Folder string
-    Config ctxiDBJ.Config
+    Config ffcMtmY.Config
 }
 
 // Create creates the specified object.
 //
 // Method: post
 // URI: /sse/config/v1/security-rules
-func (c *Client) Create(ctx context.Context, input CreateInput)  (ctxiDBJ.Config, error) {
+func (c *Client) Create(ctx context.Context, input CreateInput)  (ffcMtmY.Config, error) {
     // Variables.
     var err error
-    var ans ctxiDBJ.Config
+    var ans ffcMtmY.Config
     path := "/sse/config/v1/security-rules"
 
     // Query parameter handling.
@@ -69,10 +69,10 @@ type DeleteInput struct {
 //
 // Method: delete
 // URI: /sse/config/v1/security-rules/{id}
-func (c *Client) Delete(ctx context.Context, input DeleteInput)  (ctxiDBJ.Config, error) {
+func (c *Client) Delete(ctx context.Context, input DeleteInput)  (ffcMtmY.Config, error) {
     // Variables.
     var err error
-    var ans ctxiDBJ.Config
+    var ans ffcMtmY.Config
     path := "/sse/config/v1/security-rules/{id}"
 
     // Path param handling.
@@ -114,7 +114,7 @@ Param Offset (int64): The Offset param. Default: 0
 Param Total (int64): The Total param.
 */
 type ListOutput struct {
-    Data []ctxiDBJ.Config `json:"data,omitempty"`
+    Data []ffcMtmY.Config `json:"data,omitempty"`
     Limit int64 `json:"limit,omitempty"`
     Offset int64 `json:"offset,omitempty"`
     Total int64 `json:"total,omitempty"`
@@ -144,100 +144,11 @@ func (c *Client) List(ctx context.Context, input ListInput)  (ListOutput, error)
         uv.Set("name", *input.Name)
     }
 
-    // Optional: retrieve everything if limit is -1.
-    if input.Limit != nil && *input.Limit == -1 {
-        return c.listAll(ctx, input)
-    }
-
     // Execute the command.
     _, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
     // Done.
     return ans, err
-}
-
-type listResponse struct {
-    Output ListOutput
-    Error error
-}
-
-func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, error) {
-    var ans ListOutput
-    var err error
-    var items map[string] ctxiDBJ.Config
-    everything := ListInput{
-        Limit: api.Int(api.MaxLimit),
-        Position: input.Position,
-        Folder: input.Folder,
-    }
-
-    times := 0
-    for {
-        // Get the total number of things.
-        ans, err = c.List(ctx, everything)
-        if err != nil || len(ans.Data) == int(ans.Total) {
-            return ans, err
-        }
-
-        total := int(ans.Total)
-        items = make(map[string] ctxiDBJ.Config)
-        numRetrievers := int(math.Ceil(float64(total)/float64(api.MaxLimit)))
-        responses := make(chan listResponse, numRetrievers)
-
-        for i := 0; i < numRetrievers; i++ {
-            ri := ListInput{
-                Offset: api.Int(int64(i*api.MaxLimit)),
-                Limit: api.Int(int64(api.MaxLimit)),
-        Position: input.Position,
-        Folder: input.Folder,
-            }
-            go func(){
-                rout, rerr := c.List(ctx, ri)
-                responses <- listResponse{
-                    Output: rout,
-                    Error: rerr,
-                }
-            }()
-        }
-
-        var totalChanged bool
-        for i := 0; i < numRetrievers; i++ {
-            resp := <-responses
-            if resp.Error != nil {
-                return resp.Output, resp.Error
-            }
-            if ans.Total != resp.Output.Total {
-                totalChanged = true
-                continue
-            }
-            for j := 0; j < len(resp.Output.Data); j++ {
-                if _, ok := items[resp.Output.Data[j].ObjectId]; !ok {
-                    items[resp.Output.Data[j].ObjectId] = resp.Output.Data[j]
-                }
-            }
-        }
-
-        if !totalChanged && len(items) == total {
-            break
-        }
-
-        times++
-        if times >= 5 {
-            return ListOutput{}, api.TooManyRetriesError
-        }
-    }
-
-    listing := make([]ctxiDBJ.Config, 0, len(items))
-    for key := range items {
-        listing = append(listing, items[key])
-    }
-
-    ans = ListOutput{
-        Data: listing,
-        Total: int64(len(listing)),
-    }
-
-    return ans, nil
 }
 
 // ReadInput takes some input.
@@ -252,10 +163,10 @@ type ReadInput struct {
 //
 // Method: get
 // URI: /sse/config/v1/security-rules/{id}
-func (c *Client) Read(ctx context.Context, input ReadInput)  (ctxiDBJ.Config, error) {
+func (c *Client) Read(ctx context.Context, input ReadInput)  (ffcMtmY.Config, error) {
     // Variables.
     var err error
-    var ans ctxiDBJ.Config
+    var ans ffcMtmY.Config
     path := "/sse/config/v1/security-rules/{id}"
 
     // Path param handling.
@@ -274,17 +185,17 @@ func (c *Client) Read(ctx context.Context, input ReadInput)  (ctxiDBJ.Config, er
 // query: []string{}
 type UpdateInput struct {
     ObjectId string
-    Config ctxiDBJ.Config
+    Config ffcMtmY.Config
 }
 
 // Update modifies the configuration of the given object.
 //
 // Method: put
 // URI: /sse/config/v1/security-rules/{id}
-func (c *Client) Update(ctx context.Context, input UpdateInput)  (ctxiDBJ.Config, error) {
+func (c *Client) Update(ctx context.Context, input UpdateInput)  (ffcMtmY.Config, error) {
     // Variables.
     var err error
-    var ans ctxiDBJ.Config
+    var ans ffcMtmY.Config
     path := "/sse/config/v1/security-rules/{id}"
 
     // Path param handling.

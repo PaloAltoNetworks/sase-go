@@ -8,7 +8,7 @@ import (
     "context"
 
     "github.com/paloaltonetworks/sase-go/api"
-    sKJecNo "github.com/paloaltonetworks/sase-go/netsec/schema/locations"
+    eItpily "github.com/paloaltonetworks/sase-go/netsec/schema/locations"
 )
 
 // Client is the client for this namespace.
@@ -25,10 +25,10 @@ func NewClient(client api.Client) *Client {
 //
 // Method: get
 // URI: /sse/config/v1/locations
-func (c *Client) LocationsGet(ctx context.Context)  (sKJecNo.Config, error) {
+func (c *Client) LocationsGet(ctx context.Context)  (eItpily.Config, error) {
     // Variables.
     var err error
-    var ans sKJecNo.Config
+    var ans eItpily.Config
     path := "/sse/config/v1/locations"
 
 

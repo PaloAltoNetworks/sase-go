@@ -8,7 +8,7 @@ import (
     "context"
 
     "github.com/paloaltonetworks/sase-go/api"
-    fLuUemT "github.com/paloaltonetworks/sase-go/netsec/schema/running/config/versions"
+    epjnjbE "github.com/paloaltonetworks/sase-go/netsec/schema/running/config/versions"
 )
 
 // Client is the client for this namespace.
@@ -25,10 +25,10 @@ func NewClient(client api.Client) *Client {
 //
 // Method: get
 // URI: /sse/config/v1/config-versions/running
-func (c *Client) RunningGet(ctx context.Context)  (fLuUemT.Config, error) {
+func (c *Client) RunningGet(ctx context.Context)  (epjnjbE.Config, error) {
     // Variables.
     var err error
-    var ans fLuUemT.Config
+    var ans epjnjbE.Config
     path := "/sse/config/v1/config-versions/running"
 
 
