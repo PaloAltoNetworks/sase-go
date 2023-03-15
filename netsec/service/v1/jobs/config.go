@@ -65,9 +65,9 @@ func (c *Client) List(ctx context.Context) (ListOutput, error) {
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
 // path: []string{"jobid-required"}
-// query: []string{}
+// query: []string(nil)
 type ReadInput struct {
-	ObjectId string
+	JobId string
 }
 
 // Read returns the configuration of the specified object.
@@ -81,7 +81,7 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (sPPuDTU.Config, err
 	path := "/sse/config/v1/jobs/{id}"
 
 	// Path param handling.
-	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
+	path = strings.ReplaceAll(path, "{id}", input.JobId)
 
 	// Execute the command.
 	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)

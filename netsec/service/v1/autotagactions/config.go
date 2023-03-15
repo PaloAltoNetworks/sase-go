@@ -26,7 +26,7 @@ func NewClient(client api.Client) *Client {
 
 // AutoTagActionsDeleteInput takes some input.
 // name:"AutoTagActionsDelete" nsfName:"AutoTagActionsDelete" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"name"}
 type AutoTagActionsDeleteInput struct {
 	Name string
@@ -54,7 +54,7 @@ func (c *Client) AutoTagActionsDelete(ctx context.Context, input AutoTagActionsD
 
 // AutoTagActionsPutInput takes some input.
 // name:"AutoTagActionsPut" nsfName:"AutoTagActionsPut" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-shared"}
 type AutoTagActionsPutInput struct {
 	Folder string
@@ -83,7 +83,7 @@ func (c *Client) AutoTagActionsPut(ctx context.Context, input AutoTagActionsPutI
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-shared"}
 type CreateInput struct {
 	Folder string
@@ -113,7 +113,7 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (kJVbXva.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string{}
+// path: []string(nil)
 // query: []string{"limit-optional", "offset-optional", "name-optional", "folder-shared"}
 type ListInput struct {
 	Limit  *int64

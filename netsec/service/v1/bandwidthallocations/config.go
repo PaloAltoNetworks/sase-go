@@ -26,7 +26,7 @@ func NewClient(client api.Client) *Client {
 
 // BandwidthAllocationsDeleteInput takes some input.
 // name:"BandwidthAllocationsDelete" nsfName:"BandwidthAllocationsDelete" param:0 query:2
-// path: []string{}
+// path: []string(nil)
 // query: []string{"aggregated-bandwidth-region-name-required", "aggregated-bandwidth-spn-name-list-required"}
 type BandwidthAllocationsDeleteInput struct {
 	Name        string
@@ -105,7 +105,7 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (wYKgwLF.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:2
-// path: []string{}
+// path: []string(nil)
 // query: []string{"limit-optional", "offset-optional"}
 type ListInput struct {
 	Limit  *int64

@@ -49,7 +49,7 @@ func (c *Client) BgpRoutingPut(ctx context.Context, input BgpRoutingPutInput) er
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:3
-// path: []string{}
+// path: []string(nil)
 // query: []string{"limit-optional", "offset-optional", "folder"}
 type ListInput struct {
 	Limit  *int64

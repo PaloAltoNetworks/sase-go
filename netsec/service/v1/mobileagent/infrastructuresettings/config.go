@@ -24,7 +24,7 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-mobile-users"}
 type CreateInput struct {
 	Folder string
@@ -54,7 +54,7 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (gUGwYZv.Config,
 
 // InfrastructureSettingsDeleteInput takes some input.
 // name:"InfrastructureSettingsDelete" nsfName:"InfrastructureSettingsDelete" param:0 query:2
-// path: []string{}
+// path: []string(nil)
 // query: []string{"name", "folder-mobile-users"}
 type InfrastructureSettingsDeleteInput struct {
 	Name   string
@@ -84,7 +84,7 @@ func (c *Client) InfrastructureSettingsDelete(ctx context.Context, input Infrast
 
 // InfrastructureSettingsPutInput takes some input.
 // name:"InfrastructureSettingsPut" nsfName:"InfrastructureSettingsPut" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-mobile-users"}
 type InfrastructureSettingsPutInput struct {
 	Folder string
@@ -113,7 +113,7 @@ func (c *Client) InfrastructureSettingsPut(ctx context.Context, input Infrastruc
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-mobile-users"}
 type ListInput struct {
 	Folder string

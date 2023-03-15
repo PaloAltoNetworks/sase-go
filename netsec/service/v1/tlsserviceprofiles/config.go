@@ -12,7 +12,6 @@ import (
 	"strings"
 
 	"github.com/paloaltonetworks/sase-go/api"
-	cozuxBy "github.com/paloaltonetworks/sase-go/netsec/schema/certificate/profiles"
 	gADaUcy "github.com/paloaltonetworks/sase-go/netsec/schema/tls/service/profiles"
 )
 
@@ -28,7 +27,7 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder"}
 type CreateInput struct {
 	Folder string
@@ -59,7 +58,7 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (gADaUcy.Config,
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type DeleteInput struct {
 	ObjectId string
 }
@@ -86,7 +85,7 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (gADaUcy.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string{}
+// path: []string(nil)
 // query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
 type ListInput struct {
 	Limit  *int64
@@ -238,7 +237,7 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type ReadInput struct {
 	ObjectId string
 }
@@ -266,10 +265,10 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (gADaUcy.Config, err
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type UpdateInput struct {
 	ObjectId string
-	Config   cozuxBy.Config
+	Config   gADaUcy.Config
 }
 
 // Update modifies the configuration of the given object.

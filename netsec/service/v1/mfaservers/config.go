@@ -25,7 +25,7 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:2
-// path: []string{}
+// path: []string(nil)
 // query: []string{"position", "folder"}
 type CreateInput struct {
 	Position string
@@ -58,7 +58,7 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (deRyMEf.Config,
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type DeleteInput struct {
 	ObjectId string
 }
@@ -85,7 +85,7 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (deRyMEf.Config,
 
 // MfaServersGetInput takes some input.
 // name:"MfaServersGet" nsfName:"MfaServersGet" param:0 query:2
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder", "name-optional"}
 type MfaServersGetInput struct {
 	Folder string
@@ -119,7 +119,7 @@ func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput) (d
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type ReadInput struct {
 	ObjectId string
 }
@@ -147,7 +147,7 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (deRyMEf.Config, err
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
 // path: []string{"uuid-required"}
-// query: []string{}
+// query: []string(nil)
 type UpdateInput struct {
 	ObjectId string
 	Config   deRyMEf.Config

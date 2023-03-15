@@ -24,7 +24,7 @@ func NewClient(client api.Client) *Client {
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-mobile-users"}
 type ListInput struct {
 	Folder string
@@ -76,7 +76,7 @@ func (c *Client) List(ctx context.Context, input ListInput) (ListOutput, error) 
 
 // LocationsPutInput takes some input.
 // name:"LocationsPut" nsfName:"LocationsPut" param:0 query:1
-// path: []string{}
+// path: []string(nil)
 // query: []string{"folder-mobile-users"}
 type LocationsPutInput struct {
 	Folder string
