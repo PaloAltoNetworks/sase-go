@@ -117,11 +117,12 @@ func (c *Client) MfaServersGet(ctx context.Context, input MfaServersGetInput) (d
 }
 
 // ReadInput takes some input.
-// name:"Read" nsfName:"Read" param:1 query:0
+// name:"Read" nsfName:"Read" param:1 query:1
 // path: []string{"uuid-required"}
-// query: []string(nil)
+// query: []string{"folder"}
 type ReadInput struct {
 	ObjectId string
+	Folder   string
 }
 
 // Read returns the configuration of the specified object.
@@ -134,11 +135,15 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (deRyMEf.Config, err
 	var ans deRyMEf.Config
 	path := "/sse/config/v1/mfa-servers/{id}"
 
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
+
 	// Path param handling.
 	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
 	// Execute the command.
-	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
 	// Done.
 	return ans, err
