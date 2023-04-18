@@ -38,8 +38,8 @@ func (c *Client) CandidateDelete(ctx context.Context) error {
 
 // CandidatePushPostInput takes some input.
 // name:"CandidatePushPost" nsfName:"CandidatePushPost" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type CandidatePushPostInput struct {
 	Config CandidatePushPostInputConfig
 }

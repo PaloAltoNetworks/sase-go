@@ -40,8 +40,8 @@ func (c *Client) GlobalSettingsGet(ctx context.Context) (wajgxii.Config, error) 
 
 // GlobalSettingsPutInput takes some input.
 // name:"GlobalSettingsPut" nsfName:"GlobalSettingsPut" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type GlobalSettingsPutInput struct {
 	Config wajgxii.Config
 }

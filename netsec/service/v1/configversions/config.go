@@ -27,8 +27,8 @@ func NewClient(client api.Client) *Client {
 
 // ConfigVersionsGetInput takes some input.
 // name:"ConfigVersionsGet" nsfName:"ConfigVersionsGet" param:0 query:2
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional"}
+// path:
+// query: Limit | Offset
 type ConfigVersionsGetInput struct {
 	Limit  *int64
 	Offset *int64
@@ -62,8 +62,8 @@ func (c *Client) ConfigVersionsGet(ctx context.Context, input ConfigVersionsGetI
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type CreateInput struct {
 	Config gjFlAYT.Config
 }
@@ -87,8 +87,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (gjFlAYT.Config,
 
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
-// path: []string{"version-required"}
-// query: []string(nil)
+// path: Version
+// query:
 type ReadInput struct {
 	Version string
 }

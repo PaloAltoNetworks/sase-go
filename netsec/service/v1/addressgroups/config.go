@@ -27,8 +27,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config nVitIaG.Config
@@ -57,8 +57,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (nVitIaG.Config,
 
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
 }
@@ -85,8 +85,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (nVitIaG.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+// path:
+// query: Limit | Offset | Name | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64
@@ -235,11 +235,12 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 }
 
 // ReadInput takes some input.
-// name:"Read" nsfName:"Read" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// name:"Read" nsfName:"Read" param:1 query:1
+// path: ObjectId
+// query: Folder
 type ReadInput struct {
 	ObjectId string
+	Folder   string
 }
 
 // Read returns the configuration of the specified object.
@@ -252,11 +253,15 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (nVitIaG.Config, err
 	var ans nVitIaG.Config
 	path := "/sse/config/v1/address-groups/{id}"
 
+	// Query parameter handling.
+	uv := url.Values{}
+	uv.Set("folder", input.Folder)
+
 	// Path param handling.
 	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
 	// Execute the command.
-	_, err = c.client.Do(ctx, "GET", path, nil, nil, &ans)
+	_, err = c.client.Do(ctx, "GET", path, uv, nil, &ans)
 
 	// Done.
 	return ans, err
@@ -264,8 +269,8 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (nVitIaG.Config, err
 
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type UpdateInput struct {
 	ObjectId string
 	Config   nVitIaG.Config

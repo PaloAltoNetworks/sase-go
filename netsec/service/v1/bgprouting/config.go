@@ -25,8 +25,8 @@ func NewClient(client api.Client) *Client {
 
 // BgpRoutingPutInput takes some input.
 // name:"BgpRoutingPut" nsfName:"BgpRoutingPut" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type BgpRoutingPutInput struct {
 	Config aUYGFNI.Config
 }
@@ -49,8 +49,8 @@ func (c *Client) BgpRoutingPut(ctx context.Context, input BgpRoutingPutInput) er
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:3
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "folder"}
+// path:
+// query: Limit | Offset | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64

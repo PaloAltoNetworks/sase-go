@@ -27,8 +27,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config jhtSIUK.Config
@@ -56,12 +56,11 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (jhtSIUK.Config,
 }
 
 // DeleteInput takes some input.
-// name:"Delete" nsfName:"Delete" param:1 query:1
-// path: []string{"uuid-required"}
-// query: []string{"folder"}
+// name:"Delete" nsfName:"Delete" param:1 query:0
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
-	Folder   string
 }
 
 // Delete removes the specified configuration.
@@ -74,15 +73,11 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (jhtSIUK.Config,
 	var ans jhtSIUK.Config
 	path := "/sse/config/v1/remote-networks/{id}"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	uv.Set("folder", input.Folder)
-
 	// Path param handling.
 	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
 	// Execute the command.
-	_, err = c.client.Do(ctx, "DELETE", path, uv, nil, &ans)
+	_, err = c.client.Do(ctx, "DELETE", path, nil, nil, &ans)
 
 	// Done.
 	return ans, err
@@ -90,8 +85,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (jhtSIUK.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+// path:
+// query: Limit | Offset | Name | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64
@@ -241,8 +236,8 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:1
-// path: []string{"uuid-required"}
-// query: []string{"folder"}
+// path: ObjectId
+// query: Folder
 type ReadInput struct {
 	ObjectId string
 	Folder   string
@@ -273,12 +268,11 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (jhtSIUK.Config, err
 }
 
 // UpdateInput takes some input.
-// name:"Update" nsfName:"Update" param:1 query:1
-// path: []string{"uuid-required"}
-// query: []string{"folder"}
+// name:"Update" nsfName:"Update" param:1 query:0
+// path: ObjectId
+// query:
 type UpdateInput struct {
 	ObjectId string
-	Folder   string
 	Config   jhtSIUK.Config
 }
 
@@ -292,15 +286,11 @@ func (c *Client) Update(ctx context.Context, input UpdateInput) (jhtSIUK.Config,
 	var ans jhtSIUK.Config
 	path := "/sse/config/v1/remote-networks/{id}"
 
-	// Query parameter handling.
-	uv := url.Values{}
-	uv.Set("folder", input.Folder)
-
 	// Path param handling.
 	path = strings.ReplaceAll(path, "{id}", input.ObjectId)
 
 	// Execute the command.
-	_, err = c.client.Do(ctx, "PUT", path, uv, input.Config, &ans)
+	_, err = c.client.Do(ctx, "PUT", path, nil, input.Config, &ans)
 
 	// Done.
 	return ans, err

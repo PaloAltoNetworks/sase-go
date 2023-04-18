@@ -26,8 +26,8 @@ func NewClient(client api.Client) *Client {
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+// path:
+// query: Limit | Offset | Name | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64

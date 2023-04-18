@@ -25,8 +25,8 @@ func NewClient(client api.Client) *Client {
 
 // AuthenticationSettingsDeleteInput takes some input.
 // name:"AuthenticationSettingsDelete" nsfName:"AuthenticationSettingsDelete" param:0 query:2
-// path: []string(nil)
-// query: []string{"name", "folder-mobile-users"}
+// path:
+// query: Name | Folder
 type AuthenticationSettingsDeleteInput struct {
 	Name   string
 	Folder string
@@ -55,8 +55,8 @@ func (c *Client) AuthenticationSettingsDelete(ctx context.Context, input Authent
 
 // AuthenticationSettingsPutInput takes some input.
 // name:"AuthenticationSettingsPut" nsfName:"AuthenticationSettingsPut" param:0 query:2
-// path: []string(nil)
-// query: []string{"name", "folder-mobile-users"}
+// path:
+// query: Name | Folder
 type AuthenticationSettingsPutInput struct {
 	Name   string
 	Folder string
@@ -86,8 +86,8 @@ func (c *Client) AuthenticationSettingsPut(ctx context.Context, input Authentica
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder-mobile-users"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config ooAAxrN.Config
@@ -116,8 +116,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (ooAAxrN.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:3
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "folder-mobile-users"}
+// path:
+// query: Limit | Offset | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64

@@ -28,8 +28,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config vqtUUHF.Config
@@ -58,8 +58,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (vqtUUHF.Config,
 
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
 }
@@ -86,8 +86,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (vqtUUHF.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:4
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+// path:
+// query: Limit | Offset | Name | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64

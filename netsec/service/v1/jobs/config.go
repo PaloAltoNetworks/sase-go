@@ -64,8 +64,8 @@ func (c *Client) List(ctx context.Context) (ListOutput, error) {
 
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
-// path: []string{"jobid-required"}
-// query: []string(nil)
+// path: JobId
+// query:
 type ReadInput struct {
 	JobId string
 }

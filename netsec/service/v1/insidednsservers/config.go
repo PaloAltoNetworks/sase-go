@@ -26,8 +26,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config hxkxRrV.Config
@@ -56,8 +56,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (hxkxRrV.Config,
 
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
 }
@@ -84,8 +84,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (hxkxRrV.Config,
 
 // InternalDnsServersGetInput takes some input.
 // name:"InternalDnsServersGet" nsfName:"InternalDnsServersGet" param:0 query:4
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "name-optional", "folder"}
+// path:
+// query: Limit | Offset | Name | Folder
 type InternalDnsServersGetInput struct {
 	Limit  *int64
 	Offset *int64
@@ -125,8 +125,8 @@ func (c *Client) InternalDnsServersGet(ctx context.Context, input InternalDnsSer
 
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type ReadInput struct {
 	ObjectId string
 }
@@ -153,8 +153,8 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (hxkxRrV.Config, err
 
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type UpdateInput struct {
 	ObjectId string
 	Config   hxkxRrV.Config

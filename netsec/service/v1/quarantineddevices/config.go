@@ -24,8 +24,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type CreateInput struct {
 	Config qGeZssX.Config
 }
@@ -49,8 +49,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (qGeZssX.Config,
 
 // QuarantinedDevicesDeleteInput takes some input.
 // name:"QuarantinedDevicesDelete" nsfName:"QuarantinedDevicesDelete" param:0 query:3
-// path: []string(nil)
-// query: []string{"service_type", "connection_name", "host_id_required"}
+// path:
+// query: ServiceType | ConnectionName | HostId
 type QuarantinedDevicesDeleteInput struct {
 	ServiceType    string
 	ConnectionName string
@@ -81,8 +81,8 @@ func (c *Client) QuarantinedDevicesDelete(ctx context.Context, input Quarantined
 
 // QuarantinedDevicesGetInput takes some input.
 // name:"QuarantinedDevicesGet" nsfName:"QuarantinedDevicesGet" param:0 query:4
-// path: []string(nil)
-// query: []string{"service_type", "connection_name", "host_id", "serial_number"}
+// path:
+// query: ServiceType | ConnectionName | HostId | SerialNumber
 type QuarantinedDevicesGetInput struct {
 	ServiceType    string
 	ConnectionName string

@@ -26,8 +26,8 @@ func NewClient(client api.Client) *Client {
 
 // BandwidthAllocationsDeleteInput takes some input.
 // name:"BandwidthAllocationsDelete" nsfName:"BandwidthAllocationsDelete" param:0 query:2
-// path: []string(nil)
-// query: []string{"aggregated-bandwidth-region-name-required", "aggregated-bandwidth-spn-name-list-required"}
+// path:
+// query: Name | SpnNameList
 type BandwidthAllocationsDeleteInput struct {
 	Name        string
 	SpnNameList string
@@ -56,8 +56,8 @@ func (c *Client) BandwidthAllocationsDelete(ctx context.Context, input Bandwidth
 
 // BandwidthAllocationsPutInput takes some input.
 // name:"BandwidthAllocationsPut" nsfName:"BandwidthAllocationsPut" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type BandwidthAllocationsPutInput struct {
 	Config wYKgwLF.Config
 }
@@ -80,8 +80,8 @@ func (c *Client) BandwidthAllocationsPut(ctx context.Context, input BandwidthAll
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type CreateInput struct {
 	Config wYKgwLF.Config
 }
@@ -105,8 +105,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (wYKgwLF.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:2
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional"}
+// path:
+// query: Limit | Offset
 type ListInput struct {
 	Limit  *int64
 	Offset *int64

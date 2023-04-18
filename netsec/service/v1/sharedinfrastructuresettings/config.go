@@ -26,8 +26,8 @@ func NewClient(client api.Client) *Client {
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:2
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional"}
+// path:
+// query: Limit | Offset
 type ListInput struct {
 	Limit  *int64
 	Offset *int64
@@ -84,8 +84,8 @@ func (c *Client) List(ctx context.Context, input ListInput) (ListOutput, error) 
 
 // SharedInfrastructureSettingsPutInput takes some input.
 // name:"SharedInfrastructureSettingsPut" nsfName:"SharedInfrastructureSettingsPut" param:0 query:0
-// path: []string(nil)
-// query: []string(nil)
+// path:
+// query:
 type SharedInfrastructureSettingsPutInput struct {
 	Config ebBZfXA.Config
 }

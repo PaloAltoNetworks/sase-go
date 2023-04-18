@@ -25,8 +25,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config jxvqaET.Config
@@ -55,8 +55,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (jxvqaET.Config,
 
 // DecryptionExclusionsGetInput takes some input.
 // name:"DecryptionExclusionsGet" nsfName:"DecryptionExclusionsGet" param:0 query:2
-// path: []string(nil)
-// query: []string{"name-optional", "folder"}
+// path:
+// query: Name | Folder
 type DecryptionExclusionsGetInput struct {
 	Name   *string
 	Folder string
@@ -88,8 +88,8 @@ func (c *Client) DecryptionExclusionsGet(ctx context.Context, input DecryptionEx
 
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
 }
@@ -116,8 +116,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (jxvqaET.Config,
 
 // ReadInput takes some input.
 // name:"Read" nsfName:"Read" param:1 query:1
-// path: []string{"uuid-required"}
-// query: []string{"folder"}
+// path: ObjectId
+// query: Folder
 type ReadInput struct {
 	ObjectId string
 	Folder   string
@@ -149,8 +149,8 @@ func (c *Client) Read(ctx context.Context, input ReadInput) (jxvqaET.Config, err
 
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type UpdateInput struct {
 	ObjectId string
 	Config   jxvqaET.Config

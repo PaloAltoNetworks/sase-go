@@ -27,8 +27,8 @@ func NewClient(client api.Client) *Client {
 
 // CreateInput takes some input.
 // name:"Create" nsfName:"Create" param:0 query:1
-// path: []string(nil)
-// query: []string{"folder"}
+// path:
+// query: Folder
 type CreateInput struct {
 	Folder string
 	Config xUpBHLw.Config
@@ -57,8 +57,8 @@ func (c *Client) Create(ctx context.Context, input CreateInput) (xUpBHLw.Config,
 
 // DeleteInput takes some input.
 // name:"Delete" nsfName:"Delete" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type DeleteInput struct {
 	ObjectId string
 }
@@ -85,8 +85,8 @@ func (c *Client) Delete(ctx context.Context, input DeleteInput) (xUpBHLw.Config,
 
 // ListInput takes some input.
 // name:"List" nsfName:"List" param:0 query:3
-// path: []string(nil)
-// query: []string{"limit-optional", "offset-optional", "folder"}
+// path:
+// query: Limit | Offset | Folder
 type ListInput struct {
 	Limit  *int64
 	Offset *int64
@@ -232,8 +232,8 @@ func (c *Client) listAll(ctx context.Context, input ListInput) (ListOutput, erro
 
 // UpdateInput takes some input.
 // name:"Update" nsfName:"Update" param:1 query:0
-// path: []string{"uuid-required"}
-// query: []string(nil)
+// path: ObjectId
+// query:
 type UpdateInput struct {
 	ObjectId string
 	Config   xUpBHLw.Config
