@@ -5,6 +5,8 @@ SDK for interacting with Secure Access Edge Service
 
 Package `sase` is a golang SDK for interacting with the Palo Alto Networks Secure Access Edge Service.
 
+**NOTE**: Use the new [paloaltonetworks/scm-go](https://github.com/paloaltonetworks/scm-go) repo instead.
+
 ## Using sase-go
 
 To start, create a client connection, then invoke `Setup()`, and retrieve the JWT with `RefreshJwt()`.  JWTs expire after some time, but the SDK will catch the failed auth and automatically refresh the JWT when a 401 is returned from the API:
